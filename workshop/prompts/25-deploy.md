@@ -103,16 +103,19 @@ Teste com npm run preview. Entregue por PR.
 Na aula, o site vai para o ar **antes** de ganhar conteúdo, com as seções vazias. Assim a turma abre o endereço no celular e vê cada passo seguinte aparecer. Este primeiro deploy vai direto na `main`, porque a PR só é ensinada no P10. Daí em diante, cada commit com push na `main` publica de novo.
 
 ```text
-Publique [NOME_DA_MARCA] no GitHub Pages pelo Actions já,
-para a turma acompanhar no celular. Repositório
-público [REPO]: crie sem push e me espere ligar o Pages.
-vite.config.js: base '/[REPO]/'. Workflow: push na main →
-npm ci, npm run build, upload de dist, deploy-pages.
-Teste com npm test (a base já traz). O primeiro deploy vai
-direto na main (a PR vem no P10).
+Publique [NOME_DA_MARCA] agora no GitHub Pages, direto na
+main (a PR vem no P10).
+1) gh repo create [REPO] --public --source=. --push
+2) .github/workflows/deploy.yml: push na main → npm ci,
+   npm run build, upload de dist, deploy-pages;
+   em pull_request, só npm ci e npm run build.
+3) npm test, commit e push na main.
+4) gh run watch e me dê o endereço.
 ```
 
-- **Ordem:** criar o repositório sem push → **Settings › Pages › Source: GitHub Actions** → push. Se o push vier antes, o primeiro run falha com "Get Pages site failed": ligue o Pages e use **Re-run jobs**.
+- **Ordem:** o passo 1 cria o repositório e envia o que já existe, ainda sem workflow, então nada roda. Enquanto o Claude escreve o workflow (passo 2), ligue **Settings › Pages › Source: GitHub Actions**. O push do passo 3 já publica. Se o push do workflow vier antes de ligar o Pages, o run falha com "Get Pages site failed": ligue o Pages e use **Re-run jobs**.
+- O `pull_request` no workflow faz cada PR do projeto ter uma checagem de build, que o checklist do merge (prompt 23) pede.
+- A base já traz `base: '/meu-site/'` no `vite.config.js`: se o repositório tiver outro nome, troque ali.
 - **Ensaio de 20/10/2026** (site de relógio, Claude Code 2.1.304, Sonnet 5.5 · medium): o site respondeu 3 min depois do prompt e 47 s depois do push; o run de deploy levou 28 s.
 
 ## Resultado esperado e validação

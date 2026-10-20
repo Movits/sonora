@@ -7,6 +7,7 @@
 **Regras fixas da noite**
 
 - Sonnet 5.5 constrói e faz tarefa simples. Opus 5.5 planeja (Plan), depura e revisa. Fable só em problema muito difícil. Bypass, nunca.
+- No Manual, todo comando composto (`a; b`, `$()`, heredoc) vira um clique de aprovação. No ensaio de 20/10 foram 3 no P3, 7 na primeira publicação e 4 no P4. Leio e aprovo; nunca troco para Bypass.
 - Modos: Manual para push, PR, merge e Notion; Accept edits para construir; Plan para pensar. Auto eu explico no slide 12, mas não uso na aula.
 - Plano B: no máximo 2 min. Erro ao vivo: no máximo 5 min. Passou disso, plano C e sigo ([plano-de-contingencia.md](plano-de-contingencia.md)).
 - Às H+2:55 o encerramento começa, custe o que custar.
@@ -179,7 +180,7 @@ Não incomodar ligado, celular no silencioso, água por perto. Slide 1 no projet
 - **H+1:18 · slide 31 · Onde o site roda** · 2 min
   Terminal do Projeto B: `npm run dev` e abro o endereço que aparecer. Mudo um texto, salvo e a página atualiza sozinha; Ctrl + C e a página some (rodo de novo). **[Checagem]** Mandei o link localhost para um colega: ele vê? (Não: localhost é o computador de quem abre.)
 - **H+1:20 · slide 32 · P3b · Publicar já: o site no celular de todo mundo** · 6 min · Sonnet 5.5 · medium · Manual
-  Aba Code em meu-site. Antes: `git status` limpo e `.env` listado no .gitignore (a base já traz), porque o repositório vai ser público. Colo a versão curta do slide (o primeiro deploy vai direto na main; a PR só entra no P10) e aprovo o `gh repo create meu-site --public --source=.`, sem push. GitHub › Settings › Pages › Source: GitHub Actions; digo "Pages ligado, pode fazer o push". No ensaio de 20/10, o site respondeu 3 min depois do prompt, 47 s depois do push (run de 28 s). Aba Actions até ficar verde e https://movits.github.io/meu-site/ no Chrome; **[Turma]** abre no celular. Daqui em diante, cada passo termina com commit e push, e a turma recarrega o celular. Passou de 8 min: sigo no localhost e publico no fim (P12, corte 6). **[Checagem]** Por que publicar com o site vazio? (Para testar no celular a cada passo, e não só no fim.)
+  Aba Code em meu-site. Antes: `git status` limpo e `.env` listado no .gitignore (a base já traz), porque o repositório vai ser público. Colo a versão curta do slide (o primeiro deploy vai direto na main; a PR só entra no P10) e aprovo o `gh repo create` do passo 1. Assim que o repositório aparecer, ligo GitHub › Settings › Pages › Source: GitHub Actions, enquanto o Claude escreve o workflow. Aprovo `npm test`, commit e push; o `gh run watch` mostra o deploy. No ensaio de 20/10, o site respondeu 3 min depois do prompt, 47 s depois do push (run de 28 s). Aba Actions até ficar verde e https://movits.github.io/meu-site/ no Chrome; **[Turma]** abre no celular. Daqui em diante, cada passo termina com commit e push, e a turma recarrega o celular. Passou de 8 min: sigo no localhost e publico no fim (P12, corte 6). **[Checagem]** Por que publicar com o site vazio? (Para testar no celular a cada passo, e não só no fim.)
 
 ### Bloco 4 · Construir · H+1:26 a 2:09 · pasta meu-site
 
