@@ -79,7 +79,7 @@ Não incomodar ligado, celular no silencioso, água por perto. Slide 1 no projet
 | H+1:26 | 33–36 | P4 identidade, com e sem skill, P5 imagens | Claude; turma escolhe | aceitar uma direção; P5 em 1 min | 1:41 começa o P6 |
 | H+1:41 | 37 | P6: landing page; push e a turma recarrega o celular | Claude | stash e último commit | 1:53 começa o P7 |
 | H+1:53 | 38–39 | P7: animação de scroll; técnicas | Claude | site do ensaio; stash | 2:04 começa o debugging |
-| H+2:04 | 40 | Debugging com erro plantado | Roberto planta, Claude diagnostica | git restore src/main.js | **2:09 fluxo de trabalho começou** |
+| H+2:04 | 40 | Quando der erro: diagnóstico com o Claude (só se algum passo deu erro) | Claude diagnostica; Roberto aprova | voltar ao último commit | **2:09 fluxo de trabalho começou** |
 | H+2:09 | 41–43 | P8: /review-landing no SONORA; prompt que se repete vira skill | Claude | Sonnet, 5 itens, sem skill | 2:19 começa o P9 |
 | H+2:19 | 44 | P9: branch pronta, log e diff | Roberto | — | 2:25 começa o P10 |
 | H+2:25 | 45–46 | P10: PR, CI, /code-review, merge, Pages; Errei! (momento 4c) | Claude; Roberto mescla; turma no celular | PR #1; aba compare | 2:35 começam os conectores |
@@ -197,8 +197,8 @@ Não incomodar ligado, celular no silencioso, água por perto. Slide 1 no projet
   Referência: rolo a cena do SONORA e emulo reduced-motion (F12 › Ctrl + Shift + P › "reduced motion"). No Projeto B: versão curta de `12-animacoes-de-scroll.md` com a animação da ficha + "antes de codar, diga a técnica em até 5 linhas e espere meu OK". Testo devagar, rápido, F5 no meio e reduced-motion. A gsap-skills não está instalada: sigo sem ela. Commit "feat: animação de scroll" e `git tag passo-animacao` e `git push --follow-tags`: **[Turma]** recarrega o celular. Falhou em 5 min: `git stash push -u` e, se o tema for viagens, `npm run dev` em `C:\Users\rober\workshop-ia\ensaio-viagens\site` (a rota ensaiada; o endereço termina em `/andara-viagens/` e, com o dev do meu-site ainda aberto, sobe na porta 5174). **[Checagem]** Para que serve a versão reduced-motion? (Quem é sensível a movimento vê tudo, parado.)
 - **H+2:02 · slide 39 · Técnicas de animação: quando usar cada** · 2 min
   Linha por linha. No SONORA: F12 › Network › Img › Ctrl + Shift + R: os quadros q001.webp chegam todos na carga. "Guardem este número, uns 4,4 MB: às 2:27 ele cai." **[Checagem]** A rota se desenhando no mapa: qual técnica? (SVG com o traço animado pelo GSAP.)
-- **H+2:04 · slide 40 · Debugging: erro controlado** · 5 min · Opus 5.5 · high · Manual
-  Tudo commitado. Troco uma letra no import da animação em `src/main.js`; aparece a caixa vermelha do Vite; copio o erro do Console. Versão curta de `16-debugging.md` com o erro. Leio as hipóteses, escolho uma, aprovo a menor correção e o build. **[Checagem]** O que o erro já está dizendo? (Qual import não foi achado e onde.) Teto de 5 min: Esc e `git restore src/main.js`.
+- **H+2:04 · slide 40 · Quando der erro: causa antes da correção** · 5 min · Opus 5.5 · high · Manual
+  Não quebro nada de propósito. Se algum passo deu erro de verdade (caixa vermelha do Vite, tela branca, erro no Console), uso esse erro: copio do Console, versão curta de `16-debugging.md` com o erro, leio as hipóteses, escolho uma, aprovo a menor correção e o build. Se nada deu erro, mostro o slide e o prompt 16 aberto (1 min) e sigo. **[Checagem]** O que o erro já está dizendo? (O arquivo e a linha, ou o nome do que faltou.) Teto de 5 min: Esc e volto ao último commit (`git restore` ou `git stash`).
 
 ### Bloco 5 · Revisar, GitHub e Notion · H+2:09 a 2:44 · pasta do SONORA
 
