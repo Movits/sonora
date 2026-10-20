@@ -19,7 +19,7 @@
 | Deck em PDF e `.pptx` (reserva) | pasta WRW - Workshop do OneDrive (conferir na preparação), `deck\saida\`, notebook e pendrive |
 | `sonora-scroll.mp4` (rolagem do SONORA) | pasta `reservas` dentro da WRW - Workshop do OneDrive (conferir na preparação), copiada para o notebook e o pendrive |
 | `ciclo-da-pr.mp4` (PR #1, checks, aba Actions e site publicado; não mostra o Notion) | mesma pasta `reservas` (conferir na preparação), copiada para o notebook e o pendrive |
-| Branch da PR ao vivo (P10) | `fix/achados-review-landing` no GitHub: 3 commits, **sem PR aberta** (a PR nasce ao vivo e vai ser a #3, porque a #2 é a dos materiais do workshop; conferir com `gh pr list --state all`) |
+| Branch da PR ao vivo (P10) | `fix/achados-review-landing` no GitHub: 3 commits, **sem PR aberta** (a PR nasce ao vivo e vai ser a #4, porque a #2 e a #3 são as dos materiais do workshop; conferir com `gh pr list --state all`) |
 | PR de reserva, já mesclada | PR #1 (`feat/skill-review-landing`, a skill `/review-landing`), com CI verde: https://github.com/Movits/sonora/pull/1 |
 | Pasta base do Projeto B | `C:\Users\rober\workshop-ia\projeto-b-base`: Vite, GSAP e Playwright em `node_modules`, `vite.config.js` com base `/meu-site/`, git na `main` com 1 commit. Copiada inteira, só serve para Windows |
 | Zip da pasta base | `C:\Users\rober\workshop-ia\projeto-b-base.zip` (116,8 KB, gerado e testado em 19/10; com `.git`, sem `node_modules` nem `dist`), também na pasta WRW - Workshop do OneDrive (conferir na preparação) e no pendrive. Depois de extrair, precisa de `npm install` (internet) |

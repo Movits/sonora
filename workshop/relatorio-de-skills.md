@@ -57,7 +57,7 @@ entregou (com o motivo) · **Fora** = relevante, mas deixada de fora de propósi
 | --- | --- | --- | --- |
 | Workflow: materiais-base | OK | 9/9 agentes; 26 prompts + 8 documentos em `workshop/` | |
 | Workflow: ensaio de universalidade | OK | `workshop/relatorio-ensaio-universalidade.md`: 14/14 prompts funcionaram no tema "agência de viagens" | O prompt 03 (P2) não foi ensaiado; está marcado no guia do instrutor. |
-| Workflow: materiais-finais | OK | pasta base `projeto-b-base` (build e 2 testes passando, zip de 100,7 KB), guia do instrutor, passada de consistência | Os 3 agentes rodaram em paralelo e o guia não viu a pasta base pronta; a reconciliação seguinte corrigiu isso. |
+| Workflow: materiais-finais | OK | pasta base `projeto-b-base` (build e 2 testes passando; zip refeito depois, com 116,8 KB), guia do instrutor, passada de consistência | Os 3 agentes rodaram em paralelo e o guia não viu a pasta base pronta; a reconciliação seguinte corrigiu isso. |
 | Notion (conector) | OK | página privada "Workshop IA · SONORA (demo)" com o banco "Trabalho \| SONORA", views Quadro e Entregue, 6 cartões | O cartão da skill está em "Feito (a validar)" com a PR #1 como comprovação. |
 | GitHub (gh) | OK | repo público `Movits/sonora`, 6 tags, Pages no ar, PR #1 mesclada com CI verde | |
 | `skill-creator` | OK (por agente) | `.claude/skills/review-landing/` (SKILL.md, `scripts/checar.mjs`, README) | Rodou num agente separado (contexto próprio, como pede o catálogo para skills grandes). Seguiu o método (descrição com gatilhos, "porquê" de cada regra, script para o repetitivo); os evals e o benchmark foram pulados por tempo. A skill foi testada no SONORA e numa página com defeitos plantados. |

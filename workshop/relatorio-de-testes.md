@@ -12,10 +12,10 @@ com a evidência ao lado. Datas: 19/10/2026, máquina do Roberto (Windows 11, Ch
 | CI da PR #1 | job "Testes" no GitHub Actions | Verde; PR mesclada |
 | Publicação | GitHub Pages em https://movits.github.io/sonora/ | No ar (HTTP 200); deploy automático a cada merge na main |
 | Qualidade visual | inspector da taste-skill em 1440, 768 e 390 px | 0 FAIL, 2 WARN defendidos (exceções que a skill permite) |
-| Cena do scroll | gravação da rolagem no site publicado + folha de quadros conferida | Os quadros carregam quando a cena entra na tela; explosão e remontagem completas |
+| Cena do scroll | gravação da rolagem no site publicado + folha de quadros conferida | Os quadros carregam e a explosão e a remontagem aparecem completas (baixar os quadros só quando a cena entra na tela é a correção da PR ao vivo) |
 | Carga inicial | medição do `/review-landing` antes e depois da correção | 1ª carga de 4,4 MB para 437 KB (correção na branch da PR ao vivo) |
 | Skill `/review-landing` | rodada no SONORA; numa página com defeitos plantados; numa página-armadilha para falsos positivos; teste de fumaça `tests/checar.spec.js` no CI | Pegou todos os defeitos plantados; sem falso positivo de overflow e de SVG depois da correção; revisão incompleta sai com código 1 |
-| Biblioteca de prompts | ensaio num 2º tema (agência de viagens), seguindo os prompts ao pé da letra | 14/14 funcionaram (6 sem mudança, 8 com adaptação pequena); relatório em `relatorio-ensaio-universalidade.md` |
+| Biblioteca de prompts | ensaio num 2º tema (agência de viagens), seguindo a biblioteca etapa por etapa | 14/14 funcionaram (4 sem mudança, 10 com adaptação); relatório em `relatorio-ensaio-universalidade.md` |
 | Com e sem skill de design | o mesmo hero gerado com e sem a `frontend-design` no ensaio | Capturas `comparativo/sem-skill.png` e `com-skill.png` |
 | Pasta base do Projeto B | `npm run build`, `npm test` (2 testes), prova negativa (imagem que falta e div larga fazem os testes falharem), cópia com `Copy-Item` e extração do zip | Tudo passou; a base tem 1 commit e nada modificado; o zip tem 116,8 KB e precisa de `npm install` depois de extraído |
 | Sequência do P3 | os comandos do guia rodados ao pé da letra numa pasta temporária, pela cópia e pelo zip (com `docs\` de teste) | Commit e tag `passo-1` criados, sem `docs\docs`, `git status` limpo, build e 2 testes passando |
