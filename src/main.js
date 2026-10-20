@@ -1,4 +1,4 @@
-// PONTO DE ENTRADA (v0.2): todas as seções com aparência (CSS), ainda sem JavaScript.
+// PONTO DE ENTRADA (v0.3): design completo + configurador da reserva funcionando.
 import '@fontsource/unbounded/800.css'
 import '@fontsource/onest/400.css'
 import '@fontsource/onest/500.css'
@@ -13,3 +13,7 @@ import './styles/caixa.css'
 import './styles/numeros.css'
 import './styles/reserva.css'
 import './styles/rodape.css'
+
+import { iniciarReserva } from './sections/reserva.js'
+
+iniciarReserva()
