@@ -2,7 +2,7 @@
 
 > Registrar no quadro de trabalho o que aconteceu com a tarefa: link da PR na Comprovação, uma linha nova no topo da Próxima ação e o Status certo, usando o Claude pelo conector do Notion, sempre com a sua aprovação antes de gravar.
 >
-> Ao vivo no workshop: sim (slide P11). O Roberto atualiza o cartão do Projeto B no quadro **Trabalho | SONORA**, dentro da página privada **Workshop IA · SONORA**.
+> Ao vivo no workshop: sim (slide P11, cerca de 4 min). O Roberto atualiza o cartão **PR ao vivo na aula** com o link da PR do P10, no quadro **Trabalho | SONORA**, dentro da página privada **Workshop IA · SONORA (demo)**.
 
 ## Configuração recomendada
 
@@ -23,7 +23,7 @@ Por quê:
 
 | Variável | SONORA | Agência de viagens |
 |---|---|---|
-| [NOME_DA_MARCA] | SONORA (quadro **Trabalho \| SONORA**, página **Workshop IA · SONORA**) | ANDARA Viagens (quadro **Trabalho \| ANDARA Viagens**) |
+| [NOME_DA_MARCA] | SONORA (quadro **Trabalho \| SONORA**, página **Workshop IA · SONORA (demo)**) | ANDARA Viagens (quadro **Trabalho \| ANDARA Viagens**) |
 | [CRITÉRIOS_DE_ACEITAÇÃO] | exploded view acompanha o scroll nos dois sentidos; com reduced-motion aparece a composição estática | botão de orçamento abre o WhatsApp com mensagem pronta; sem rolagem horizontal em 390 px |
 
 Os campos entre `< >` (nome do cartão, link da PR, situação) são dados do momento.

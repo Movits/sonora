@@ -2,7 +2,7 @@
 
 > Planejar e gerar com IA as imagens do site (hero, detalhes, versão explodida) de forma que o produto pareça o mesmo em todas, na proporção certa e dentro de um orçamento de créditos.
 >
-> Ao vivo no workshop: sim (slide P4), só como demonstração. O Roberto mostra as imagens do SONORA já geradas e os prompts usados. Nada é gerado na aula: custa créditos e depende da fila do serviço.
+> Ao vivo no workshop: sim (slide P5, cerca de 4 min), só como demonstração. O Roberto mostra as imagens do SONORA já geradas, os prompts usados e o kit pronto do tema da turma (viagens, hamburgueria ou relógio). Nada é gerado na aula: custa créditos e depende da fila do serviço.
 
 ## Configuração recomendada
 
@@ -50,7 +50,7 @@ Preços mudam: confira na tela do Higgsfield antes de gerar. O tempo de espera d
 |---|---|---|
 | [NOME_DA_MARCA] | SONORA | ANDARA Viagens |
 | [SEGMENTO] | áudio premium | turismo de natureza |
-| [PRODUTO_OU_SERVIÇO] | headphone over-ear sem fio: arco de alumínio grafite, conchas ovais foscas, anel de cobre polido, almofadas de couro vegano | roteiros em grupos pequenos pela Patagônia e pela Chapada Diamantina |
+| [PRODUTO_OU_SERVIÇO] | headphone over-ear sem fio: arco de alumínio grafite, conchas ovais foscas, anel de cobre polido, almofadas de couro vegano | roteiros em grupos pequenos pela Patagônia, por Portugal e pelo Japão (os destinos do kit) |
 | [ESTILO_VISUAL] | estúdio escuro, cinematográfico, produto flutuando, muito espaço vazio | fotografia editorial de natureza, luz de fim de tarde, pessoas pequenas na paisagem, de costas |
 | [PALETA_DE_CORES] | grafite quase preto, cobre, cinza quente | areia, verde-musgo, azul-profundo, laranja de pôr do sol |
 | [REFERÊNCIAS] | fotos de lançamento de produto premium (fundo preto, luz de recorte) | revistas de viagem impressas |

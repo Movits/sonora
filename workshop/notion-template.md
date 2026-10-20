@@ -29,7 +29,7 @@ Sumário:
 ## 1. Onde criar
 
 - Crie uma **página privada nova**, separada de qualquer projeto real.
-  Exemplo da aula: página **Workshop IA · SONORA**.
+  Exemplo da aula: página **Workshop IA · SONORA (demo)**.
 - Dentro dela, crie um **banco de dados** (database) em tabela.
   Nome: **Trabalho | [PROJETO]**.
 - Use **um quadro só** para tudo: tarefas, requisitos, entregas e reuniões são cartões do

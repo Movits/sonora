@@ -2,7 +2,7 @@
 
 > Escolher as ferramentas do projeto (linguagem, bibliotecas, hospedagem) pelos requisitos e pelo seu nível, e registrar o porquê. Stack é o "kit de ferramentas" do site: escolher mal é como levar uma furadeira para pregar um quadro.
 >
-> Ao vivo no workshop: sim (slide P2, junto com a etapa 05). A stack do workshop já está decidida (tabela abaixo): o Roberto explica o porquê e roda os comandos de criação do Projeto B. Use o prompt completo nos seus próximos projetos.
+> Ao vivo no workshop: não como prática própria (material de apoio / para casa). A stack do workshop já está decidida (tabela abaixo) e entra pronta no plano do P2 e na pasta base do P3. Use o prompt completo nos seus próximos projetos.
 
 ## Configuração recomendada
 

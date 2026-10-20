@@ -2,7 +2,7 @@
 
 > Transformar o brief numa lista do que o site precisa fazer, com prioridade e com um jeito de testar cada item. É a "lista de compras" que impede o projeto de crescer sem controle.
 >
-> Ao vivo no workshop: sim (slide P1, junto com a etapa 01). No Projeto B, a lista sai rápida a partir do brief; no seu projeto, faça a versão completa em casa.
+> Ao vivo no workshop: material de apoio do P1. Se der tempo, a versão curta gera o `docs/requisitos.md` do Projeto B logo depois do brief; se atrasar, fica de fora. No seu projeto, faça a versão completa em casa.
 
 ## Configuração recomendada
 

@@ -2,7 +2,7 @@
 
 > Ligar o movimento da página ao scroll do visitante: a seção fica fixa enquanto algo acontece (pin) e a animação anda para a frente e para trás junto com a rolagem (scrub). Pense num controle de vídeo: o scroll vira a barra de tempo.
 >
-> Ao vivo no workshop: sim (slide P6, 10 min). O Roberto anima o Projeto B e mostra a exploded view do SONORA como referência.
+> Ao vivo no workshop: sim (slide P7, cerca de 10 min). O Roberto anima o Projeto B e mostra a exploded view do SONORA como referência.
 
 ## Configuração recomendada
 

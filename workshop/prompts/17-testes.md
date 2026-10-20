@@ -70,6 +70,10 @@ REQUISITOS TÉCNICOS
   2. Console limpo: nenhum console.error e nenhum pageerror durante o carregamento
      e uma rolagem até o fim da página.
   3. Arquivos: nenhuma resposta com status 400 ou maior (imagens, quadros, fontes).
+     Antes, confira o appType do vite.config.js. No padrão ("spa"), o Vite devolve
+     o index.html com status 200 para arquivo que não existe, e este teste passa
+     com a imagem quebrada. Proponha appType: "mpa" (me peça antes) e, nas
+     imagens, confira também que o content-type começa com image/.
   4. Responsivo: document.documentElement.scrollWidth não passa da largura da janela.
   5. Menos movimento: com page.emulateMedia({ reducedMotion: 'reduce' }), o conteúdo
      principal e a composição estática ficam visíveis.
@@ -135,7 +139,7 @@ npx playwright test --project=celular # roda só o projeto "celular"
 npx playwright show-report            # abre o relatório da última execução
 ```
 
-Prova de que o teste funciona: troque o nome de um arquivo de imagem no código, rode `npm test` e veja o teste de arquivos falhar. Depois desfaça com `git restore <arquivo>`.
+Prova de que o teste funciona: troque o nome de um arquivo de imagem no código, rode `npm test` e veja o teste de arquivos falhar. Depois desfaça com `git restore <arquivo>`. Se nada falhar, o Vite provavelmente está no modo padrão e respondeu 200 com o `index.html`: veja o `appType` no `vite.config.js`.
 
 No CI, os mesmos testes rodam a cada PR. Na página da PR, a seção de checks mostra verde ou vermelho; pelo terminal, `gh pr checks`.
 
@@ -150,7 +154,14 @@ No CI, os mesmos testes rodam a cada PR. Na página da PR, a seção de checks m
 
 ## Problemas comuns
 
-- **"Executable doesn't exist" ou navegador não encontrado** → confira se o Google Chrome está instalado e se o config usa `channel: 'chrome'`. Outra saída é `npx playwright install chromium`, que baixa o navegador do Playwright (um download: confirme antes).
+- **"Executable doesn't exist" ou navegador não encontrado** → confira se o Google Chrome está instalado e se o config usa `channel: 'chrome'`. Cada versão do Playwright procura o próprio Chromium (ex.: `chromium-1248`), e trocar de versão sem baixar o navegador dá este erro. Outra saída é `npx playwright install chromium`, que baixa o navegador do Playwright (um download: confirme antes).
+- **O teste de 404 passa mesmo com a imagem quebrada** → no modo padrão (`appType: 'spa'`), o Vite responde 200 com o `index.html` para arquivo que não existe, no dev e no preview. Ponha `appType: 'mpa'` no `vite.config.js` ou faça o teste conferir o `content-type` das imagens.
 - **Timeout esperando o webServer** → a URL do config não bate com a do `npm run preview` (porta ou `base`). Rode o preview à mão e copie o endereço exato.
 - **Teste que passa às vezes e falha às vezes** → em geral é espera fixa ou animação no meio. Troque `waitForTimeout` por `expect(...).toBeVisible()` e, se precisar, teste com reduced-motion.
 - **Passa no seu computador e falha no CI** → abra o log do CI (Details na PR). Diferença comum: fonte, tamanho de tela ou um arquivo com letra maiúscula no nome.
+
+## Notas do ensaio (19/10/2026)
+
+- Tema agência de viagens: 4,1 min, a etapa mais longa. Saíram 6 arquivos em `tests/`, sem `waitForTimeout`. O `npm test` passou 23 testes e pulou 1 de propósito (o pin só existe no notebook), em 13,5 s, duas vezes seguidas.
+- Achado principal: com o `appType` padrão do Vite, a imagem com nome errado voltava 200 (text/html) e o teste "nenhum 404" passava. Com `appType: 'mpa'`, os dois testes de arquivos falharam e mostraram o 404, como deveriam.
+- Não coberto: Safari e Firefox, celular de verdade, leitor de tela e desempenho.

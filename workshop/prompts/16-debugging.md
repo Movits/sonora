@@ -2,7 +2,7 @@
 
 > Encontrar a causa de um erro antes de corrigir, seguindo um caminho fixo: Problema → Investigação → Hipótese → Correção → Teste → Validação. Sem "chute" e sem remendo que só esconde o sintoma.
 >
-> Ao vivo no workshop: não (aparece só se algo quebrar durante a demo, o que também ensina). Material para usar no seu projeto.
+> Ao vivo no workshop: sim (slide 38, cerca de 5 min). Com tudo commitado, o Roberto troca uma letra num import do `src/main.js` do Projeto B e usa a versão curta com Opus 5.5, high, Manual.
 
 ## Configuração recomendada
 
@@ -55,21 +55,25 @@ RESTRIÇÕES
 - Nada de git reset, git push, git commit ou instalação de pacotes.
 
 FERRAMENTAS PERMITIDAS
-- Ler arquivos, buscar no código, ver git log e git diff.
-- Rodar npm run dev, npm run build, npm run preview e npm test (me peça antes).
+- Ler arquivos, buscar no código e, se o projeto já tiver git, ver git log e git diff.
+- Rodar npm run dev, npm run build, npm run preview e, se existir no package.json,
+  npm test (me peça antes).
 - Colocar console.log temporários (ou markers: true no ScrollTrigger, se o projeto usar GSAP)
   só para investigar, e remover tudo antes de terminar.
 
 REQUISITOS TÉCNICOS (siga este método, nesta ordem)
 1. Problema: reescreva o sintoma em uma frase e diga como reproduzir, passo a passo.
 2. Investigação: leia os arquivos envolvidos e o que mudou recentemente
-   (git log --oneline -5 e git diff). Liste as evidências que encontrou.
+   (git log --oneline -5 e git diff; sem git, me pergunte o que foi feito por
+   último e procure no código o nome citado no erro). Liste as evidências.
+   Lembre que um erro no main.js pode parar tudo o que vem depois dele.
 3. Hipótese: até 3, da mais provável para a menos provável. Para cada uma: a evidência
    a favor, a evidência contra e o teste mais barato para confirmar ou descartar.
    PARE aqui e espere eu escolher.
 4. Correção: só depois do meu OK, faça a menor mudança que ataca a causa.
-5. Teste: rode npm run build e npm test. Se fizer sentido, crie um teste que falharia
-   antes da correção e passa depois.
+5. Teste: rode npm run build e, se existir, npm test. Build verde não prova a
+   correção (o build não acusa nome de função errado): confira também o console.
+   Se o projeto tiver testes, crie um que falharia antes da correção e passa depois.
 6. Validação: diga o que eu confiro no navegador (Console, Network, a seção afetada
    em 390 e 1440 px, e com reduced-motion).
 
@@ -82,7 +86,7 @@ CRITÉRIOS DE ACEITAÇÃO
 - [CRITÉRIOS_DE_ACEITAÇÃO]
 - O sintoma não aparece mais seguindo os passos de reprodução.
 - Console sem erros e Network sem 404.
-- npm run build e npm test passam.
+- npm run build passa (e npm test, se o projeto tiver testes).
 - Nenhum console.log de investigação ficou no código.
 
 COMO VALIDAR
@@ -94,7 +98,7 @@ Sugira a mensagem do commit (tipo fix:) com o "por quê" no corpo.
 
 ```text
 Bug: <o que vejo> | Esperado: <o que deveria> | Console: <erro>.
-Não edite ainda. 1) Reproduza. 2) Investigue (código e git diff).
+Não edite ainda. 1) Reproduza. 2) Investigue (código e, se houver, git diff).
 3) Até 3 hipóteses com evidência e teste barato. Pare.
 Depois do meu OK: menor correção, build e testes,
 e me diga como validar no navegador.
@@ -118,7 +122,7 @@ O DevTools é o "raio X" do site (F12 no Chrome):
 | Painel | Para quê | O que procurar |
 |---|---|---|
 | Console | Erros de JavaScript | Linhas vermelhas. Clique no `arquivo:linha` à direita para ir ao código. |
-| Network | Arquivos que a página baixou | Status `404` (arquivo não encontrado). Filtre por **Img** para ver os quadros. Marque **Disable cache**. |
+| Network | Arquivos que a página baixou | Status `404` (arquivo não encontrado). Filtre por **Img** para ver os quadros. Marque **Disable cache**. Num projeto Vite sem `appType: "mpa"`, o arquivo que falta volta com `200` e `content-type: text/html` (clique na linha › Headers). |
 | Elements | HTML e CSS de cada parte | Elemento existe? Está com `display: none`, `opacity: 0` ou fora da tela? |
 | Performance | Travadas na rolagem | Grave alguns segundos rolando a página e procure blocos longos em vermelho. |
 | Modo responsivo (Ctrl+Shift+M) | Tamanhos de tela | O bug só aparece no celular? |
@@ -146,6 +150,9 @@ Abra o endereço que o `preview` mostrar e repita os passos. Para desfazer uma t
 - **O Claude "corrige" sem achar a causa e cria outro bug** → exija o diagnóstico antes (fase 1 só leitura) e use o modo Manual.
 - **Várias tentativas em círculo** → pare. Peça um resumo do que já foi descartado, rode `/clear` e comece uma conversa nova com esse resumo no PROBLEMA.
 - **"Na minha máquina funciona"** → recarregue com Ctrl+Shift+R, marque Disable cache e teste com `npm run build` e `npm run preview`.
+- **O build passou, mas a página está quebrada** → o `npm run build` só junta os arquivos: nome de função errado só aparece no Console (`ReferenceError`), quando a página roda. Sempre abra o Console depois do build.
+- **Um erro desligou uma parte que não tem nada a ver** → o `main.js` parou na linha do erro e não chegou a iniciar as seções seguintes. Corrija o primeiro erro do Console antes de investigar o resto.
+- **O projeto ainda não tem git nem testes** → a investigação vale do mesmo jeito: diga ao Claude o que você mudou por último e peça para ele procurar no código o nome que aparece no erro.
 - **O erro some quando abro o DevTools** → abrir o DevTools muda o tamanho da janela, e a animação recalcula. Isso é uma pista: o bug depende do tamanho da tela ou do momento em que a página mediu o layout.
 
 ## Exemplo ruim × bom
@@ -175,3 +182,9 @@ Por que o bom funciona melhor:
 - **Proíbe editar antes de entender:** evita a troca de um bug por outro.
 - **Pede hipóteses com teste:** você aprende o raciocínio e escolhe o que testar.
 - **O ruim** obriga o modelo a chutar. Ele pode reescrever a animação inteira e o problema (um caminho de arquivo) continuar lá.
+
+## Notas do ensaio (19/10/2026)
+
+- Tema agência de viagens, com um erro plantado (`fracaoDasParadas` no lugar de `fracaoDaParada`, em `mapa.js:32`): 1,2 min do diagnóstico com 3 hipóteses até a correção de uma palavra, com console limpo em 1440 e 390 px.
+- O `npm run build` passou com o erro. O console mostrou o `ReferenceError`, e em cascata o botão final parou de citar o destino, porque o `main.js` parou antes de `initOrcamento`. É um bom exemplo para a aula.
+- Na ordem do workshop ainda não há git (etapa 19) nem `npm test` (etapa 17). A investigação foi feita por leitura e busca, por isso o prompt agora trata os dois como "se existir".
