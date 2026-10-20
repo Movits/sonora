@@ -2,7 +2,7 @@
 
 > Publicar o site na internet de graça, com endereço público, e fazer cada merge na `main` atualizar o site sozinho (GitHub Pages via GitHub Actions). Para quem não usa Git, há a alternativa de arrastar a pasta para o Netlify Drop.
 >
-> Ao vivo no workshop: sim (slide P12, cerca de 8 min). O Roberto mostra o deploy do SONORA em https://movits.github.io/sonora/ e o do Projeto B saindo depois do merge.
+> Ao vivo no workshop: sim, em duas partes. No P3b (slide 32, cerca de 6 min, logo depois do P3), o Roberto publica o Projeto B ainda vazio e a turma abre no celular; a cada passo seguinte, o push atualiza o site. No P12 (slide 51, cerca de 3 min), o último push e a versão final no celular.
 
 ## Configuração recomendada
 
@@ -97,6 +97,23 @@ import.meta.env.BASE_URL. Workflow: push na main → npm ci,
 npm run build, upload de dist, deploy-pages.
 Teste com npm run preview. Entregue por PR.
 ```
+
+## Versão curta · primeiro deploy (P3b, logo depois do P3)
+
+Na aula, o site vai para o ar **antes** de ganhar conteúdo, com as seções vazias. Assim a turma abre o endereço no celular e vê cada passo seguinte aparecer. Este primeiro deploy vai direto na `main`, porque a PR só é ensinada no P10. Daí em diante, cada commit com push na `main` publica de novo.
+
+```text
+Publique [NOME_DA_MARCA] no GitHub Pages pelo Actions já,
+para a turma acompanhar no celular. Repositório
+público [REPO]: crie sem push e me espere ligar o Pages.
+vite.config.js: base '/[REPO]/'. Workflow: push na main →
+npm ci, npm run build, upload de dist, deploy-pages.
+Teste com npm run preview. Este primeiro deploy vai
+direto na main (a PR vem no P10).
+```
+
+- **Ordem:** criar o repositório sem push → **Settings › Pages › Source: GitHub Actions** → push. Se o push vier antes, o primeiro run falha com "Get Pages site failed": ligue o Pages e use **Re-run jobs**.
+- **Ensaio de 20/10/2026** (site de relógio, Claude Code 2.1.304, Sonnet 5.5 · medium): o site ficou no ar uns 4 min depois do prompt, e o run de deploy levou 28 s.
 
 ## Resultado esperado e validação
 

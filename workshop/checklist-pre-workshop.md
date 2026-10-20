@@ -187,7 +187,7 @@ A configuração pessoal (`~/.claude/settings.json`) tem coisas que aparecem na 
 
 - [ ] **Principal:** a apresentação HTML em `C:\Users\rober\workshop-ia\aula` (instruções no `LEIA-ME.md` dela e no `LEIA-ME-apresentacao.md` do OneDrive).
 - [ ] PDF da apresentação (`Workshop-IA-WRW-apresentacao.pdf`) e `aula-dist.zip` (a apresentação pronta: extrair numa pasta e rodar `python -m http.server 8000` dentro dela) na pasta WRW - Workshop do OneDrive, no notebook e no pendrive.
-- [ ] Reservas: o Google Slides (online, na pasta do Drive "Workshop IA WRW · 20-10-2026"), o `.pptx` e o PDF do deck antigo. Os gerados ficam também em `C:\Users\rober\workshop-ia\deck\saida\`.
+- [ ] Reservas: o Google Slides (online, na pasta do Drive "Workshop IA WRW · 20-10-2026"), o `.pptx` e o PDF do deck antigo (versão anterior, com 51 slides). Os gerados ficam também em `C:\Users\rober\workshop-ia\deck\saida\`.
 - [ ] Os PDFs abrem sem internet.
 
 **Vídeos de reserva (MP4)**
@@ -201,6 +201,7 @@ Ficam na pasta `reservas` dentro da pasta WRW - Workshop do OneDrive (conferir n
 **Projeto B**
 
 - [ ] Kits de imagens prontos (6 WebP cada) em `C:\Users\rober\workshop-ia\_geracoes\kits\`: `viagens`, `hamburgueria` e `relogio`. Cópia no pendrive. Tema sem kit: blocos reservados no lugar das fotos.
+- [ ] O nome `meu-site` está livre no GitHub: `gh repo view Movits/meu-site` tem de responder que não encontrou. Ele é criado ao vivo no P3b.
 - [ ] Pasta da aula `C:\Users\rober\projetos\projeto-b` existe e está **vazia** (criada na preparação). Se não existir: `New-Item -ItemType Directory -Force C:\Users\rober\projetos\projeto-b`. O P1 e o P2 gravam ali `docs\`; a cópia da base para `projeto-b\meu-site` só acontece ao vivo, no P3.
 - [ ] **Pasta base** do Projeto B, `C:\Users\rober\workshop-ia\projeto-b-base`: Vite 8.3.4 (vanilla, sem exemplos), gsap 3.15.0 e `@playwright/test` 1.64.1 em `node_modules`; `index.html` pt-BR com `<main>` vazio; `src/main.js`, `tokens.css` e `base.css`; `src/sections`, `src/lib`, `public/img`, `public/frames`, `public/fonts` e `docs` vazias (com `.gitkeep`); `vite.config.js` com base `/meu-site/` e appType `mpa`; `npm test` com 2 testes; `.gitignore`, `.gitattributes`, `.env.example`, a skill `/review-landing` e `.claude/settings.json` (Sonnet, medium, Accept edits). Git na `main` com 1 commit, sem remoto. Sem `CLAUDE.md`: ele nasce com `/init` no P3.
   - `git -C C:\Users\rober\workshop-ia\projeto-b-base status` limpo. Se houver algo modificado, o commit do P3 leva junto.
