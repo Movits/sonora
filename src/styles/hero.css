@@ -128,7 +128,8 @@
   font-weight: 500;
 }
 
-@media (max-width: 760px) {
+/* até 960 px (celular e tablet em pé) o hero empilha: texto em cima, fone embaixo */
+@media (max-width: 960px) {
   .nav {
     grid-template-columns: auto 1fr auto;
     gap: 1rem;
@@ -145,7 +146,7 @@
     transform: translateX(-50%) rotate(-8deg);
   }
   .hero__titulo {
-    font-size: 11vw;
+    font-size: min(11vw, 4.5rem);
     top: 44svh;
     height: calc(36svh + 1em);
   }
