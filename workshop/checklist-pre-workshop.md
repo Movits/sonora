@@ -179,7 +179,7 @@ A configuração pessoal (`~/.claude/settings.json`) tem coisas que aparecem na 
 **Fluxo de trabalho (PR ao vivo, P10)**
 
 - [ ] No GitHub, a branch `fix/achados-review-landing` existe com os 3 commits (hero empilhado no tablet; quadros da cena só baixam quando ela entra na tela, 1ª carga de 4,4 MB para 437 KB; miniaturas com lazy e `og:image` completo) e **sem PR aberta**: a PR nasce ao vivo no P10. Conferir em Branches e em Pull requests.
-- [ ] Número da PR ao vivo: `gh pr list --state all` mostra a #1 (skill), a #2 (materiais do workshop) e a #3 (ajustes da verificação final), todas mescladas. A ao vivo vai ser a **#4**. Anotar na cola o número que vier depois do último.
+- [ ] Número da PR ao vivo: `gh pr list --state all` mostra da #1 à #4 (a skill, os materiais e dois ajustes de documentação), todas mescladas. A ao vivo vai ser a **#5**. Anotar na cola o número que vier depois do último.
 - [ ] **PR de reserva:** a PR #1 (skill `/review-landing`), já mesclada com CI verde, para mostrar com o histórico se a ao vivo falhar.
 - [ ] Cartão **"PR ao vivo na aula"** no quadro demo, pronto para receber o link da PR.
 
