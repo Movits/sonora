@@ -45,7 +45,7 @@ Os planos B e C de cada problema estão em [plano-de-contingencia.md](plano-de-c
 - [ ] `gh auth status` mostra a conta Movits logada, com os escopos `repo` e `workflow`.
 - [ ] https://github.com/Movits/sonora abre e está público.
 - [ ] Settings → Pages com a origem "GitHub Actions".
-- [ ] Em Actions › Testes › Run workflow, rodar na `main` e conferir que fica verde (prova que o CI funciona). Para a branch da PR ao vivo, rodar `npm test` local depois de `git switch fix/achados-review-landing` e voltar para a main. Um run manual nessa branch também serve, mas pode aparecer como um segundo check 'Testes' na PR #3. Não abrir PR de teste: ela tomaria o número #3, o da PR ao vivo.
+- [ ] Em Actions › Testes › Run workflow, rodar na `main` e conferir que fica verde (prova que o CI funciona). Para a branch da PR ao vivo, rodar `npm test` local depois de `git switch fix/achados-review-landing` e voltar para a main. Um run manual nessa branch também serve, mas pode aparecer como um segundo check 'Testes' na PR ao vivo. Não abrir PR de teste: ela tomaria o número da PR ao vivo (o maior número de `gh pr list --state all` mais 1).
 
 **Notion**
 
@@ -178,8 +178,8 @@ A configuração pessoal (`~/.claude/settings.json`) tem coisas que aparecem na 
 
 **Fluxo de trabalho (PR ao vivo, P10)**
 
-- [ ] No GitHub, a branch `fix/achados-review-landing` existe com os 3 commits (hero empilhado no tablet; quadros da cena só baixam quando ela entra na tela, 1ª carga de 4,4 MB para 437 KB; miniaturas com lazy e `og:image` completo) e **sem PR aberta**: a PR nasce ao vivo no P10. Conferir em Branches e em Pull requests.
-- [ ] Número da PR ao vivo: `gh pr list --state all` mostra da #1 à #4 (a skill, os materiais e dois ajustes de documentação), todas mescladas. A ao vivo vai ser a **#5**. Anotar na cola o número que vier depois do último.
+- [ ] No GitHub, a branch `fix/achados-review-landing` existe com os 3 commits (hero empilhado no tablet; quadros da cena só baixam quando ela entra na tela, 1ª carga de 4,4 MB para 437 KB; miniaturas com lazy e `og:image` completo) e **sem PR aberta**: a PR nasce ao vivo no P10. Conferir em Branches e em Pull requests. A branch tem tudo da `main`: `git log --oneline origin/fix/achados-review-landing..origin/main` sai vazio (se não sair, merge da `main` na branch, sem rebase).
+- [ ] Número da PR ao vivo: `gh pr list --state all` mostra só PRs mescladas (a skill, os materiais e os ajustes de documentação) e nenhuma aberta. A ao vivo vai ser o maior número de `gh pr list --state all` mais 1: anotar esse número na cola.
 - [ ] **PR de reserva:** a PR #1 (skill `/review-landing`), já mesclada com CI verde, para mostrar com o histórico se a ao vivo falhar.
 - [ ] Cartão **"PR ao vivo na aula"** no quadro demo, pronto para receber o link da PR.
 

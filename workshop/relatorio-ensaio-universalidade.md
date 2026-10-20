@@ -5,7 +5,7 @@
 > | Ensaio | Prompts | Deck |
 > |---|---|---|
 > | P1 | 01 + 02 | P1 (brief e requisitos) |
-> | P2 | 04 + 05 | P3 (projeto e CLAUDE.md). A stack (04) já vem fixa; o P2 do deck é o plano, com o 03, que não foi ensaiado |
+> | P2 | 04 + 05 | P3 (projeto e CLAUDE.md). A stack (04) já vem fixa; o P2 do deck é o plano, com o 03, que ficou fora deste ensaio (ensaiado à parte em 20/10; ver `relatorio-de-testes.md`) |
 > | P3 | 06 | P4 (identidade visual) |
 > | P4 | imagens no Higgsfield (não ensaiado) | P5 (imagens, só demonstração) |
 > | P5 | 10 | P6 (landing page) |
@@ -28,7 +28,7 @@ Provar que a biblioteca de `workshop/prompts` funciona fora do contexto do SONOR
 
 > O resumo do ensaio diz "3 sem mudança e 11 com adaptação", mas a lista das etapas tem 4 e 10. Este relatório usa a lista.
 
-Não foram ensaiadas neste tema: 03, 07, 08, 09, 11, 18 e 21 a 26. Isso inclui os blocos ao vivo P10 a P12 (PR, revisão, merge, Notion e deploy), porque o ensaio não tinha remoto e não podia fazer push. Os kits de hamburgueria e de relógio também não foram testados.
+Não foram ensaiadas neste tema: 03 (ensaiado à parte em 20/10, com os docs deste tema; ver `relatorio-de-testes.md`), 07, 08, 09, 11, 18 e 21 a 26. Isso inclui os blocos ao vivo P10 a P12 (PR, revisão, merge, Notion e deploy), porque o ensaio não tinha remoto e não podia fazer push. Os kits de hamburgueria e de relógio também não foram testados.
 
 ## Resultado por prompt
 
@@ -89,7 +89,7 @@ Os tempos por bloco que estão nos slides e no README são apertados. O P1 tem 5
 | **Seguro ao vivo** | 02, 06, 10, 12, 14, 19, 20 | Funcionaram e são curtos (de 0,5 a 3,2 min de agente). Na 14, faça uma interação só. A 12 rodou bem sem a gsap-skills. A 19 e a 20 ficam limpas se o git tiver nascido na 05. |
 | **Ao vivo, só com preparo antes** | 01, 04, 05, 13, 15 | 01: tema e kit combinados antes, e as perguntas respondidas pela turma. 04 e 05: dependem de rede, do "Ok to proceed?" e do `/init`; melhor partir da pasta pronta e mostrar a estrutura. 13: o recorte 4:5 pede olho em cada foto; leve 2 ou 3 já recortadas. 15: o Playwright e a skill precisam estar instalados. |
 | **Para casa** | 16, 17 | A 17 é a etapa mais longa (4,1 min) e o achado do `appType` pede explicação. A 16 é ótima para a aula ("build verde não prova nada") e leva só 1,2 min com o erro plantado: use como bônus se sobrar tempo. |
-| **Não ensaiados neste tema** | 03, 07, 08, 09, 11, 18, 21 a 26 | Não há evidência deste ensaio. Os blocos P10 a P12 dependem do SONORA, que já está no ar, e da PR de reserva. |
+| **Não ensaiados neste tema** | 03 (ensaiado à parte em 20/10; ver `relatorio-de-testes.md`), 07, 08, 09, 11, 18, 21 a 26 | Não há evidência deste ensaio. Os blocos P10 a P12 dependem do SONORA, que já está no ar, e da PR de reserva. |
 
 **Antes da aula**, em ordem:
 
