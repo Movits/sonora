@@ -113,7 +113,7 @@ direto na main (a PR vem no P10).
 ```
 
 - **Ordem:** criar o repositório sem push → **Settings › Pages › Source: GitHub Actions** → push. Se o push vier antes, o primeiro run falha com "Get Pages site failed": ligue o Pages e use **Re-run jobs**.
-- **Ensaio de 20/10/2026** (site de relógio, Claude Code 2.1.304, Sonnet 5.5 · medium): o site ficou no ar uns 4 min depois do prompt, e o run de deploy levou 28 s.
+- **Ensaio de 20/10/2026** (site de relógio, Claude Code 2.1.304, Sonnet 5.5 · medium): o site respondeu 3 min depois do prompt e 47 s depois do push; o run de deploy levou 28 s.
 
 ## Resultado esperado e validação
 
