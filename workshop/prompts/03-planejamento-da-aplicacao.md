@@ -2,7 +2,7 @@
 
 > Pedir ao Claude um plano completo antes de qualquer linha de código, revisar e só então aprovar. No modo Plan ele lê, pensa e propõe, mas não edita nada até você dizer "pode fazer".
 >
-> Ao vivo no workshop: sim (slide P2, cerca de 4 min). O Roberto planeja o Projeto B no modo Plan, com Opus 5.5 e effort high, e só salva o `docs/plano.md` depois de aprovar. Para os alunos é opcional: rodar a versão curta sobre o próprio brief e só ler o plano; aprovar fica para casa.
+> Ao vivo no workshop: sim (slide P2, cerca de 4 min). O Roberto planeja o Projeto B no modo Plan, com Opus 5.5 e effort high, e só salva o `docs/plano.md` depois de aprovar. Para os alunos é opcional: rodar a versão curta sobre o próprio brief e só ler o plano; aprovar fica para casa. Ensaiado em 20/10 (modo Plan, Opus 5.5 high): com a versão curta abaixo e o acréscimo do guia do instrutor (MVP em 4 passos e a pasta base pronta), o plano apareceu em 52 a 115 s, com 499 a 636 palavras, e só o `docs/plano.md` foi salvo. A versão completa não foi ensaiada.
 
 ## Configuração recomendada
 
@@ -41,7 +41,7 @@ Como entrar no modo Plan:
 ```text
 CONTEXTO
 Projeto: site de [NOME_DA_MARCA]. Objetivo: [OBJETIVO_DO_SITE].
-Leia docs/brief.md e docs/requisitos.md, se existirem, e a estrutura atual da pasta.
+Leia só esta pasta: docs/brief.md e docs/requisitos.md, se existirem, e a estrutura atual.
 Funcionalidades: [FUNCIONALIDADES].
 Animação principal: [ANIMAÇÃO_DESEJADA].
 Stack obrigatória: [STACK].
@@ -97,7 +97,7 @@ COMO VALIDAR
 ## Versão curta (para o slide)
 
 ```text
-(Modo Plan) Leia o projeto e docs/brief.md. Planeje o site de [NOME_DA_MARCA] com [STACK]: seções, árvore de arquivos, estratégia de [ANIMAÇÃO_DESEJADA] com versão reduced-motion, lista de ativos, passos de 10-20 min com "como testar", riscos. Sem bibliotecas extras, sem CDN. Não edite nada antes da minha aprovação.
+(Modo Plan) Leia só esta pasta, começando por docs/brief.md. Planeje o site de [NOME_DA_MARCA] com [STACK]: seções, árvore de arquivos, estratégia de [ANIMAÇÃO_DESEJADA] com versão reduced-motion, lista de ativos, até 6 passos de 10-20 min com "como testar", riscos. Plano com até 500 palavras. Sem bibliotecas extras, sem CDN. Não edite nada antes da minha aprovação. Depois da aprovação, salve só docs/plano.md e pare.
 ```
 
 ## Resultado esperado e validação
@@ -106,13 +106,13 @@ O que deve aparecer:
 
 1. Talvez algumas perguntas. Responda.
 2. Um plano com as 7 partes e a tabela "critério → passo".
-3. Um pedido de aprovação. No Desktop e na CLI, aprovar o plano troca para o modo que você escolher. Para construir, escolha **Accept edits**.
+3. Um pedido de aprovação. No Desktop e na CLI, aprovar o plano troca para o modo que você escolher. Para só salvar o plano (como no workshop), aprove em **Manual** e libere apenas a gravação de `docs/plano.md`. O **Accept edits** fica para a construção (etapa 05 em diante).
 
 Antes de aprovar, confira:
 
 - [ ] Cada funcionalidade tem um passo.
 - [ ] Cada passo tem "como testar".
-- [ ] Não apareceu biblioteca nova (procure por "npm install" no plano).
+- [ ] Não apareceu biblioteca nova: procure no plano por "npm i", "npm install" e por pacote fora de [STACK] e do `package.json`.
 - [ ] Existe versão para prefers-reduced-motion.
 - [ ] O passo 1 é pequeno: algo visível em menos de 20 minutos.
 - [ ] O primeiro passo depois da aprovação é salvar `docs/plano.md`. Assim o plano sobrevive a um `/clear` ou a uma nova sessão.
@@ -125,12 +125,14 @@ Se algo estiver errado, **não aprove**: responda com a correção ("troque o pa
 - **Restaurante:** o plano precisa dizer de onde vem o cardápio (arquivo de dados fácil de editar) e como o mapa entra. Um link para o app de mapas é mais leve e mais privado que um mapa embutido.
 - **Projeto que já existe:** comece pedindo um mapa do que já está lá ("leia e descreva a arquitetura") e só depois o plano da mudança. Nunca planeje em cima de suposição sobre código que o Claude não leu.
 - **Animação pesada (vídeo, centenas de imagens, 3D):** peça um passo 0 de "prova de conceito": a técnica funcionando sozinha, numa página de teste, antes de entrar no site.
-- **Pouco tempo (como no workshop):** peça "MVP em 4 passos" e mande o resto para "fora desta versão".
+- **Pouco tempo (como no workshop):** peça "MVP em 4 passos, plano com até 500 palavras" e mande o resto para "fora desta versão". No ensaio, a versão curta (que já pede até 500 palavras) junto com o acréscimo do guia (MVP em 4 passos e a pasta base pronta) levou o plano de cerca de 2.000 para 500 a 640 palavras, e de 2 a 3 min para 1 a 2 min. Só com a versão curta, sem o acréscimo, levou cerca de 2 min e meio (518 palavras).
 
 ## Problemas comuns
 
 - **O Claude começa a editar arquivos** → você não está no modo Plan. Confira o seletor de modo (Desktop) ou o indicador na CLI e use `/rewind` (ou `Esc Esc`) para desfazer, se precisar. Conferir na sua versão se os checkpoints aparecem no Desktop.
-- **Plano gigante, com 20 passos** → "Corte para no máximo 6 passos. O resto vai para 'fora desta versão'."
+- **O Claude vasculha pastas fora do projeto** (um documento cita um caminho e ele roda `find` no seu perfil inteiro) → a versão curta já começa com "Leia só esta pasta", e no ensaio isso bastou. Se mesmo assim acontecer: Esc, negue o comando e tire do documento o caminho citado (troque por algo como "fotos entregues pelo instrutor").
+- **Ele fica contando palavras e reescrevendo o plano** (por causa do "até 500 palavras") → troque por "plano curto, para ler em 3 minutos". No ensaio do acréscimo ao vivo, isso evitou a contagem e deu planos de 850 a 930 palavras.
+- **Plano gigante, com 20 passos** → "Corte para no máximo 4 passos. O resto vai para 'fora desta versão'."
 - **O plano traz biblioteca que você não pediu** → "Use só [STACK]. Se acha que precisa de X, explique o problema que X resolve e qual seria a alternativa sem X."
 - **O plano se perdeu depois de `/clear` ou de uma sessão nova** → por isso ele vai para `docs/plano.md`. Comece a sessão nova com "leia docs/plano.md e continue do passo N".
 
@@ -145,7 +147,7 @@ Planeja meu site de viagens e já faz tudo.
 **Bom:**
 
 ```text
-(Modo Plan) Leia o projeto e docs/brief.md. Planeje o site da ANDARA Viagens com Vite + JavaScript puro + GSAP pelo npm: seções, árvore de arquivos, estratégia da linha da rota que se desenha no mapa com versão reduced-motion, lista de ativos, passos de 10-20 min com "como testar", riscos. Sem bibliotecas extras, sem CDN. Não edite nada antes da minha aprovação.
+(Modo Plan) Leia só esta pasta, começando por docs/brief.md. Planeje o site da ANDARA Viagens com Vite + JavaScript puro + GSAP pelo npm: seções, árvore de arquivos, estratégia da linha da rota que se desenha no mapa com versão reduced-motion, lista de ativos, até 6 passos de 10-20 min com "como testar", riscos. Plano com até 500 palavras. Sem bibliotecas extras, sem CDN. Não edite nada antes da minha aprovação. Depois da aprovação, salve só docs/plano.md e pare.
 ```
 
 Por que o bom funciona melhor:
