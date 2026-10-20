@@ -13,7 +13,7 @@
 // Precisa do @playwright/test instalado NO PROJETO e do Google Chrome no computador.
 
 import { createRequire } from 'node:module'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 
 const URL_ALVO = process.argv[2] || 'http://localhost:4173/'
@@ -21,7 +21,7 @@ const PASTA = resolve(process.cwd(), 'review-landing')
 const TELAS = [
   { nome: 'desktop', width: 1440, height: 900 },
   { nome: 'tablet', width: 768, height: 1024 },
-  { nome: 'celular', width: 390, height: 844, hasTouch: true },
+  { nome: 'celular', width: 390, height: 844, hasTouch: true, isMobile: true, deviceScaleFactor: 3 },
 ]
 const CAPTURAS_POR_TELA = 6 // do topo até o fim da página
 const avisos = [] // problemas do próprio script (não do site); aparecem no fim do resumo
@@ -57,6 +57,11 @@ async function conferirSite(url) {
     endereco = new URL(url)
   } catch (erro) {
     console.error(`"${url}" não parece uma URL. Exemplo: http://localhost:4173/  (detalhe: ${erro.message})`)
+    process.exit(1)
+  }
+  // "localhost:4173/" sem http:// vira uma URL com protocolo "localhost:", e o erro seguinte enganaria
+  if (!/^https?:$/.test(endereco.protocol)) {
+    console.error(`"${url}" precisa começar com http:// ou https://. Exemplo: http://localhost:4173/`)
     process.exit(1)
   }
   let resposta
@@ -184,7 +189,9 @@ function medirDepoisDeRolar(sobraMaxima) {
 
 // Estilos que costumam mudar quando um elemento recebe foco (contorno, sombra, cor, posição)
 function guardarEstilosSemFoco() {
-  window.__propsDeFoco = ['outlineStyle', 'outlineWidth', 'outlineColor', 'boxShadow', 'backgroundColor', 'borderColor', 'color', 'textDecorationLine', 'transform', 'top', 'opacity']
+  // Só o que costuma ser indicação de foco. transform, opacity e top ficam de fora: eles mudam quando o Tab
+  // rola a página e dispara animações de entrada, e dariam um falso "tem foco visível".
+  window.__propsDeFoco = ['outlineStyle', 'outlineWidth', 'outlineColor', 'boxShadow', 'backgroundColor', 'borderColor', 'color', 'textDecorationLine']
   window.__estiloSemFoco = new Map()
   for (const el of document.querySelectorAll('a[href], button, input, select, textarea, summary, [tabindex]')) {
     const cs = getComputedStyle(el)
@@ -251,7 +258,12 @@ function resumirRede(lista) {
 
 async function revisarTela(navegador, tela) {
   console.log(`Abrindo ${tela.nome} (${tela.width}x${tela.height})...`)
-  const contexto = await navegador.newContext({ viewport: { width: tela.width, height: tela.height }, hasTouch: !!tela.hasTouch })
+  const contexto = await navegador.newContext({
+    viewport: { width: tela.width, height: tela.height },
+    hasTouch: !!tela.hasTouch,
+    isMobile: !!tela.isMobile, // sem isMobile o Chrome continua dizendo que tem mouse (hover) e ignora a meta viewport
+    deviceScaleFactor: tela.deviceScaleFactor || 1,
+  })
   const pagina = await contexto.newPage()
   const r = { nome: tela.nome, tamanho: `${tela.width}x${tela.height}`, errosConsole: [], respostasComErro: [], falhasDeRede: [], capturas: [] }
 
@@ -379,6 +391,7 @@ async function revisarTela(navegador, tela) {
     }
     r.rolagemLateral = { sobraPx: sobraMaxima, culpados: depois.culpados }
     r.rede = { ...resumirRede((await Promise.all(medicoes)).filter(Boolean)), dominiosExternos: [...dominiosExternos] }
+    if (emAndamento > 0) avisos.push(`${tela.nome}: ${emAndamento} requisição(ões) ainda em andamento na hora de somar o peso; o total real é maior.`)
   } catch (erro) {
     console.error(`Erro ao revisar ${tela.nome}: ${primeiraLinha(erro)}`)
     avisos.push(`${tela.nome}: a revisão parou no meio (${primeiraLinha(erro)}). O que foi medido até ali está no JSON.`)
@@ -451,7 +464,7 @@ function imprimirResumo(res) {
   if (d?.titulos) {
     linha('\n--- Títulos (h1 a h3, na ordem da página) ---')
     for (const h of d.titulos) linha(`${'  '.repeat(h.nivel - 1)}h${h.nivel}: ${h.texto}`)
-    linha(`Quantidade de h1: ${res.titulos.quantidadeH1} | pulos de nível: ${lista(res.titulos.pulosDeNivel)}`)
+    if (res.titulos) linha(`Quantidade de h1: ${res.titulos.quantidadeH1} | pulos de nível: ${lista(res.titulos.pulosDeNivel)}`)
     linha(`Campos sem rótulo: ${lista(d.camposSemRotulo)} | links/botões sem nome: ${lista(d.controlesSemNome)}`)
   }
   if (d?.foco) {
@@ -469,6 +482,7 @@ function imprimirResumo(res) {
 
   if (!res.gitignoreTemPasta) linha('\nDica: a pasta review-landing/ não está no .gitignore. Sugira adicionar a linha "/review-landing/" (com a barra no começo).')
   if (res.avisosDoScript.length) linha(`\nAvisos do script (não são defeitos do site):\n  ${res.avisosDoScript.join('\n  ')}`)
+  if (!res.completa) linha('\nATENÇÃO: a revisão ficou INCOMPLETA (alguma largura ou variação não foi medida). Não dê nota sem evidência para essas partes.')
 }
 
 // ---------------------------------------------------------------------------
@@ -478,6 +492,11 @@ function imprimirResumo(res) {
 const { chromium } = carregarPlaywright()
 await conferirSite(URL_ALVO)
 mkdirSync(PASTA, { recursive: true })
+// Tira as capturas e o resultado da execução anterior, para nenhuma imagem velha ser lida como nova.
+// Só mexe em .jpg e resultado.json DENTRO de review-landing/.
+for (const arquivo of readdirSync(PASTA)) {
+  if (arquivo.endsWith('.jpg') || arquivo === 'resultado.json') rmSync(join(PASTA, arquivo))
+}
 
 let navegador
 try {
@@ -497,23 +516,45 @@ try {
 const resultado = { url: URL_ALVO, quando: new Date().toISOString(), pasta: PASTA }
 try {
   resultado.telas = []
-  for (const tela of TELAS) resultado.telas.push(await revisarTela(navegador, tela))
+  for (const tela of TELAS) {
+    try {
+      resultado.telas.push(await revisarTela(navegador, tela))
+    } catch (erro) {
+      // ex.: não conseguiu nem abrir a aba; registra e segue para as outras larguras
+      console.error(`Erro ao abrir ${tela.nome}: ${primeiraLinha(erro)}`)
+      avisos.push(`${tela.nome}: não consegui abrir a página nesta largura (${primeiraLinha(erro)}).`)
+      resultado.telas.push({ nome: tela.nome, tamanho: `${tela.width}x${tela.height}`, errosConsole: [], respostasComErro: [], falhasDeRede: [], capturas: [] })
+    }
+  }
   const [desktop, , celular] = TELAS
   resultado.reducedMotion = {
     desktop: await revisarVariacao(navegador, { nome: 'reduzido-desktop', tela: desktop, opcoes: { reducedMotion: 'reduce' }, soPrimeiraTela: true }),
-    celular: await revisarVariacao(navegador, { nome: 'reduzido-celular', tela: celular, opcoes: { reducedMotion: 'reduce', hasTouch: true }, soPrimeiraTela: true }),
+    celular: await revisarVariacao(navegador, { nome: 'reduzido-celular', tela: celular, opcoes: { reducedMotion: 'reduce', hasTouch: true, isMobile: true, deviceScaleFactor: 3 }, soPrimeiraTela: true }),
   }
   resultado.semJavaScript = await revisarVariacao(navegador, { nome: 'sem-js-desktop', tela: desktop, opcoes: { javaScriptEnabled: false }, soPrimeiraTela: false })
 } finally {
   await navegador.close()
 }
 
-const titulos = resultado.telas.find((t) => t.nome === 'desktop')?.titulos || []
-resultado.titulos = {
-  quantidadeH1: titulos.filter((h) => h.nivel === 1).length,
-  pulosDeNivel: titulos.flatMap((h, i) => (i > 0 && h.nivel - titulos[i - 1].nivel > 1 ? [`h${titulos[i - 1].nivel} → h${h.nivel} ("${h.texto}")`] : [])),
-}
-resultado.gitignoreTemPasta = existsSync('.gitignore') && readFileSync('.gitignore', 'utf8').includes('review-landing')
+const titulos = resultado.telas.find((t) => t.nome === 'desktop')?.titulos
+// Se o desktop não foi medido, "0 h1" seria uma mentira: deixa null para ficar claro que faltou medir
+resultado.titulos = titulos
+  ? {
+      quantidadeH1: titulos.filter((h) => h.nivel === 1).length,
+      pulosDeNivel: titulos.flatMap((h, i) => (i > 0 && h.nivel - titulos[i - 1].nivel > 1 ? [`h${titulos[i - 1].nivel} → h${h.nivel} ("${h.texto}")`] : [])),
+    }
+  : null
+// Revisão incompleta não pode parecer completa: código de saída 1 se alguma parte não foi medida
+resultado.completa =
+  resultado.telas.every((t) => t.imagens && t.rede) &&
+  !!resultado.reducedMotion?.desktop &&
+  !!resultado.reducedMotion?.celular &&
+  !!resultado.semJavaScript &&
+  !!resultado.titulos
+if (!resultado.completa) process.exitCode = 1
+// Procura a regra de verdade: a linha "/review-landing/" (ou "/review-landing"). Um comentário ou
+// "review-landing/" sem a barra não servem (sem a barra, o Git ignoraria também a pasta da skill).
+resultado.gitignoreTemPasta = existsSync('.gitignore') && /^\/review-landing\/?\s*$/m.test(readFileSync('.gitignore', 'utf8'))
 resultado.avisosDoScript = avisos
 
 imprimirResumo(resultado)

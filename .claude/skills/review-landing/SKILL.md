@@ -52,7 +52,12 @@ quiser, revise só pelo código e registre isso em "o que não consegui verifica
 | peso da 1ª carga e depois de rolar, por tipo, 5 maiores, domínios externos | Performance, Código |
 | texto invisível com "reduzir movimento" e com JavaScript desligado | Animações |
 
-**5. Olhar as capturas** em `review-landing/` com a ferramenta de leitura de arquivos. No mínimo:
+Leia o fim do resumo antes de seguir. Se aparecer **"a revisão ficou INCOMPLETA"** (o script também sai com
+código 1) ou um "Avisos do script" sobre uma largura ou variação, o que faltou vai para "O que não consegui
+verificar" e **não recebe nota**. Por quê: "0 erros" numa tela que nem abriu não é evidência de nada.
+
+**5. Olhar as capturas** em `review-landing/` com a ferramenta de leitura de arquivos (só as que o resumo
+listou em "Capturas", que são desta execução). No mínimo:
 `desktop-1.jpg`, `tablet-1.jpg` e `celular-1.jpg` (a primeira tela), duas ou três do meio no celular,
 `reduzido-desktop.jpg`, `sem-js-desktop.jpg` e `foco-desktop.jpg`. Procure texto cortado ou encostado na
 borda, botão escondido, contraste fraco, imagem esticada, seções desalinhadas.
