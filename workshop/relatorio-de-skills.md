@@ -56,7 +56,7 @@ entregou (com o motivo) · **Fora** = relevante, mas deixada de fora de propósi
 | Skill / ferramenta | Situação | Evidência | Observações |
 | --- | --- | --- | --- |
 | Workflow: materiais-base | OK | 9/9 agentes; 26 prompts + 8 documentos em `workshop/` | |
-| Workflow: ensaio de universalidade | OK | `workshop/relatorio-ensaio-universalidade.md`: 14/14 prompts funcionaram no tema "agência de viagens" | O prompt 03 (P2) não foi ensaiado; está marcado no guia do instrutor. |
+| Workflow: ensaio de universalidade | OK | `workshop/relatorio-ensaio-universalidade.md`: 14/14 prompts funcionaram no tema "agência de viagens" | O prompt 03 (P2) ficou fora desse ensaio e foi ensaiado à parte em 20/10 (14 rodadas no modo Plan, ver o relatório de testes). |
 | Workflow: materiais-finais | OK | pasta base `projeto-b-base` (build e 2 testes passando; zip refeito depois, com 116,8 KB), guia do instrutor, passada de consistência | Os 3 agentes rodaram em paralelo e o guia não viu a pasta base pronta; a reconciliação seguinte corrigiu isso. |
 | Notion (conector) | OK | página privada "Workshop IA · SONORA (demo)" com o banco "Trabalho \| SONORA", views Quadro e Entregue, 6 cartões | O cartão da skill está em "Feito (a validar)" com a PR #1 como comprovação. |
 | GitHub (gh) | OK | repo público `Movits/sonora`, 6 tags, Pages no ar, PR #1 mesclada com CI verde | |
