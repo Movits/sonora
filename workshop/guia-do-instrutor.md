@@ -25,7 +25,7 @@
 - [ ] Pasta base: `C:\Users\rober\workshop-ia\projeto-b-base`, a origem da cópia do P3. Tem Vite 8.3.4 (template vanilla, sem os exemplos), gsap 3.15.0 e @playwright/test 1.64.1 em node_modules; `index.html` em pt-BR com `<main>` vazio; `src/main.js`, `tokens.css` e `base.css`; `src/sections`, `src/lib`, `public/img`, `public/frames`, `public/fonts` e `docs` vazias (só com .gitkeep); `vite.config.js` com base `/meu-site/` e appType `mpa`; `npm test` com 2 testes de fumaça (porta 4174); .gitignore, .gitattributes, .env.example, a skill review-landing e `.claude/settings.json` (Sonnet · medium · Accept edits). Git na `main` com 1 commit, sem remoto. Não tem CLAUDE.md: ele nasce com `/init` no P3. `git -C C:\Users\rober\workshop-ia\projeto-b-base status` precisa dar limpo, senão o commit do P3 leva junto o que estiver modificado. Detalhes em `C:\Users\rober\workshop-ia\LEIA-ME-projeto-b-base.md` (fica fora da base, para não ir para o repositório público `meu-site`).
 - [ ] Zip da base: `C:\Users\rober\workshop-ia\projeto-b-base.zip`, gerado em 19/10 da base limpa (116,8 KB) e testado: extraí numa pasta temporária, `npm install`, a sequência do P3, `npm run build` e os 2 testes passaram. Com o .git, sem node_modules nem dist, arquivos na raiz. Cópia na pasta WRW - Workshop do OneDrive (conferir na preparação) e no pendrive. Depois de extrair, precisa de `npm install`, e isso pede internet.
 - [ ] Kits: `C:\Users\rober\workshop-ia\_geracoes\kits\{viagens,hamburgueria,relogio}`, 6 WebP cada. A pasta também tem .png, .json e .err: copio só `*.webp`.
-- [ ] Reservas na pasta WRW - Workshop do OneDrive (conferir na preparação): o .pptx e o PDF do deck (também em `C:\Users\rober\workshop-ia\deck\saida\`), `reservas\sonora-scroll.mp4` (a rolagem do SONORA), `reservas\ciclo-da-pr.mp4` (a PR #1, os checks, a aba Actions e o site publicado; não mostra o Notion), o zip do dist do SONORA, o projeto-b-base.zip e o LEIA-ME.md com os links privados (Drive e Notion). Os dois MP4 abrem no player sem internet. O site do ensaio, com a rota funcionando, fica em `C:\Users\rober\workshop-ia\ensaio-viagens\site`. Cópia de tudo no pendrive.
+- [ ] Reservas na pasta WRW - Workshop do OneDrive (conferir na preparação): o PDF da apresentação e o `aula-dist.zip` (a apresentação pronta para rodar com `python -m http.server 8000`), o .pptx e o PDF do deck antigo (também em `C:\Users\rober\workshop-ia\deck\saida\`), `reservas\sonora-scroll.mp4` (a rolagem do SONORA), `reservas\ciclo-da-pr.mp4` (a PR #1, os checks, a aba Actions e o site publicado; não mostra o Notion), o zip do dist do SONORA, o projeto-b-base.zip e o LEIA-ME.md com os links privados (Drive e Notion). Os dois MP4 abrem no player sem internet. O site do ensaio, com a rota funcionando, fica em `C:\Users\rober\workshop-ia\ensaio-viagens\site`. Cópia de tudo no pendrive.
 - [ ] Canário: o CLAUDE.md da pasta de usuário faz a 1ª resposta de cada sessão começar com o meu nome completo, inclusive no projeto-b. Decido (checklist 2.3): aviso a turma ou desligo.
 
 ### T-45 · cola da aula
@@ -34,19 +34,19 @@ Bloco de Notas em `C:\Users\rober\projetos\cola-da-aula.txt` (fora do projeto-b)
 
 ### T-30 · Chrome, perfil da aula, abas nesta ordem
 
-1. Google Slides pelo link direto do arquivo (link no LEIA-ME do OneDrive). O deck fica na pasta do Drive "Workshop IA WRW · 20-10-2026", que não abro na tela.
+1. A apresentação em HTML, no visual do SONORA: no PowerShell, `cd C:\Users\rober\workshop-ia\aula`, `npm run build` e `npm run preview`; no Chrome, http://localhost:4310/ e **F** para tela cheia. Funciona sem internet. Reserva, nesta ordem: o PDF da apresentação, o Google Slides (link no LEIA-ME do OneDrive) e o `.pptx`.
 2. https://movits.github.io/sonora/, parado no topo.
 3. https://github.com/Movits/sonora
 4. https://github.com/Movits/sonora/compare/main...fix/achados-review-landing: a branch da PR ao vivo. Abrir a PR por aqui já preenche o template.
 5. https://github.com/Movits/sonora/pull/1: a PR de reserva, mesclada, com o check "testes" verde.
 6. https://github.com/Movits/sonora/actions
 7. Notion: página privada "Workshop IA · SONORA (demo)" (link no LEIA-ME do OneDrive), quadro "Trabalho | SONORA" na view Quadro, barra lateral recolhida (Ctrl + \\), cartão "PR ao vivo na aula" à vista.
-8. `file:///C:/Users/rober/workshop-ia/ensaio-viagens/comparativo/sem-skill.png` (slide 33).
+8. Só se apresentar pelo Slides ou pelo `.pptx`: `file:///C:/Users/rober/workshop-ia/ensaio-viagens/comparativo/sem-skill.png` (slide 33). Na apresentação HTML, as duas capturas já estão lado a lado no slide.
 9. https://github.com/nateherkai/scroll-craft (slide 50).
 
 Fechados: tudo do MMM, e-mail, WhatsApp, gerenciador de senhas e qualquer `.env`.
 
-**Modo apresentador.** No Slides: seta ao lado de "Apresentação de slides" › "Visualização do apresentador". Ele só esconde as notas da turma com a tela estendida (Win + P › Estender), e aí cada demo exige arrastar a janela para o projetor (Win + Shift + →). Com Duplicar, a turma vê as notas. Recomendo Duplicar, slides em tela cheia e este guia impresso: a aula alterna slide e demo a cada 2 ou 3 minutos. Decido e testo até T-30.
+**Modo apresentador.** Na apresentação HTML, a tecla **P** abre a janela do apresentador: slide atual, próximo, notas e cronômetro com o horário planejado (o mesmo H+ deste guia). As duas janelas andam juntas. **B** apaga o projetor; qualquer tecla de navegação reacende. A janela do apresentador só fica escondida da turma com a tela estendida (Win + P › Estender); aí cada demo exige arrastar a janela para o projetor (Win + Shift + →). Com Duplicar, a turma vê tudo. Recomendo Duplicar, o palco em tela cheia e este guia impresso: a aula alterna slide e demo a cada 2 ou 3 minutos. Decido e testo até T-30.
 
 ### T-15 · app, terminal e VS Code
 
@@ -184,7 +184,7 @@ Não incomodar ligado, celular no silencioso, água por perto. Slide 1 no projet
 - **H+1:21 · slide 32 · P4 · Identidade visual com uma skill** · 7 min · Opus 5.5 · high · Plan → Sonnet 5.5 · medium · Accept edits
   `/skills` mostra a frontend-design. Versão curta de `06-identidade-visual.md` com estilo e paleta da ficha. Leio as duas direções; **[Turma]** escolhe com a mão: A, B ou misturar. Troco para Sonnet e aprovo. Abro estilo.html no endereço do dev e confiro F12 › Network › Font (tudo do localhost). No ensaio, o botão reprovou no 1º cálculo de contraste: confiro o par texto do botão sobre a cor de destaque. Commit "feat: identidade visual". **[Checagem]** O que é contraste AA? (Pelo menos 4,5:1 no texto normal.)
 - **H+1:28 · slide 33 · Com e sem skill de design** · 3 min
-  Mostro o slide e a aba do sem-skill.png. "A skill orienta; quem decide e confere sou eu." **[Checagem]** O que vocês ainda criticariam na versão com skill? (Fontes do Windows; o visual comum de turismo.)
+  Mostro o slide: sem skill à esquerda, com skill à direita. "A skill orienta; quem decide e confere sou eu." **[Checagem]** O que vocês ainda criticariam na versão com skill? (Fontes do Windows; o visual comum de turismo.)
 - **H+1:31 · slide 34 · P5 · Gerar imagens (demonstração)** · 4 min · nada ao vivo
   No SONORA: o anel de cobre é o mesmo do topo à cena. Abro o `08-geracao-de-imagens.md` e leio a ordem do prompt; 112 créditos no total, contando os kits de reserva. Abro o kit do tema no Explorador, direto na pasta do kit. **[Checagem]** Por que não gerar ao vivo? (Custa créditos, tem fila, depende da internet.)
 - **H+1:35 · slide 35 · P6 · Construir a landing page** · 12 min · Sonnet 5.5 · medium · Accept edits

@@ -37,7 +37,7 @@ Os planos B e C de cada problema estão em [plano-de-contingencia.md](plano-de-c
 - [ ] App Claude Desktop logado na conta da aula.
 - [ ] Uso do plano com folga para cerca de 3 h de demo. Ver no anel de uso, ao lado do seletor de modelo, ou com `/usage`. Se estiver perto do limite, resolver agora, não à noite.
 - [ ] Sonnet 5.5 aparece no seletor de modelo (constrói e faz as tarefas simples), e Opus 5.5 também (planeja no Plan, depura e revisa: P2, P4, P8 e `/code-review`). Haiku 5.5 como opção mais leve. Fable só em problema muito difícil; Bypass nunca.
-- [ ] Conector do Notion ligado e respondendo. Conector do Google Drive desligado na sessão de aula: o deck abre pelo navegador, pelo link do LEIA-ME do OneDrive.
+- [ ] Conector do Notion ligado e respondendo. Conector do Google Drive desligado na sessão de aula: a apresentação roda local, sem conector.
 - [ ] Conectores que não vão aparecer na aula (Gmail, Agenda etc.) desligados na sessão de aula. Assim nada pessoal surge numa resposta.
 
 **GitHub**
@@ -64,7 +64,7 @@ Os planos B e C de cada problema estão em [plano-de-contingencia.md](plano-de-c
 
 **Google Drive**
 
-- [ ] Deck abre no Google Slides pelo **link direto** do arquivo, na pasta do Drive "Workshop IA WRW · 20-10-2026". O link fica só no LEIA-ME da pasta WRW - Workshop do OneDrive. A tela inicial do Drive mostra arquivos recentes: evitar.
+- [ ] Apresentação HTML: em `C:\Users\rober\workshop-ia\aula`, `npm run build` e `npm run preview`; abre em http://localhost:4310/ sem internet; **F** (tela cheia), **P** (apresentador) e **B** (tela preta) funcionam. Com o preview rodando, `npm run testar` passa nas 17 checagens. Reserva no Google Slides pelo **link direto** (no LEIA-ME do OneDrive; a tela inicial do Drive mostra arquivos recentes: evitar).
 
 **Termos**
 
@@ -185,10 +185,10 @@ A configuração pessoal (`~/.claude/settings.json`) tem coisas que aparecem na 
 
 **Deck**
 
-- [ ] Versão no Google Slides (online), na pasta do Drive "Workshop IA WRW · 20-10-2026".
-- [ ] `.pptx` e **PDF** na pasta WRW - Workshop do OneDrive (conferir na preparação), no notebook e no pendrive. Os gerados ficam também em `C:\Users\rober\workshop-ia\deck\saida\`.
-- [ ] O PDF abre sem internet.
-- [ ] Conferido no Google Slides: fontes, imagens e notas do apresentador sobreviveram à conversão.
+- [ ] **Principal:** a apresentação HTML em `C:\Users\rober\workshop-ia\aula` (instruções no `LEIA-ME.md` dela e no `LEIA-ME-apresentacao.md` do OneDrive).
+- [ ] PDF da apresentação (`Workshop-IA-WRW-apresentacao.pdf`) e `aula-dist.zip` (a apresentação pronta: extrair numa pasta e rodar `python -m http.server 8000` dentro dela) na pasta WRW - Workshop do OneDrive, no notebook e no pendrive.
+- [ ] Reservas: o Google Slides (online, na pasta do Drive "Workshop IA WRW · 20-10-2026"), o `.pptx` e o PDF do deck antigo. Os gerados ficam também em `C:\Users\rober\workshop-ia\deck\saida\`.
+- [ ] Os PDFs abrem sem internet.
 
 **Vídeos de reserva (MP4)**
 
@@ -281,7 +281,7 @@ Também ensaiar:
 *H−10 min · R*
 
 - [ ] Sessão nova do Claude no SONORA: Sonnet 5.5, effort medium, modo Accept edits (o padrão do projeto). Trocar pelo seletor quando a prática pedir Manual ou Plan.
-- [ ] Abas na ordem da aula: deck no Google Slides (link direto, no LEIA-ME do OneDrive), site publicado, GitHub (repositório, branch `fix/achados-review-landing` e PR #1), Notion demo ("Workshop IA · SONORA (demo)", link no LEIA-ME do OneDrive, view Quadro, barra lateral recolhida).
+- [ ] Abas na ordem da aula: a apresentação em http://localhost:4310/ (tela cheia, F), site publicado, GitHub (repositório, branch `fix/achados-review-landing` e PR #1), Notion demo ("Workshop IA · SONORA (demo)", link no LEIA-ME do OneDrive, view Quadro, barra lateral recolhida).
 - [ ] Terminal já em `C:\Users\rober\projetos\projeto-b`, ainda **vazia**: a cópia da pasta base só acontece ao vivo, no P3.
 - [ ] `npm run preview` do SONORA rodando em segundo plano, como reserva local. Parar com Ctrl + C antes do `npm test` do P10.
 - [ ] Projetor testado (bloco 7): Duplicar, resolução nítida, leitura do fundo da sala.
