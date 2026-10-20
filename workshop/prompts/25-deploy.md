@@ -108,7 +108,7 @@ para a turma acompanhar no celular. Repositório
 público [REPO]: crie sem push e me espere ligar o Pages.
 vite.config.js: base '/[REPO]/'. Workflow: push na main →
 npm ci, npm run build, upload de dist, deploy-pages.
-Teste com npm run preview. Este primeiro deploy vai
+Teste com npm test (a base já traz). O primeiro deploy vai
 direto na main (a PR vem no P10).
 ```
 
