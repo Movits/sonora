@@ -116,7 +116,18 @@ export function iniciarCena() {
       ultimoDesenhado = -1
       desenhar()
     }
-    lote()
+    // Só baixa os outros quadros quando a cena começa a entrar na tela (no primeiro scroll):
+    // quem só olha o topo não gasta ~4 MB à toa
+    const vigia = new IntersectionObserver(
+      (registros) => {
+        if (registros.some((r) => r.isIntersecting)) {
+          vigia.disconnect()
+          lote()
+        }
+      },
+      { rootMargin: '0px 0px -10% 0px' }, // a borda do hero encosta na cena: exige que ela entre de verdade
+    )
+    vigia.observe(secao)
   })
 
   new ResizeObserver(ajustarTamanho).observe(canvas)
