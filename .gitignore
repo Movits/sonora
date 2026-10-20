@@ -7,6 +7,9 @@ dist/
 capturas/
 test-results/
 playwright-report/
+# capturas da skill /review-landing (a barra no começo é de propósito: sem ela,
+# o Git ignoraria também a própria skill em .claude/skills/review-landing/)
+/review-landing/
 
 # Segredos e configurações pessoais (nunca vão para o Git)
 .env

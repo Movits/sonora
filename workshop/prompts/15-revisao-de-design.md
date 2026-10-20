@@ -47,7 +47,8 @@ Fazer uma revisão de design da landing page e me entregar uma lista priorizada 
 melhorias, com o motivo de cada uma. Ainda não altere nenhum arquivo.
 
 RESTRIÇÕES
-- Só leitura nesta fase. Não edite, não crie arquivos no projeto, não rode git.
+- Só leitura nesta fase. Não edite arquivos do projeto e não rode git. A única exceção é uma
+  pasta de capturas ignorada pelo git (a skill /review-landing usa review-landing/).
 - No máximo 10 itens. Prefira poucos itens com impacto a muitos detalhes.
 - Respeite a identidade combinada (estilo, paleta, fontes). Não proponha redesenho
   completo nem troca de marca.
@@ -57,7 +58,9 @@ RESTRIÇÕES
 
 FERRAMENTAS PERMITIDAS
 - Ler o código (index.html, src/, estilos) e os prints que eu anexar.
-- Se o projeto tiver Playwright, você pode me propor um script para tirar prints em
+- Se o projeto tiver a skill /review-landing, siga o passo a passo dela (ela roda um script
+  de checagem com Playwright; em Plan ou Manual o Claude pede licença antes de rodar).
+- Sem a skill, mas com Playwright: você pode me propor um script para tirar prints em
   390, 768 e 1440 px, salvos numa pasta ignorada pelo git. Peça antes de rodar.
 
 REQUISITOS TÉCNICOS (o que revisar)
@@ -76,7 +79,9 @@ REQUISITOS TÉCNICOS (o que revisar)
 10. Estados de interação: hover, foco visível, links que parecem links.
 
 RESULTADO ESPERADO
-Uma tabela com as colunas:
+Com a skill /review-landing: o relatório no formato dela (Área | Nota 0-10 | Evidência |
+Correção sugerida, as 3 prioridades e o que não deu para verificar).
+Sem a skill: uma tabela com as colunas
 # | Prioridade (alta/média/baixa) | Onde | Antes | Depois | Por quê
 Depois da tabela: 3 coisas que estão boas e devem ficar como estão.
 Termine perguntando quais itens devo aprovar. Pare aí.
@@ -84,7 +89,7 @@ Termine perguntando quais itens devo aprovar. Pare aí.
 CRITÉRIOS DE ACEITAÇÃO
 - [CRITÉRIOS_DE_ACEITAÇÃO]
 - Todo item tem local, valor atual, valor proposto e motivo.
-- Nenhum arquivo foi alterado.
+- Nenhum arquivo do projeto foi alterado (só a pasta de capturas, ignorada pelo git).
 
 COMO VALIDAR
 Para cada item, diga como eu confiro no navegador (onde olhar, que largura usar,
