@@ -2,7 +2,7 @@
 
 > Encontrar a causa de um erro antes de corrigir, seguindo um caminho fixo: Problema → Investigação → Hipótese → Correção → Teste → Validação. Sem "chute" e sem remendo que só esconde o sintoma.
 >
-> Ao vivo no workshop: sim (slide 38, cerca de 5 min). Com tudo commitado, o Roberto troca uma letra num import do `src/main.js` do Projeto B e usa a versão curta com Opus 5.5, high, Manual.
+> Ao vivo no workshop: só se aparecer um erro de verdade (slide 40, até 5 min). Nada é quebrado de propósito: se algum passo deu erro, o Roberto usa a versão curta com esse erro, com Opus 5.5, high, Manual. Se nada deu erro, o slide mostra só o método.
 
 ## Configuração recomendada
 
