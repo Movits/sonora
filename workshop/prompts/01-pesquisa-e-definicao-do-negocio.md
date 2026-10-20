@@ -2,7 +2,7 @@
 
 > Transformar uma ideia solta ("quero um site de hamburgueria") num brief de uma página: o que é o negócio, para quem é o site, qual ação o visitante deve tomar e como vamos saber se deu certo.
 >
-> Ao vivo no workshop: sim (slide P1, 5 min). A turma escolhe o tema do Projeto B e o Roberto preenche as variáveis na tela.
+> Ao vivo no workshop: sim (slide P1, cerca de 9 min). A turma escolhe o tema do Projeto B e o Roberto preenche as variáveis na tela.
 
 ## Configuração recomendada
 
@@ -23,10 +23,10 @@ Por quê:
 |---|---|---|
 | [NOME_DA_MARCA] | SONORA (marca fictícia) | ANDARA Viagens (marca fictícia) |
 | [SEGMENTO] | áudio premium (eletrônicos de consumo) | turismo de natureza |
-| [PRODUTO_OU_SERVIÇO] | headphone over-ear sem fio, com cancelamento de ruído | roteiros de 7 a 10 dias em grupos pequenos (até 12 pessoas) pela Patagônia e pela Chapada Diamantina |
+| [PRODUTO_OU_SERVIÇO] | headphone over-ear sem fio, com cancelamento de ruído | roteiros de 7 a 10 dias em grupos pequenos (até 12 pessoas) pela Patagônia, por Portugal (Lisboa e trilha costeira) e pelo Japão (Kyoto no outono), os destinos do kit de imagens |
 | [PÚBLICO_ALVO] | adultos de 25 a 40 anos que trabalham com foco ou viajam muito e pagam mais por design e engenharia | adultos de 28 a 45 anos que querem natureza com conforto, sem planejar tudo sozinhos |
 | [OBJETIVO_DO_SITE] | apresentar o fone e levar o visitante à lista de espera (demonstrativa, sem coletar dados) | levar o visitante a pedir orçamento pelo WhatsApp |
-| [REFERÊNCIAS] | páginas de produto da Apple (AirPods Pro e Max), Sonos Ace, Nothing Headphone (1) | sites de turismo premiados no Awwwards (ex.: Tourisme Sumène Artense) e revistas de viagem impressas |
+| [REFERÊNCIAS] | páginas de produto da Apple (AirPods Pro e Max), Sonos Ace, Nothing Headphone (1) | sites de turismo da galeria do Awwwards (ex.: Tourisme Sumène Artense, que aparece na lista Travel & Tourism; prêmio a confirmar) e revistas de viagem impressas |
 
 ## Prompt (copiar e colar)
 
@@ -37,6 +37,8 @@ O público principal é [PÚBLICO_ALVO].
 O site deve [OBJETIVO_DO_SITE].
 Referências de que gosto: [REFERÊNCIAS].
 Se algum desses campos estiver vazio ou vago, não invente: pergunte.
+Se eu já tiver imagens ou material pronto, confira se combina com os campos acima;
+se não combinar, pergunte qual dos dois devo ajustar.
 
 OBJETIVO
 Montar um brief de negócio de uma página. Ele vai guiar todas as próximas etapas
@@ -55,7 +57,9 @@ RESTRIÇÕES
 
 FERRAMENTAS PERMITIDAS
 - Pesquisa na web (peça licença antes), para olhar no máximo 3 concorrentes ou referências.
-- Criar um único arquivo: docs/brief.md.
+- Criar um único arquivo: docs/brief.md. Se a pasta aberta ainda não é o projeto
+  (não tem package.json), me avise: o npm create vite da etapa 04 deve criar uma
+  pasta nova, e o docs/ entra nela na etapa 05.
 - Não instale pacotes e não rode comandos que alterem o projeto.
 
 REQUISITOS TÉCNICOS
@@ -119,6 +123,8 @@ Como conferir:
 - **Aparecem números sem fonte ("o mercado cresce 23% ao ano")** → peça o link ou a marcação [a confirmar]. Número sem fonte não entra no site.
 - **Ele não faz perguntas e inventa o público** → responda "pare e faça as 5 perguntas antes de escrever".
 - **Sem internet ou pesquisa bloqueada** → peça para trabalhar só com o que você informou e marcar todo o resto como [suposição].
+- **Na etapa 04, o create-vite diz que a pasta não está vazia e oferece remover os arquivos** → não aceite: isso apaga o brief. Cancele, crie o projeto numa pasta nova (ex.: `npm create vite@latest site -- --template vanilla`) e leve `docs/` para dentro dela na etapa 05.
+- **As imagens prontas mostram outro produto ou outro lugar** → ajuste as variáveis antes do brief (ou peça imagens novas). Brief e fotos que não combinam viram retrabalho na landing e nos textos.
 
 ## Exemplo ruim × bom
 
@@ -142,3 +148,9 @@ Por que o bom funciona melhor:
 - **Põe restrições:** sem código e sem números inventados. Evita o Claude "sair fazendo".
 - **Abre espaço para perguntas:** o modelo tira dúvidas antes, em vez de adivinhar depois.
 - O ruim deixa tudo em aberto. "Bonito" não dá para conferir, e o resultado sai genérico.
+
+## Notas do ensaio (19/10/2026)
+
+- Tema agência de viagens: 2,2 min, 5 perguntas e 4 buscas; brief de 412 palavras com as 8 seções e as marcações. O kit de imagens (lago glacial, falésias, bonde, templo) não batia com o exemplo antigo (Patagônia e Chapada Diamantina): a vitrine virou Patagônia, Portugal e Japão.
+- O brief nasceu antes do projeto Vite e precisou ser movido para `site/docs` na etapa 05. Tourisme Sumène Artense aparece na lista Travel & Tourism do Awwwards, mas o prêmio não foi confirmado.
+- Ao vivo, conte 8 a 10 min para o P1 (a turma escolhe o tema e responde às 5 perguntas).

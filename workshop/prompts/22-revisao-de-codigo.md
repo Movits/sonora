@@ -2,7 +2,7 @@
 
 > Pedir a um segundo revisor (outro LLM ou outra pessoa) que leia a PR procurando erros, e depois triar cada comentário com calma: conferir se é verdade, decidir se cabe nesta PR e só então aceitar, recusar com motivo ou transformar em cartão.
 >
-> Ao vivo no workshop: sim (slide P10, junto com as etapas 21 e 23). O Roberto roda `/code-review` na PR do Projeto B e tria os achados na tela.
+> Ao vivo no workshop: material de apoio do P10 (etapa 21). Enquanto o CI roda, o Roberto abre uma sessão nova (Opus 5.5, high, Plan), roda `/code-review` na PR do SONORA, sem `--fix`, e tria os achados na tela.
 
 ## Configuração recomendada
 

@@ -253,15 +253,20 @@ Observações:
 - Se o criador do Vite fizer alguma pergunta extra (por exemplo, se quer instalar e iniciar agora), conferir na sua versão. Os passos da tabela funcionam de qualquer jeito.
 - Para publicar no GitHub Pages, o Vite costuma precisar da opção `base: '/nome-do-repo/'` no `vite.config.js`. Conferir antes do deploy.
 
-Sequência completa do Projeto B:
+Na aula, o Roberto parte de uma pasta base pronta.
+
+Projeto B em casa (do zero):
 
 ```bash
 npm create vite@latest meu-site -- --template vanilla
 cd meu-site
 npm install
 npm install gsap
+git init -b main
 npm run dev
 ```
+
+O `git init -b main` cria o repositório já na branch `main`. Sem o `-b main`, muitos computadores criam a branch `master`, e o deploy no GitHub Pages espera a `main`.
 
 Como o GSAP entra no código (em `src/main.js`):
 
@@ -305,7 +310,7 @@ Use no `user.email` o mesmo e-mail da sua conta GitHub.
 
 | Comando | O que faz | Exemplo | Cuidado |
 |---|---|---|---|
-| `git init` | Transforma a pasta atual num repositório Git (cria a pasta oculta `.git`) | `git init` | Rode uma vez, dentro da pasta do projeto, nunca na pasta de usuário inteira. |
+| `git init` | Transforma a pasta atual num repositório Git (cria a pasta oculta `.git`) | `git init -b main` | Rode uma vez, dentro da pasta do projeto, nunca na pasta de usuário inteira. |
 | `git status` | Mostra o que mudou, o que está pronto para o commit e em qual branch você está | `git status` | Nenhum. Use o tempo todo. |
 | `git add` | Coloca mudanças na "caixa" do próximo commit (stage) | `git add index.html` ou `git add .` | `git add .` pega tudo. Rode `git status` antes e confira o `.gitignore`. |
 | `git commit -m` | Grava a foto do projeto com uma mensagem | `git commit -m "feat: adiciona seção de cardápio"` | Mensagem curta, em português, com o tipo na frente (veja 4.3). |

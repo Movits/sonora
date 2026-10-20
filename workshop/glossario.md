@@ -200,6 +200,15 @@ A linguagem da estrutura da página: títulos, parágrafos, imagens, botões e s
 - **Exemplo:** `<h1>SONORA</h1>`, `<section>` e `<canvas>`.
 - **No workshop:** `index.html` é a porta de entrada do SONORA e do Projeto B.
 
+<a id="html-semantico"></a>
+### HTML semântico (semantic HTML)
+
+HTML em que cada parte da página usa a etiqueta que diz o que ela é: `header` para o topo, `nav` para o menu, `main` para o conteúdo principal, `section` para cada seção e `footer` para o rodapé.
+
+- **Analogia:** as placas de uma loja ("caixa", "provador", "saída"): quem chega entende sem perguntar.
+- **Exemplo:** `<section id="destinos">` com um `<h2>` dentro, no lugar de uma pilha de `<div>` sem nome.
+- **No workshop:** a versão curta do P6 pede "HTML semântico". Leitores de tela e buscadores entendem melhor a página, e cada seção ganha um `id` fácil de achar.
+
 <a id="css"></a>
 ### CSS (Cascading Style Sheets, folhas de estilo)
 
@@ -758,7 +767,16 @@ Um padrão para a mensagem de commit: `tipo: descrição curta`. O tipo diz que 
   ```
 
   Tipos mais usados: `feat` (novidade), `fix` (correção), `docs` (documentação) e `chore` (manutenção).
-- **No workshop:** é o mesmo padrão do fluxo de trabalho do projeto WRW/MMM.
+- **No workshop:** é o mesmo padrão do fluxo de trabalho da WRW.
+
+<a id="no-verify"></a>
+### --no-verify (pular as checagens do Git)
+
+Uma opção do `git commit` e do `git push` que pula os hooks do Git: scripts que rodam sozinhos antes de gravar ou enviar, como testes ou um formatador. Não confundir com os [hooks do Claude Code](#hook).
+
+- **Analogia:** passar pela catraca sem mostrar o crachá.
+- **Exemplo:** `git commit --no-verify -m "..."` grava o commit mesmo que a checagem fosse falhar.
+- **No workshop:** a versão curta do P9 diz "Sem push, sem --no-verify". Se uma checagem falhou, o certo é corrigir o problema, não pular a checagem.
 
 <a id="push"></a>
 ### Push (enviar)
@@ -884,7 +902,7 @@ Um rótulo fixo num commit, normalmente para marcar uma versão.
 
 - **Analogia:** um marcador de página com nome.
 - **Exemplo:** `git tag v1.0.0` e depois `git push origin v1.0.0`.
-- **No workshop:** você poderia marcar a versão apresentada no fim da aula, por exemplo `v1.0.0`.
+- **No workshop:** o SONORA tem 6 tags de recuperação, de `v0.1-estrutura` a `v1.0-publicavel` (`git tag -n` lista todas); no Projeto B, cada passo que funciona ganha a sua (`passo-1`, `passo-2`...).
 
 <a id="gitignore"></a>
 ### .gitignore
@@ -917,7 +935,7 @@ O serviço do GitHub que roda tarefas automáticas (workflows) quando algo acont
 **CI** (Continuous Integration): a cada PR, testes e build rodam sozinhos. **CD** (Continuous Delivery ou Deployment): depois do merge, o deploy sai sozinho.
 
 - **Analogia:** a inspeção de qualidade de cada peça da linha de montagem, e o caminhão que sai assim que a peça é aprovada.
-- **Exemplo:** no fluxo do WRW/MMM, o CI obrigatório roda testes, checagem de tipos (em projetos TypeScript) e build. Sem CI verde, não tem merge.
+- **Exemplo:** no fluxo da WRW, o CI obrigatório roda testes, checagem de tipos (em projetos TypeScript) e build. Sem CI verde, não tem merge.
 - **No workshop:** CI verde é pré-requisito do merge, e o deploy automático vem depois.
 
 <a id="github-pages"></a>
@@ -1250,7 +1268,7 @@ Os níveis de liberdade do Claude Code: o que ele faz sozinho e o que precisa pe
   | Bypass permissions | tudo, sem perguntar; feito para contêiner ou máquina virtual |
 
   No terminal, `Shift+Tab` alterna entre os modos. No app desktop, o seletor fica abaixo da caixa de mensagem.
-- **No workshop:** começamos em Manual ou Plan, passamos para Accept edits quando o plano está claro e não usamos Bypass permissions.
+- **No workshop:** começamos em Manual ou Plan, passamos para Accept edits quando o plano está claro e não usamos Bypass permissions. No SONORA, a sessão já abre em Accept edits (`defaultMode: acceptEdits` no `.claude/settings.json`): troque pelo seletor quando a prática pedir Manual ou Plan.
 
 <a id="manual"></a>
 ### Manual (antes chamado "Ask permissions")
@@ -1386,7 +1404,7 @@ Um pacote que junta skills, hooks, subagentes e servidores MCP para instalar tud
 A sequência combinada de passos que toda mudança segue, do pedido até o site no ar.
 
 - **Analogia:** a linha de montagem: cada estação tem uma tarefa e um responsável.
-- **Exemplo:** o fluxo usado no projeto WRW/MMM, que reproduzimos no workshop:
+- **Exemplo:** o fluxo de trabalho da WRW, que reproduzimos no workshop:
 
   ```text
   1. Ideia ou pedido
@@ -1409,7 +1427,7 @@ A sequência combinada de passos que toda mudança segue, do pedido até o site 
 Um aplicativo de páginas, notas e quadros de tarefas, usado pela equipe para organizar o trabalho.
 
 - **Analogia:** o caderno da equipe, com um mural de tarefas dentro.
-- **Exemplo:** a página privada "Workshop IA · SONORA", separada de qualquer projeto real.
+- **Exemplo:** a página privada "Workshop IA · SONORA (demo)", separada de qualquer projeto real.
 - **No workshop:** o Claude lê e atualiza o quadro pelo conector do Notion, sempre pedindo confirmação para escrever.
 
 <a id="quadro"></a>
@@ -1648,6 +1666,15 @@ O plugin do GSAP que liga animações à rolagem: começa, pausa, fixa e avança
 
 - **No workshop:** é o motor do pin e do scrub no SONORA.
 
+<a id="lenis"></a>
+### Lenis
+
+Biblioteca de rolagem suave: troca a rolagem normal do navegador por uma rolagem com inércia. Fica fora da stack da aula (os prompts pedem "Sem Lenis").
+
+- **Analogia:** trocar o volante do carro por um mais macio: pode ficar bonito, mas é mais uma peça para ajustar e para dar defeito.
+- **Exemplo:** se o Claude propuser `npm install lenis` no P7, a resposta é não: o GSAP com ScrollTrigger já dá conta.
+- **No workshop:** a versão curta do P7 diz "Sem Lenis, sem CDN, sem bibliotecas novas". Se ela aparecer num plano, peça o porquê e a alternativa sem ela.
+
 <a id="timeline"></a>
 ### Timeline (linha do tempo de animação)
 
@@ -1772,6 +1799,23 @@ Uma regra de CSS que só vale em certas condições, como "tela com menos de 768
 
 - **No workshop:** é como a responsividade é escrita no CSS.
 
+<a id="mobile-first"></a>
+### Mobile-first (celular primeiro)
+
+Um jeito de escrever o CSS: primeiro o layout do celular, que vale para todas as telas; depois, com media queries de `min-width`, os ajustes para telas maiores.
+
+- **Analogia:** arrumar primeiro a mala de mão e só depois decidir o que vai na mala grande.
+- **Exemplo:**
+
+  ```css
+  .destinos { display: grid; grid-template-columns: 1fr; }
+  @media (min-width: 768px) {
+    .destinos { grid-template-columns: repeat(3, 1fr); }
+  }
+  ```
+
+- **No workshop:** a versão curta do P6 pede "CSS mobile-first". Muita gente abre o site no celular, e o critério de aceitação confere 390 px sem rolagem lateral.
+
 <a id="prefers-reduced-motion"></a>
 ### prefers-reduced-motion (preferência por menos movimento)
 
@@ -1798,6 +1842,15 @@ Fazer o site funcionar para todas as pessoas, inclusive quem usa leitor de tela,
 - **Exemplo:** texto alternativo nas imagens (`alt`), contraste suficiente entre texto e fundo, navegação pelo teclado, respeito ao `prefers-reduced-motion`.
 - **No workshop:** é critério de qualidade, não enfeite. Peça ao Claude para revisar acessibilidade antes da PR.
 
+<a id="contraste-aa"></a>
+### Contraste WCAG AA (contraste mínimo de leitura)
+
+A diferença de claridade entre o texto e o fundo, medida como uma razão (por exemplo, 4,5:1). As WCAG são as regras internacionais de acessibilidade na web. O nível AA é o mínimo usado na maioria dos sites: 4,5:1 para texto normal e 3:1 para texto grande.
+
+- **Analogia:** placa de rua: letra cinza-clara em fundo branco ninguém lê de longe.
+- **Exemplo:** texto preto sobre fundo branco dá 21:1, o máximo. Um cinza bem claro sobre branco fica abaixo de 3:1 e reprova.
+- **No workshop:** a versão curta do P4 pede "contraste AA calculado". No DevTools, clique na cor do texto no painel Styles para ver a razão. É fato, não opinião: se mede.
+
 <a id="fonte-local"></a>
 ### Fonte local (self-hosted font)
 
@@ -1806,6 +1859,15 @@ Uma fonte cujos arquivos ficam dentro do próprio projeto, em vez de vir de um s
 - **Analogia:** levar o próprio microfone para o show, em vez de depender do da casa.
 - **Exemplo:** as fontes do SONORA (Unbounded e Onest) vêm dos pacotes `@fontsource` instalados pelo npm e são empacotadas junto com o site no build. Outra forma comum é guardar os arquivos `.woff2` em `public/fonts/`.
 - **No workshop:** junto com o GSAP pelo npm, garante que o site funcione mesmo se a internet do local cair.
+
+<a id="design-tokens"></a>
+### Design tokens (variáveis de design)
+
+As decisões visuais da marca (cores, fontes, espaços, cantos) guardadas como variáveis CSS com nome, num arquivo só. Não confundir com o [token](#token) da IA, que é um pedaço de texto.
+
+- **Analogia:** o guarda-roupa da marca: cada peça tem nome e lugar, e a página só veste o que está ali.
+- **Exemplo:** no `src/styles/tokens.css` do SONORA, `--accent: #d6a062;`. O botão usa `background: var(--accent)`. Mudar a cor é mudar uma linha.
+- **No workshop:** o P4 cria os tokens do Projeto B, e a versão curta do P6 pede "CSS mobile-first com tokens": a página só usa essas variáveis.
 
 ---
 
@@ -1924,15 +1986,15 @@ A soma do tamanho de todos os arquivos que o navegador precisa baixar para mostr
 <a id="indice"></a>
 ## Índice alfabético
 
-Total: 176 termos. Clique no termo para ir até a explicação.
+Total: 182 termos. Clique no termo para ir até a explicação.
 
 **A** · [Accept edits](#accept-edits) · [Acessibilidade](#acessibilidade) · [Agente](#agente) · [Alucinação](#alucinacao) · [API](#api) · [Arquivo](#arquivo) · [Arquivo de configuração](#arquivo-de-configuracao) · [Assinatura](#assinatura) · [Autenticação](#autenticacao) · [Auto](#auto) · [Automação](#automacao) · [Autorização](#autorizacao)
 
 **B** · [Backend](#backend) · [Banco de dados](#banco-de-dados) · [Biblioteca](#biblioteca) · [Branch](#branch) · [Bug e debugging](#bug) · [Build](#build) · [Bypass permissions](#bypass)
 
-**C** · [Cache](#cache) · [Caminho absoluto](#caminho-absoluto) · [Caminho relativo](#caminho-relativo) · [Canvas](#canvas) · [Cartão](#cartao) · [CDN](#cdn) · [Chave de API](#chave-de-api) · [Checkpoint](#checkpoint) · [CI/CD](#ci-cd) · [Claude](#claude) · [Claude Code](#claude-code) · [Claude Desktop](#claude-desktop) · [CLAUDE.md](#claude-md) · [CLI](#cli) · [Cliente](#cliente) · [Clone](#clone) · [Coautoria](#coautoria) · [Cobrança por uso](#cobranca-por-uso) · [Comando](#comando) · [Comando de barra](#comando-de-barra) · [Commit](#commit) · [Compactação](#compactacao) · [Comprovação](#comprovacao) · [Conector](#conector) · [Contexto](#contexto) · [Conventional Commits](#conventional-commits) · [Credencial](#credencial) · [Crédito](#credito) · [CRUD](#crud) · [CSS](#css) · [Custo de domínio](#custo-de-dominio)
+**C** · [Cache](#cache) · [Caminho absoluto](#caminho-absoluto) · [Caminho relativo](#caminho-relativo) · [Canvas](#canvas) · [Cartão](#cartao) · [CDN](#cdn) · [Chave de API](#chave-de-api) · [Checkpoint](#checkpoint) · [CI/CD](#ci-cd) · [Claude](#claude) · [Claude Code](#claude-code) · [Claude Desktop](#claude-desktop) · [CLAUDE.md](#claude-md) · [CLI](#cli) · [Cliente](#cliente) · [Clone](#clone) · [Coautoria](#coautoria) · [Cobrança por uso](#cobranca-por-uso) · [Comando](#comando) · [Comando de barra](#comando-de-barra) · [Commit](#commit) · [Compactação](#compactacao) · [Comprovação](#comprovacao) · [Conector](#conector) · [Contexto](#contexto) · [Contraste WCAG AA](#contraste-aa) · [Conventional Commits](#conventional-commits) · [Credencial](#credencial) · [Crédito](#credito) · [CRUD](#crud) · [CSS](#css) · [Custo de domínio](#custo-de-dominio)
 
-**D** · [Dependência](#dependencia) · [Deploy](#deploy) · [DevTools](#devtools) · [Diff](#diff) · [Diretório](#diretorio) · [DNS](#dns) · [Domínio](#dominio)
+**D** · [Dependência](#dependencia) · [Deploy](#deploy) · [Design tokens](#design-tokens) · [DevTools](#devtools) · [Diff](#diff) · [Diretório](#diretorio) · [DNS](#dns) · [Domínio](#dominio)
 
 **E** · [Easing](#easing) · [Editor de código](#editor-de-codigo) · [Effort](#effort) · [.env](#arquivo-env) · [Executável](#executavel) · [Exploded view](#exploded-view) · [Extensão](#extensao)
 
@@ -1940,17 +2002,17 @@ Total: 176 termos. Clique no termo para ir até a explicação.
 
 **G** · [gh](#gh) · [Git](#git) · [GitHub](#github) · [GitHub Actions](#github-actions) · [GitHub Pages](#github-pages) · [.gitignore](#gitignore) · [Google Drive](#google-drive) · [GSAP](#gsap)
 
-**H** · [Hero](#hero) · [Higgsfield](#higgsfield) · [Hook](#hook) · [Hosting](#hosting) · [Hot reload](#hot-reload) · [HTML](#html) · [HTTP](#http) · [HTTPS](#https)
+**H** · [Hero](#hero) · [Higgsfield](#higgsfield) · [Hook](#hook) · [Hosting](#hosting) · [Hot reload](#hot-reload) · [HTML](#html) · [HTML semântico](#html-semantico) · [HTTP](#http) · [HTTPS](#https)
 
 **I** · [IA](#ia) · [IA generativa](#ia-generativa) · [Inferência](#inferencia) · [Issue](#issue)
 
 **J** · [Janela de contexto](#janela-de-contexto) · [JavaScript](#javascript) · [JavaScript puro](#javascript-puro) · [JSON](#json)
 
-**L** · [Landing page](#landing-page) · [Limite de uso](#limite-de-uso) · [LLM](#llm) · [Local](#local)
+**L** · [Landing page](#landing-page) · [Lenis](#lenis) · [Limite de uso](#limite-de-uso) · [LLM](#llm) · [Local](#local)
 
-**M** · [main](#main) · [Manual](#manual) · [Markdown](#markdown) · [MCP](#mcp) · [Media query e breakpoint](#media-query) · [Merge](#merge) · [Merge conflict](#merge-conflict) · [Microinteração](#microinteracao) · [Modelo](#modelo) · [Modos de permissão](#modos-de-permissao)
+**M** · [main](#main) · [Manual](#manual) · [Markdown](#markdown) · [MCP](#mcp) · [Media query e breakpoint](#media-query) · [Merge](#merge) · [Merge conflict](#merge-conflict) · [Microinteração](#microinteracao) · [Mobile-first](#mobile-first) · [Modelo](#modelo) · [Modos de permissão](#modos-de-permissao)
 
-**N** · [Navegador](#navegador) · [node_modules](#node-modules) · [Node.js](#nodejs) · [Notion](#notion) · [npm](#npm)
+**N** · [Navegador](#navegador) · [--no-verify](#no-verify) · [node_modules](#node-modules) · [Node.js](#nodejs) · [Notion](#notion) · [npm](#npm)
 
 **P** · [package.json e package-lock.json](#package-json) · [Pasta](#pasta) · [PATH](#path) · [Peso da página](#peso-da-pagina) · [Pin](#pin) · [Plan mode](#plan-mode) · [Plano gratuito](#plano-gratuito) · [Playwright](#playwright) · [Plugin](#plugin) · [Preço por milhão de tokens](#preco-por-milhao) · [prefers-reduced-motion](#prefers-reduced-motion) · [Princípio do menor privilégio](#menor-privilegio) · [Projeto](#projeto) · [Prompt](#prompt) · [Próxima ação](#proxima-acao) · [Pull](#pull) · [Pull request](#pull-request) · [Push](#push)
 

@@ -2,7 +2,7 @@
 
 > Construir a página principal do site: estrutura, textos, visual e versão para celular, testada no navegador. A animação fica para a etapa 12; aqui a seção dela já existe, mas em versão estática.
 >
-> Ao vivo no workshop: sim (slide P5, 10 min). O Roberto constrói a landing do Projeto B e quem tem notebook adapta para a própria ideia.
+> Ao vivo no workshop: sim (slide P6, cerca de 12 min). O Roberto copia o kit de imagens do tema para `public/img`, constrói a landing do Projeto B e quem tem notebook adapta para a própria ideia.
 
 ## Configuração recomendada
 
@@ -104,7 +104,7 @@ COMO VALIDAR
 ## Versão curta (para o slide)
 
 ```text
-Construa a landing page de [NOME_DA_MARCA] com [STACK], seguindo docs/plano.md: seções [FUNCIONALIDADES], estilo [ESTILO_VISUAL], paleta [PALETA_DE_CORES]. HTML semântico, CSS mobile-first com tokens, textos reais em português, botão para [OBJETIVO_DO_SITE]. Sem bibliotecas novas, sem CDN, sem animação ainda. Rode npm run build e confira o console.
+Construa a landing page de [NOME_DA_MARCA] com [STACK], seguindo docs/plano.md (se não existir, use docs/brief.md): seções [FUNCIONALIDADES], estilo [ESTILO_VISUAL], paleta [PALETA_DE_CORES]. HTML semântico, CSS mobile-first com tokens, textos reais em português, botão para [OBJETIVO_DO_SITE]. Sem bibliotecas novas, sem CDN, sem animação ainda. Rode npm run build e confira o console.
 ```
 
 ## Resultado esperado e validação

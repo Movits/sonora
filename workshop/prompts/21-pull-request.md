@@ -2,7 +2,7 @@
 
 > Abrir uma PR (pedido para juntar a branch na `main`) pequena, com o template preenchido (O que muda, Por quê, Como verifiquei, Como validar, Riscos), para que outra pessoa ou outro LLM consiga revisar e validar sem perguntar nada.
 >
-> Ao vivo no workshop: sim (slide P10, junto com as etapas 22 e 23). O Roberto abre a PR do Projeto B e mostra o CI rodando.
+> Ao vivo no workshop: sim (slide P10, cerca de 8 min, junto com as etapas 22 e 23). No SONORA, o Roberto abre ao vivo a PR da branch `fix/achados-review-landing` e mostra o CI rodando. Se a PR falhar, mostra a PR #1, já mesclada, e o histórico.
 
 ## Configuração recomendada
 

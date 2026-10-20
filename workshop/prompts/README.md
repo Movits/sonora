@@ -39,36 +39,38 @@ Sumário:
 
 ## As 26 etapas
 
-A coluna **Bloco** diz se a etapa entra ao vivo no workshop e em qual bloco de slides (P1 a P12). "Em casa" = material para continuar no seu projeto.
+A coluna **Bloco** diz se a etapa entra ao vivo no workshop e em qual prática do deck (P1 a P12). São 12 práticas, uma por arquivo; "apoio do PX" = arquivo usado de passagem naquela prática; "apoio / em casa" = material para continuar no seu projeto.
 
 | Nº | Etapa | Para que serve | Tipo de tarefa | Bloco |
 |---|---|---|---|---|
-| 01 | [Pesquisa e definição do negócio](01-pesquisa-e-definicao-do-negocio.md) | Transformar a ideia num brief de uma página | pesquisa | P1 (brief) |
-| 02 | [Levantamento de requisitos](02-levantamento-de-requisitos.md) | Lista priorizada e testável do que o site precisa fazer | pesquisa | P1 (brief) |
-| 03 | [Planejamento da aplicação](03-planejamento-da-aplicacao.md) | Plano de construção no modo Plan, antes de editar | planejamento | em casa |
-| 04 | [Escolha de stack](04-escolha-de-stack.md) | Decidir as ferramentas (Vite, GSAP, hospedagem) | planejamento | P2 (stack e estrutura) |
-| 05 | [Estrutura de arquivos](05-estrutura-de-arquivos.md) | Pastas do projeto, `/init` e o `CLAUDE.md` | construção | P2 (stack e estrutura) |
-| 06 | [Identidade visual](06-identidade-visual.md) | Cores, fontes e direção de arte, com uma skill de design | construção | P3 (identidade e skill) |
-| 07 | [Experiência do usuário](07-experiencia-do-usuario.md) | Caminho do visitante e ordem das seções | planejamento | em casa |
-| 08 | [Geração de imagens](08-geracao-de-imagens.md) | Imagens no Higgsfield: texto→imagem, imagem→imagem, consistência do produto, proporção, custo | mídia | P4 (imagem) |
-| 09 | [Geração de vídeos](09-geracao-de-videos.md) | Imagem→vídeo, quadro inicial e final, câmera, preparo para scrub com ffmpeg | mídia | em casa |
-| 10 | [Landing page](10-landing-page.md) | Construir a página principal | construção | P5 (landing) |
-| 11 | [Componentes](11-componentes.md) | Peças reutilizáveis (cards, botões, seções) | construção | em casa |
-| 12 | [Animações de scroll](12-animacoes-de-scroll.md) | GSAP ScrollTrigger (pin, scrub), CSS scroll-driven, sequência de imagens, quando usar 3D | animação | P6 (animação) |
-| 13 | [Integração de ativos](13-integracao-de-ativos.md) | Colocar imagens, vídeo, quadros e fontes no site, leves e no lugar certo | construção | P7 (ativos e interações) |
-| 14 | [Interações](14-interacoes.md) | Botões, menu, acordeão, formulário, hover e foco, teclado | construção | P7 (ativos e interações) |
-| 15 | [Revisão de design](15-revisao-de-design.md) | Lista priorizada do que melhorar, com a skill `/review-landing` | revisão | P8 (revisão) |
-| 16 | [Debugging](16-debugging.md) | Problema → Investigação → Hipótese → Correção → Teste → Validação, com DevTools | debugging | em casa |
-| 17 | [Testes](17-testes.md) | Testes com Playwright: carregamento, console, celular, reduced-motion | construção | em casa |
-| 18 | [Revisão de segurança](18-revisao-de-seguranca.md) | Segredos, `.env`, dependências, skills de terceiros | revisão | em casa |
-| 19 | [Organização do Git](19-organizacao-do-git.md) | `.gitignore`, repositório e branch por tarefa | GitHub | P9 (git) |
-| 20 | [Commits](20-commits.md) | Conventional Commits em português, com o porquê | GitHub | P9 (git) |
-| 21 | [Pull request](21-pull-request.md) | PR com template: O que muda, Por quê, Como verifiquei, Como validar, Riscos | GitHub | P10 (PR, revisão e merge) |
-| 22 | [Revisão de código](22-revisao-de-codigo.md) | `/code-review` e triagem dos comentários antes de aceitar | revisão | P10 (PR, revisão e merge) |
-| 23 | [Merge](23-merge.md) | Checklist e merge manual, `main` atualizada, deploy acompanhado | GitHub | P10 (PR, revisão e merge) |
+| 01 | [Pesquisa e definição do negócio](01-pesquisa-e-definicao-do-negocio.md) | Transformar a ideia num brief de uma página | pesquisa | P1 (negócio e requisitos) |
+| 02 | [Levantamento de requisitos](02-levantamento-de-requisitos.md) | Lista priorizada e testável do que o site precisa fazer | pesquisa | apoio do P1 (se der tempo) |
+| 03 | [Planejamento da aplicação](03-planejamento-da-aplicacao.md) | Plano de construção no modo Plan, antes de editar | planejamento | P2 (plano no modo Plan) |
+| 04 | [Escolha de stack](04-escolha-de-stack.md) | Decidir as ferramentas (Vite, GSAP, hospedagem) | planejamento | apoio / em casa (stack já decidida) |
+| 05 | [Estrutura de arquivos](05-estrutura-de-arquivos.md) | Pastas do projeto, `/init` e o `CLAUDE.md` | construção | P3 (pasta base e `CLAUDE.md`) |
+| 06 | [Identidade visual](06-identidade-visual.md) | Cores, fontes e direção de arte, com uma skill de design | construção | P4 (identidade e skill) |
+| 07 | [Experiência do usuário](07-experiencia-do-usuario.md) | Caminho do visitante e ordem das seções | planejamento | apoio / em casa |
+| 08 | [Geração de imagens](08-geracao-de-imagens.md) | Imagens no Higgsfield: texto→imagem, imagem→imagem, consistência do produto, proporção, custo | mídia | P5 (imagens, só demonstração) |
+| 09 | [Geração de vídeos](09-geracao-de-videos.md) | Imagem→vídeo, quadro inicial e final, câmera, preparo para scrub com ffmpeg | mídia | apoio / em casa |
+| 10 | [Landing page](10-landing-page.md) | Construir a página principal | construção | P6 (landing) |
+| 11 | [Componentes](11-componentes.md) | Peças reutilizáveis (cards, botões, seções) | construção | apoio / em casa |
+| 12 | [Animações de scroll](12-animacoes-de-scroll.md) | GSAP ScrollTrigger (pin, scrub), CSS scroll-driven, sequência de imagens, quando usar 3D | animação | P7 (animação) |
+| 13 | [Integração de ativos](13-integracao-de-ativos.md) | Colocar imagens, vídeo, quadros e fontes no site, leves e no lugar certo | construção | apoio / em casa (o kit entra no P6) |
+| 14 | [Interações](14-interacoes.md) | Botões, menu, acordeão, formulário, hover e foco, teclado | construção | apoio / em casa |
+| 15 | [Revisão de design](15-revisao-de-design.md) | Lista priorizada do que melhorar, com a skill `/review-landing` | revisão | P8 (revisão, no SONORA) |
+| 16 | [Debugging](16-debugging.md) | Problema → Investigação → Hipótese → Correção → Teste → Validação, com DevTools | debugging | slide 38 (erro plantado, fora das P1 a P12) |
+| 17 | [Testes](17-testes.md) | Testes com Playwright: carregamento, console, celular, reduced-motion | construção | apoio / em casa |
+| 18 | [Revisão de segurança](18-revisao-de-seguranca.md) | Segredos, `.env`, dependências, skills de terceiros | revisão | apoio / em casa |
+| 19 | [Organização do Git](19-organizacao-do-git.md) | `.gitignore`, repositório e branch por tarefa | GitHub | apoio do P9 (branch) |
+| 20 | [Commits](20-commits.md) | Conventional Commits em português, com o porquê | GitHub | P9 (branch e commits, no SONORA) |
+| 21 | [Pull request](21-pull-request.md) | PR com template: O que muda, Por quê, Como verifiquei, Como validar, Riscos | GitHub | P10 (PR, revisão e merge, no SONORA) |
+| 22 | [Revisão de código](22-revisao-de-codigo.md) | `/code-review` e triagem dos comentários antes de aceitar | revisão | apoio do P10 (`/code-review`) |
+| 23 | [Merge](23-merge.md) | Checklist e merge manual, `main` atualizada, deploy acompanhado | GitHub | apoio do P10 (merge) |
 | 24 | [Documentação no Notion](24-documentacao-no-notion.md) | Cartão atualizado pelo conector: Comprovação, Próxima ação, Status | Notion | P11 (Notion) |
-| 25 | [Deploy](25-deploy.md) | GitHub Pages via Actions, `base` do Vite, alternativa Netlify Drop | GitHub | P12 (deploy) |
-| 26 | [Melhorias futuras](26-melhorias-futuras.md) | Backlog priorizado, separando ajuste simples de mudança de arquitetura | planejamento | em casa |
+| 25 | [Deploy](25-deploy.md) | GitHub Pages via Actions, `base` do Vite, alternativa Netlify Drop | GitHub | P12 (deploy do Projeto B) |
+| 26 | [Melhorias futuras](26-melhorias-futuras.md) | Backlog priorizado, separando ajuste simples de mudança de arquitetura | planejamento | apoio / em casa |
+
+Mapa rápido das 12 práticas do deck: P1 = 01 · P2 = 03 · P3 = 05 · P4 = 06 · P5 = 08 · P6 = 10 · P7 = 12 · P8 = 15 · P9 = 20 · P10 = 21 · P11 = 24 · P12 = 25.
 
 O fluxo de trabalho por trás das etapas 19 a 25:
 
@@ -113,7 +115,7 @@ As mesmas 12 variáveis aparecem em todos os prompts. Cada arquivo lista só as 
 |---|---|---|---|
 | `[NOME_DA_MARCA]` | Nome do negócio ou do projeto | SONORA (marca fictícia) | ANDARA Viagens |
 | `[SEGMENTO]` | Ramo de atuação | áudio premium (eletrônicos de consumo) | turismo de natureza |
-| `[PRODUTO_OU_SERVIÇO]` | O que o negócio vende ou oferece | headphone over-ear sem fio, com cancelamento de ruído | roteiros de 7 a 10 dias em grupos pequenos pela Patagônia e pela Chapada Diamantina |
+| `[PRODUTO_OU_SERVIÇO]` | O que o negócio vende ou oferece | headphone over-ear sem fio, com cancelamento de ruído | roteiros de 7 a 10 dias em grupos pequenos pela Patagônia, por Portugal (Lisboa e trilha costeira) e pelo Japão (Kyoto no outono) |
 | `[PÚBLICO_ALVO]` | Para quem é o site | adultos de 25 a 40 anos que trabalham com foco ou viajam muito | adultos de 28 a 45 anos que querem natureza com conforto |
 | `[OBJETIVO_DO_SITE]` | A ação principal que o visitante deve tomar | apresentar o fone e levar à lista de espera (demonstrativa, sem coletar dados) | levar o visitante a pedir orçamento pelo WhatsApp |
 | `[ESTILO_VISUAL]` | Clima e linguagem visual | escuro, técnico e cinematográfico; o produto é o protagonista | claro, editorial e fotográfico; sensação de ar livre |
@@ -217,11 +219,12 @@ Sugestão para quem está com notebook: enquanto o Roberto constrói o Projeto B
 
 | Bloco | Etapa | Tempo | O que você faz |
 |---|---|---|---|
-| P1 | [01](01-pesquisa-e-definicao-do-negocio.md) | 5 min | Preenche as variáveis e gera o brief |
-| P5 | [10](10-landing-page.md) | 10 min | Gera a landing da sua ideia |
-| P6 | [12](12-animacoes-de-scroll.md) | 10 min | Adiciona uma animação de scroll |
-| P7 | [14](14-interacoes.md) | 5 a 10 min | Adiciona uma interação |
-| P8 | [15](15-revisao-de-design.md) | 5 min | Pede a revisão e escolhe 1 ou 2 itens |
+| P1 | [01](01-pesquisa-e-definicao-do-negocio.md) | 8 a 10 min | Preenche as variáveis e gera o brief |
+| P3 | [05](05-estrutura-de-arquivos.md) | 5 min | Cria a pasta do site com o passo 1 do [capítulo 3 da apostila](../apostila.md#3-anatomia-de-um-projeto-vite) (npm create vite@latest meu-site -- --template vanilla, cd meu-site, npm install, npm install gsap, git init -b main), move a pasta docs para dentro de meu-site e roda /init |
+| P4 | [06](06-identidade-visual.md) | 5 min | Preenche só `[ESTILO_VISUAL]` e `[PALETA_DE_CORES]` e guarda para a landing |
+| P6 | [10](10-landing-page.md) | 10 a 12 min | Gera a landing da sua ideia |
+| P7 | [12](12-animacoes-de-scroll.md) | 10 min | Adiciona uma animação de scroll, com reduced-motion |
+| P8 | [15](15-revisao-de-design.md) | 5 a 7 min | Pede a revisão (sem a linha `/review-landing`) e escolhe 1 ou 2 itens |
 
 Quem não tem notebook acompanha na tela e refaz em casa com esta pasta.
 
@@ -229,6 +232,8 @@ Quem não tem notebook acompanha na tela e refaz em casa com esta pasta.
 
 ## Arquivos relacionados
 
+- [`../apostila.md`](../apostila.md): a apostila da aula, capítulo por capítulo.
+- [`../glossario.md`](../glossario.md): os termos explicados em português simples.
 - [`../guia-de-comandos.md`](../guia-de-comandos.md): comandos do Claude Code, terminal, npm, Git, GitHub e DevTools.
 - [`../notion-template.md`](../notion-template.md): como montar o quadro **Trabalho | [PROJETO]** e prompts prontos para o conector do Notion.
 - `CLAUDE.md` (na raiz do repositório): o "manual do projeto" que o Claude lê no início de cada sessão.

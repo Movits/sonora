@@ -2,7 +2,7 @@
 
 > Deixar o projeto pronto para trabalhar em equipe: repositório criado, `.gitignore` certo, primeiro commit limpo e uma branch para cada tarefa, sempre saindo da `main` atualizada.
 >
-> Ao vivo no workshop: sim (slide P9, junto com a etapa 20). O Roberto cria a branch do Projeto B na tela.
+> Ao vivo no workshop: material de apoio do P9. No P9 (etapa 20), o Roberto só troca para a branch `fix/achados-review-landing`, já criada e enviada. Repositório, `.gitignore` e branch nova ficam para casa.
 
 ## Configuração recomendada
 
@@ -48,7 +48,7 @@ RESTRIÇÕES
 - Se aparecer algum arquivo .env ou chave no git status, pare e me avise.
 
 FERRAMENTAS PERMITIDAS
-- git e gh (gh auth status, gh repo create). Ler e editar o .gitignore.
+- git e gh (gh auth status, gh repo create). Ler e editar o .gitignore e o .gitattributes.
 
 REQUISITOS TÉCNICOS
 1. Diagnóstico: rode git status. Diga se a pasta já é um repositório, em qual branch
@@ -56,8 +56,14 @@ REQUISITOS TÉCNICOS
 2. .gitignore: confira se ignora pelo menos node_modules/, dist/, .env, .env.*
    (menos .env.example), test-results/, playwright-report/, .DS_Store e Thumbs.db.
    Mostre o que falta e espere meu OK para editar.
-3. Se ainda não houver repositório: git init -b main, primeiro commit com
-   "chore: cria o projeto" e me pergunte antes de rodar
+   Confira também o .gitattributes: deve ter "* text=auto eol=lf" e as imagens,
+   vídeos e fontes como binary. Sem ele, o Git do Windows mostra dezenas de avisos
+   "LF will be replaced by CRLF" a cada git add.
+3. Se ainda não houver repositório (o ideal é criá-lo na etapa 05, logo depois do
+   npm create vite): git init -b main, primeiro commit com "chore: cria o projeto".
+   Se o site já foi construído antes do git, esse commit leva só a base
+   (configuração, package.json, CLAUDE.md, docs) e o resto fica para os commits
+   da etapa 20. Me pergunte antes de rodar
    gh repo create <nome> --public --source=. --push
    (público para publicar grátis no GitHub Pages).
 4. Branch da tarefa:
@@ -74,7 +80,8 @@ RESULTADO ESPERADO
 - Uma branch nova para a tarefa, com o nome sugerido e o motivo.
 
 CRITÉRIOS DE ACEITAÇÃO
-- git status limpo ("nothing to commit, working tree clean").
+- git status limpo ("nothing to commit, working tree clean"). Se o site foi construído
+  antes do git, só podem sobrar as mudanças que vão para os commits da etapa 20.
 - Estou na branch nova, não na main.
 - git check-ignore -v .env node_modules/ dist/ mostra uma regra para cada um.
 
@@ -130,4 +137,12 @@ No GitHub (se o repositório foi criado): a página do repositório mostra os ar
 - **`fatal: not a git repository`** → você está na pasta errada ou ainda não rodou `git init`. Confira com `pwd` (Git Bash) ou `Get-Location` (PowerShell).
 - **Fiz commit na `main` sem querer (ainda sem push)** → rode `git switch -c feat/<nome>`: a branch nova leva o commit junto. Envie a branch e abra a PR normalmente. Depois do merge, `git pull` na `main` deixa tudo igual.
 - **`node_modules` entrou no commit** → acrescente `node_modules/` no `.gitignore`, rode `git rm -r --cached node_modules` e faça um commit `chore:`.
+- **Dezenas de avisos "LF will be replaced by CRLF" a cada `git add`** → não é erro: é o Git do Windows avisando que vai trocar o fim de linha. Um `.gitattributes` com `* text=auto eol=lf` (como o do SONORA) acaba com os avisos.
+- **O status não fica limpo depois do primeiro commit** → o site foi construído antes do git, e o que sobrou é o trabalho das etapas anteriores. Ele entra nos commits da etapa 20. Da próxima vez, crie o git na etapa 05.
 - **`git push` recusado ("rejected", "fetch first")** → alguém mudou a branch no GitHub. Rode `git pull`, resolva conflitos se houver e envie de novo. Nunca use `--force`.
+
+## Notas do ensaio (19/10/2026)
+
+- Tema agência de viagens: 0,5 min. Diagnóstico ("not a git repository"), `Thumbs.db` acrescentado e regras conferidas com `git check-ignore`. Depois, `git init -b main`, o commit da base e a branch `feat/landing-andara`. Não houve `gh repo create` nem push, porque o ensaio não tinha remoto.
+- Com `core.autocrlf=true` e sem `.gitattributes`, cada `git add` encheu a tela de avisos de CRLF, o que assusta o iniciante.
+- O "working tree clean" não fechou nesta etapa, porque o site inteiro foi construído antes do git; só fechou depois da etapa 20. O plano de contingência já manda criar o git logo depois do `npm create vite`.

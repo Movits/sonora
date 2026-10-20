@@ -2,7 +2,7 @@
 
 > Gravar o trabalho em commits pequenos, um assunto por commit, com mensagem no padrão Conventional Commits em português que diz **o que** mudou e **por quê**, e com a coautoria do Claude registrada.
 >
-> Ao vivo no workshop: sim (slide P9, junto com a etapa 19). O Roberto pede ao Claude os commits da tarefa do Projeto B e lê as mensagens em voz alta antes de aprovar.
+> Ao vivo no workshop: sim (slide P9, cerca de 6 min). No SONORA, o Roberto troca para a branch `fix/achados-review-landing`, já pronta com 3 commits, e mostra o log, uma mensagem com Por quê e Co-Authored-By e o diff. O plano de commits ao vivo só entra se sobrar tempo, como 4º commit.
 
 ## Configuração recomendada
 
@@ -40,7 +40,8 @@ o que mudou e por quê.
 RESTRIÇÕES
 - Confirme que NÃO estou na main. Se estiver, pare e me avise (etapa 19).
 - Um assunto por commit. Se o diff misturar coisas (ex.: um conserto e uma seção nova),
-  separe em commits diferentes.
+  separe em commits diferentes. Se dois assuntos estiverem no mesmo arquivo, não use
+  git add -p (é interativo): faça um commit só e explique no corpo por que ficou junto.
 - Adicione arquivos pelo nome (git add <arquivo>), não com git add -A às cegas.
 - Se aparecer .env, chave, node_modules/ ou dist/ no git status, pare e me avise.
 - Não faça git push, não use --amend em commit já enviado, não use --no-verify.
@@ -64,6 +65,9 @@ REQUISITOS TÉCNICOS
   não acrescentar sozinha.
 - Mensagem com várias linhas: use vários -m ou um arquivo temporário com -F
   (fora do projeto ou apagado depois).
+- Ordem: cada commit, sozinho, deve passar no npm run build (configuração e
+  dependências antes do código que as usa). Se algum não puder compilar sozinho,
+  avise no plano.
 
 RESULTADO ESPERADO
 1. Primeiro, um plano: para cada commit, a lista de arquivos e a mensagem completa.
@@ -124,6 +128,7 @@ Tipos mais usados:
 - **Merge por squash (todos os commits da PR viram um só):** a mensagem que fica na `main` é o título da PR. Capriche no título da PR (etapa 21).
 - **Mudança que quebra algo para quem usa (ex.: troca de endereço de página):** o padrão tem um jeito de avisar, com `!` depois do tipo (`feat!: ...`) ou uma linha `BREAKING CHANGE:` no corpo.
 - **Projeto com regras automáticas de mensagem (hook ou lint de commit):** se o commit for bloqueado, leia o erro e ajuste a mensagem. Não pule a checagem.
+- **Projeto construído etapa por etapa (como o Projeto B):** com o git criado na etapa 05, rode este prompt ao fim das etapas 06, 10, 12, 13 e 14. Cada commit sai pequeno e com um assunto só; se você deixar tudo para o fim, os assuntos se misturam nos mesmos arquivos e não dá mais para separar.
 - **Changelog automático:** quem usa Conventional Commits pode gerar a lista de novidades a partir do histórico. Isso só funciona se os tipos estiverem certos.
 
 ## Problemas comuns
@@ -176,3 +181,9 @@ Por que o bom funciona melhor:
 - **"Como verifiquei" dá confiança:** quem revisa sabe o que foi testado e o que não foi.
 - **Commit pequeno é fácil de desfazer:** se der errado, `git revert` desfaz só aquilo.
 - **"update"** não diz nada. Na hora de achar quando algo quebrou, todos os commits parecem iguais.
+
+## Notas do ensaio (19/10/2026)
+
+- Tema agência de viagens: 1,1 min para 5 commits em Conventional Commits em português, com Por quê, O que mudou, Como verifiquei (comandos reais) e Co-Authored-By. Os arquivos foram adicionados pelo nome; status limpo e sem push.
+- Como o git começou com o site pronto, o commit da landing juntou estrutura, animação e interações, que moram nos mesmos arquivos (a mensagem explica). Os commits intermediários não compilam sozinhos, porque o `index.html` só entra no 3º dos 5.
+- Com o git criado na etapa 05 e um commit ao fim das etapas 06, 10, 12, 13 e 14, o "um assunto por commit" passa a ser possível.

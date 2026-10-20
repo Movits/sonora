@@ -2,7 +2,7 @@
 
 > Juntar a PR na `main` só quando tudo está pronto (CI verde, revisão feita, sem conflitos), de forma manual e consciente, e depois deixar o computador e o GitHub em ordem: `main` atualizada, branch apagada e deploy acompanhado.
 >
-> Ao vivo no workshop: sim (slide P10, junto com as etapas 21 e 22). O Roberto confere o checklist e faz o merge do Projeto B na tela.
+> Ao vivo no workshop: material de apoio do P10 (etapa 21). Com o check verde e os achados triados, o Roberto confere o checklist e faz o merge da PR do SONORA na tela.
 
 ## Configuração recomendada
 

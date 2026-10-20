@@ -2,7 +2,7 @@
 
 > Olhar a página pronta com olho de revisor (hierarquia, tipografia, contraste, espaçamento, movimento, celular) e sair com uma lista curta e priorizada do que mudar, antes de mexer em qualquer arquivo.
 >
-> Ao vivo no workshop: sim (slide P8). O Roberto roda a skill `/review-landing` no SONORA e o prompt abaixo no Projeto B.
+> Ao vivo no workshop: sim (slide P8, cerca de 6 min). O Roberto roda a skill `/review-landing` no SONORA, numa sessão nova com Opus 5.5, effort high e modo Plan. Quem tem notebook roda a versão curta sem a linha `/review-landing` no próprio site e escolhe 1 ou 2 itens.
 
 ## Configuração recomendada
 
@@ -15,7 +15,7 @@ Por quê:
 - **Opus 5.5, high:** revisar é julgar e justificar, não só listar. Vale o modelo mais forte e mais tempo de raciocínio.
 - **Plan:** a revisão não deve editar nada. No Plan, o Claude lê e propõe; só edita depois que você aprova. No Manual, ele pede licença antes de qualquer edição.
 - **Sessão nova:** quem construiu a página tende a defender o que fez. Uma conversa limpa (`/clear` ou sessão nova) revisa com olhos de fora.
-- **`/review-landing`:** é uma skill do projeto, uma "receita de revisão" escrita em `.claude/skills/review-landing/SKILL.md`. Abra o arquivo antes de usar para ver exatamente o que ela confere. Para usar no seu projeto, copie a pasta `review-landing/` para o `.claude/skills/` do seu projeto e abra uma sessão nova; ela deve aparecer em `/skills` (conferir na sua versão).
+- **`/review-landing`:** é uma skill do projeto, uma "receita de revisão" escrita em `.claude/skills/review-landing/SKILL.md`. Abra o arquivo antes de usar para ver exatamente o que ela confere. Para usar no seu projeto, copie a pasta `review-landing/` para o `.claude/skills/` do seu projeto, acrescente `/review-landing/` (a pasta das capturas) ao `.gitignore` e abra uma sessão nova; ela deve aparecer em `/skills` (conferir na sua versão). A skill roda com o `@playwright/test` e o Google Chrome: num projeto novo, o Playwright ainda não existe nesta etapa (ele entra na 17). Instale antes (`npm install -D @playwright/test`), de preferência na preparação, e não ao vivo.
 - **`web-design-guidelines`:** opcional. Baixa as regras da internet quando roda, então precisa de rede.
 
 ## Variáveis
@@ -27,7 +27,7 @@ Por quê:
 | [OBJETIVO_DO_SITE] | apresentar o fone e levar o visitante à lista de espera (demonstrativa, sem coletar dados) | levar o visitante a pedir orçamento pelo WhatsApp |
 | [ESTILO_VISUAL] | escuro, técnico e cinematográfico; muito espaço vazio; o produto é o protagonista | claro, editorial e fotográfico; calmo, com sensação de ar livre |
 | [PALETA_DE_CORES] | grafite quase preto, cobre polido (destaque), cinza quente claro (texto) | areia, verde-musgo, azul-profundo e um laranja de pôr do sol só para o botão principal |
-| [REFERÊNCIAS] | páginas de produto da Apple (AirPods Pro e Max), Sonos Ace, Nothing Headphone (1) | sites de turismo premiados no Awwwards (ex.: Tourisme Sumène Artense) |
+| [REFERÊNCIAS] | páginas de produto da Apple (AirPods Pro e Max), Sonos Ace, Nothing Headphone (1) | sites de turismo da galeria do Awwwards (ex.: Tourisme Sumène Artense, que aparece na lista Travel & Tourism; prêmio a confirmar) |
 | [CRITÉRIOS_DE_ACEITAÇÃO] | o visitante entende o produto e acha o botão da lista de espera em 5 segundos; texto legível sobre o fundo escuro | o botão de orçamento aparece na primeira tela do celular; fotos não cortam o assunto principal |
 
 ## Prompt (copiar e colar)
@@ -60,6 +60,8 @@ FERRAMENTAS PERMITIDAS
 - Ler o código (index.html, src/, estilos) e os prints que eu anexar.
 - Se o projeto tiver a skill /review-landing, siga o passo a passo dela (ela roda um script
   de checagem com Playwright; em Plan ou Manual o Claude pede licença antes de rodar).
+  Ela precisa do @playwright/test no package.json. Se faltar, pare e me avise; não
+  instale sem meu OK. Se eu não quiser instalar agora, faça a revisão sem a skill.
 - Sem a skill, mas com Playwright: você pode me propor um script para tirar prints em
   390, 768 e 1440 px, salvos numa pasta ignorada pelo git. Peça antes de rodar.
 
@@ -147,3 +149,11 @@ git status
 - **O Claude quer redesenhar tudo** → reforce "no máximo 10 itens, mantendo a identidade" e use o modo Plan.
 - **Duas skills de design com regras opostas** (uma pede degradês, outra proíbe) → use uma só skill de design por projeto.
 - **A revisão fala de algo que você já mudou** → o navegador mostrou a versão antiga. Recarregue com Ctrl+Shift+R e tire prints novos.
+- **A `/review-landing` para e pede para instalar o Playwright** → o projeto ainda não tem `@playwright/test`. Na aula, deixe instalado antes. Na hora, há duas saídas: aprovar `npm install -D @playwright/test` (precisa de rede) ou apagar a linha `/review-landing` e revisar sem a skill.
+- **"Executable doesn't exist" ao rodar o script** → o Playwright procurou o navegador próprio, que não foi baixado. Confira se o script usa `channel: 'chrome'` (o Chrome instalado).
+
+## Notas do ensaio (19/10/2026)
+
+- Tema agência de viagens: 2,5 min, já com os 3 itens aprovados aplicados um por vez. A `/review-landing` mediu 0 erro, 0 404, alt 6/6, 1 h1, foco 10/10 e nenhum texto invisível. A tabela teve 6 itens; os aprovados foram o rótulo cortado no celular, o texto do cartão que contradizia o roteiro e o hero do desktop com pouca foto.
+- A skill exigiu o `@playwright/test`, que na ordem do workshop só entra na etapa 17: ele foi instalado na hora, a skill copiada para `.claude/skills` e `/review-landing/` posto no `.gitignore`. Para a aula, deixe isso pronto antes.
+- O ensaio rodou num subagente, sem sessão nova: quem construiu também revisou. Mesmo assim, a revisão achou dois erros reais.
