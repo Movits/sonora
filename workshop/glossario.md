@@ -1607,6 +1607,15 @@ Uma página única, feita para apresentar um produto ou uma ideia e levar a uma 
 - **Exemplo:** o SONORA é a landing page de um fone fictício.
 - **No workshop:** o Projeto B também é uma landing page, com o tema escolhido pela turma.
 
+<a id="acordeao"></a>
+### Acordeão (accordion)
+
+Uma lista de itens em que cada um abre e fecha ao clicar, como as perguntas frequentes: aparece só a pergunta e, ao clicar, a resposta se abre embaixo.
+
+- **Analogia:** a sanfona, que estica e fecha (por isso o nome).
+- **Exemplo:** a seção de perguntas frequentes de uma agência de viagens.
+- **No workshop:** aparece nos prompts de interações e no exemplo de prompt do slide 17.
+
 <a id="hero"></a>
 ### Hero (seção de abertura)
 
@@ -1986,9 +1995,9 @@ A soma do tamanho de todos os arquivos que o navegador precisa baixar para mostr
 <a id="indice"></a>
 ## Índice alfabético
 
-Total: 182 termos. Clique no termo para ir até a explicação.
+Total: 183 termos. Clique no termo para ir até a explicação.
 
-**A** · [Accept edits](#accept-edits) · [Acessibilidade](#acessibilidade) · [Agente](#agente) · [Alucinação](#alucinacao) · [API](#api) · [Arquivo](#arquivo) · [Arquivo de configuração](#arquivo-de-configuracao) · [Assinatura](#assinatura) · [Autenticação](#autenticacao) · [Auto](#auto) · [Automação](#automacao) · [Autorização](#autorizacao)
+**A** · [Accept edits](#accept-edits) · [Acessibilidade](#acessibilidade) · [Acordeão](#acordeao) · [Agente](#agente) · [Alucinação](#alucinacao) · [API](#api) · [Arquivo](#arquivo) · [Arquivo de configuração](#arquivo-de-configuracao) · [Assinatura](#assinatura) · [Autenticação](#autenticacao) · [Auto](#auto) · [Automação](#automacao) · [Autorização](#autorizacao)
 
 **B** · [Backend](#backend) · [Banco de dados](#banco-de-dados) · [Biblioteca](#biblioteca) · [Branch](#branch) · [Bug e debugging](#bug) · [Build](#build) · [Bypass permissions](#bypass)
 
