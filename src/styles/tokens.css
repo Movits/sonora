@@ -1,0 +1,43 @@
+/*
+  TOKENS: as decisões de design em um lugar só.
+  Quer trocar a cor de destaque do site inteiro? Mude --accent aqui.
+  Quer outra fonte? Troque --font-display / --font-text (e o import em main.js).
+*/
+:root {
+  /* Cores: tiradas do próprio produto (grafite, tinta clara, cobre) */
+  --bg: #020202; /* fundo: o mesmo preto das fotos do produto */
+  --surface: #101011; /* um degrau acima do fundo */
+  --field-a: #0d0d0e; /* campos dos blocos de detalhe */
+  --field-b: #141312;
+  --field-c: #181512;
+  --ink: #ebeae6; /* texto principal: branco neutro, quase sem cor */
+  --muted: #a6a39d; /* texto secundário */
+  --accent: #d6a062; /* âmbar-cobre do anel do fone: só na ação principal */
+  --accent-press: #c38e52;
+  --accent-ink: #140d08; /* texto em cima do cobre */
+  --paper: #ebeae6; /* o recibo */
+  --paper-ink: #17140f;
+
+  /* Tipografia: Unbounded (títulos) + Onest (texto) */
+  --font-display: 'Unbounded', 'Arial Black', sans-serif;
+  --font-text: 'Onest', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Cinco tamanhos, nada além disso */
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem); /* 13–14 px */
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem); /* 17–19 px */
+  --step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem); /* 32–64 px */
+  --step-display: clamp(3.25rem, 5.8vw, 5.75rem); /* 52–92 px */
+  --step-giant: clamp(2.5rem, 10.5vw, 12rem); /* 40–192 px */
+
+  /* Espaço */
+  --margin: clamp(1rem, 2.4vw, 2rem); /* margens externas iguais nos dois lados */
+  --gap-section: clamp(6rem, 10vw, 10rem); /* distância entre seções */
+  --radius: 0; /* cantos retos no site inteiro */
+
+  /* Movimento */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1); /* entradas e respostas da interface */
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1); /* algo que se move dentro da tela */
+  --dur-fast: 160ms;
+  --dur-med: 420ms;
+  --dur-slow: 1600ms;
+}

@@ -1,0 +1,19 @@
+# Gerado automaticamente (não versionar)
+node_modules/
+dist/
+
+# Saídas de ferramentas locais
+.taste-skill/
+capturas/
+test-results/
+playwright-report/
+
+# Segredos e configurações pessoais (nunca vão para o Git)
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+
+# Sistema
+.DS_Store
+Thumbs.db

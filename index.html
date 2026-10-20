@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>SONORA Arc · Fone over-ear com cancelamento de ruído</title>
+    <meta
+      name="description"
+      content="SONORA Arc: fone over-ear sem fio com cancelamento de ruído ativo, driver de 40 mm e 40 horas de bateria. Marca fictícia criada para o Workshop de IA WRW."
+    />
+    <meta name="theme-color" content="#020202" />
+    <meta property="og:title" content="SONORA Arc · O silêncio tem forma" />
+    <meta property="og:description" content="Site demonstrativo de uma marca fictícia de headphones premium, feito com IA no Workshop WRW." />
+    <meta property="og:image" content="/img/og.jpg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="nav" data-entrada>
+      <a class="nav__marca" href="#topo" aria-label="SONORA, início">SONORA</a>
+      <nav class="nav__links" aria-label="Seções">
+        <a href="#por-dentro">Por dentro</a>
+        <a href="#detalhes">Detalhes</a>
+        <a href="#numeros">Especificações</a>
+      </nav>
+      <a class="nav__acao" href="#reserva">Reservar</a>
+    </header>
+
+    <main id="conteudo">
+      <!-- 1. HERO: o objeto, grande, dividindo o título -->
+      <section class="hero" id="topo" aria-labelledby="hero-titulo">
+        <h1 class="hero__titulo" id="hero-titulo">
+          <span class="hero__linha hero__linha--1">O silêncio</span>
+          <span class="hero__linha hero__linha--2">tem forma</span>
+        </h1>
+
+        <div class="hero__objeto" data-cores>
+          <img
+            class="hero__foto is-ativa"
+            src="/img/arc-grafite.webp"
+            width="1600"
+            height="900"
+            alt="Fone SONORA Arc no acabamento Grafite, com anéis de cobre nas conchas"
+            fetchpriority="high"
+          />
+          <img class="hero__foto" src="/img/arc-areia.webp" width="1600" height="900" alt="" aria-hidden="true" />
+          <img class="hero__foto" src="/img/arc-prata.webp" width="1600" height="900" alt="" aria-hidden="true" />
+        </div>
+
+        <p class="hero__lead" data-entrada>
+          SONORA Arc é um fone over-ear sem fio, com cancelamento de ruído ativo e 40 horas de bateria.
+        </p>
+        <dl class="hero__fatos" data-entrada>
+          <div><dt>Peso</dt><dd>268 g</dd></div>
+          <div><dt>Pré-venda</dt><dd>R$ 2.499</dd></div>
+          <div><dt>Cor</dt><dd data-cor-nome>Grafite</dd></div>
+        </dl>
+      </section>
+
+      <!-- 2. CENA DE SCROLL: o fone se desmonta camada por camada (canvas + quadros) -->
+      <section class="cena" id="por-dentro" aria-labelledby="cena-titulo">
+        <div class="cena__palco">
+          <canvas class="cena__canvas" aria-hidden="true"></canvas>
+          <img
+            class="cena__estatico"
+            src="/img/arc-explodido.webp"
+            width="1600"
+            height="900"
+            alt="Vista explodida do SONORA Arc: arco, almofadas, drivers de 40 mm com bobina de cobre, placas, baterias e conchas separados"
+            loading="lazy"
+          />
+          <p class="cena__carregando" aria-live="polite" hidden>Carregando a cena <span data-progresso>0</span>%</p>
+
+          <div class="cena__capitulos">
+            <article class="capitulo is-ativo" data-capitulo="0">
+              <h2 class="capitulo__titulo" id="cena-titulo">Por dentro do Arc</h2>
+              <p class="capitulo__texto">Role devagar: o fone se desmonta camada por camada e mostra o que faz o silêncio.</p>
+            </article>
+            <article class="capitulo" data-capitulo="1">
+              <h3 class="capitulo__titulo">Concha de grafite</h3>
+              <p class="capitulo__texto">Alumínio escovado e 1.024 microfuros em círculos concêntricos, o desenho de uma onda parada.</p>
+            </article>
+            <article class="capitulo" data-capitulo="2">
+              <h3 class="capitulo__titulo">Bateria de 40 horas</h3>
+              <p class="capitulo__texto">Uma célula plana em cada concha. Dez minutos na tomada rendem cinco horas de música.</p>
+            </article>
+            <article class="capitulo" data-capitulo="3">
+              <h3 class="capitulo__titulo">Driver de 40 mm</h3>
+              <p class="capitulo__texto">Bobina de cobre e diafragma rígido: grave firme, voz limpa e nenhum chiado no volume alto.</p>
+            </article>
+            <article class="capitulo" data-capitulo="4">
+              <h3 class="capitulo__titulo">Oito microfones</h3>
+              <p class="capitulo__texto">Quatro em cada concha escutam o ruído à sua volta e o apagam antes que ele chegue ao ouvido.</p>
+            </article>
+            <article class="capitulo" data-capitulo="5">
+              <h3 class="capitulo__titulo">Tudo volta ao lugar</h3>
+              <p class="capitulo__texto">268 gramas que dobram com uma mão e cabem no case.</p>
+              <a class="capitulo__link" href="#numeros">Ver as especificações</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. DETALHES: close-ups em blocos de cor -->
+      <section class="detalhes" id="detalhes" aria-labelledby="detalhes-titulo">
+        <div class="detalhes__intro" data-entrada>
+          <h2 id="detalhes-titulo">Ao toque</h2>
+          <p>Cada peça foi escolhida pelo toque antes da aparência: o que encosta na pele, o que a mão aperta, o que fica na mochila.</p>
+        </div>
+        <ul class="detalhes__grade" role="list">
+          <li class="tile tile--a" data-entrada>
+            <figure>
+              <div class="tile__campo"><img src="/img/detalhe-microfuros.webp" width="800" height="1000" alt="Close da face da concha com microfuros concêntricos e o anel de cobre" loading="lazy" /></div>
+              <figcaption><strong>Microperfuração</strong><span>1.024 furos em círculos concêntricos</span></figcaption>
+            </figure>
+          </li>
+          <li class="tile tile--larga tile--b" data-entrada>
+            <figure>
+              <div class="tile__campo"><img src="/img/detalhe-case.webp" width="1280" height="720" alt="O fone dobrado dentro do case rígido aberto" loading="lazy" /></div>
+              <figcaption><strong>Case rígido</strong><span>Dobra plano e protege a viagem toda</span></figcaption>
+            </figure>
+          </li>
+          <li class="tile tile--c" data-entrada>
+            <figure>
+              <div class="tile__campo"><img src="/img/detalhe-almofada.webp" width="800" height="1000" alt="Close da almofada de couro vegano com costura fina" loading="lazy" /></div>
+              <figcaption><strong>Almofadas</strong><span>Couro vegano com espuma de memória</span></figcaption>
+            </figure>
+          </li>
+          <li class="tile tile--b" data-entrada>
+            <figure>
+              <div class="tile__campo"><img src="/img/detalhe-driver.webp" width="800" height="1000" alt="Driver dinâmico de 40 mm com a bobina de cobre aparente" loading="lazy" /></div>
+              <figcaption><strong>Driver</strong><span>40 mm, bobina de cobre</span></figcaption>
+            </figure>
+          </li>
+          <li class="tile tile--a" data-entrada>
+            <figure>
+              <div class="tile__campo"><img src="/img/detalhe-arco.webp" width="800" height="1000" alt="Arco de alumínio escovado com o têxtil trançado por baixo" loading="lazy" /></div>
+              <figcaption><strong>Arco</strong><span>Têxtil trançado sobre alumínio escovado</span></figcaption>
+            </figure>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 4. COMO O SILÊNCIO FUNCIONA: um verbo por vez -->
+      <section class="ruido" id="ruido" aria-label="Como funciona o cancelamento de ruído">
+        <div class="painel">
+          <img class="painel__foto" src="/img/uso-rua.webp" width="1600" height="900" alt="Pessoa usando o SONORA Arc numa rua molhada à noite" loading="lazy" />
+          <div class="painel__verbo"><h2>Escutar</h2></div>
+          <p class="painel__frase">Oito microfones medem o ruído à sua volta, o tempo todo.</p>
+        </div>
+        <div class="painel painel--onda">
+          <canvas class="painel__onda" aria-hidden="true"></canvas>
+          <div class="painel__verbo"><h2>Inverter</h2></div>
+          <p class="painel__frase">Um chip calcula a onda oposta ao ruído, ponto por ponto. Role e veja as duas se anularem.</p>
+        </div>
+        <div class="painel">
+          <img class="painel__foto" src="/img/uso-mesa.webp" width="1600" height="900" alt="Pessoa concentrada à mesa, à noite, usando o fone" loading="lazy" />
+          <div class="painel__verbo"><h2>Silenciar</h2></div>
+          <p class="painel__frase">As duas ondas se apagam. Sobra a música, e o seu foco.</p>
+        </div>
+      </section>
+
+      <!-- 5. NA CAIXA: lista com fotos no lugar dos marcadores -->
+      <section class="caixa" id="caixa" aria-labelledby="caixa-titulo">
+        <div class="caixa__cabeca" data-entrada>
+          <h2 id="caixa-titulo">Na caixa</h2>
+          <p class="caixa__conta">6 itens</p>
+        </div>
+        <ul class="caixa__lista" role="list">
+          <li class="item" data-entrada>
+            <img src="/img/item-case.webp" width="128" height="128" alt="" loading="lazy" />
+            <div><p class="item__linha"><strong>Case rígido</strong><span>Incluso</span></p><p class="item__desc">Casca rígida forrada de têxtil, com puxador de cobre e espaço para os cabos.</p></div>
+          </li>
+          <li class="item" data-entrada>
+            <img src="/img/item-cabo-usbc.webp" width="128" height="128" alt="" loading="lazy" />
+            <div><p class="item__linha"><strong>Cabo USB-C trançado</strong><span>Incluso</span></p><p class="item__desc">Carrega e também toca áudio sem perdas direto do computador.</p></div>
+          </li>
+          <li class="item" data-entrada>
+            <img src="/img/item-cabo-p2.webp" width="128" height="128" alt="" loading="lazy" />
+            <div><p class="item__linha"><strong>Cabo de áudio 3,5 mm</strong><span>Incluso</span></p><p class="item__desc">Para quando a bateria acabar ou o aparelho não tiver Bluetooth.</p></div>
+          </li>
+          <li class="item" data-entrada>
+            <img src="/img/item-adaptador.webp" width="128" height="128" alt="" loading="lazy" />
+            <div><p class="item__linha"><strong>Adaptador de avião</strong><span>Incluso</span></p><p class="item__desc">Liga o fone no entretenimento de bordo de dois pinos.</p></div>
+          </li>
+          <li class="item" data-entrada>
+            <img src="/img/item-bolsa.webp" width="128" height="128" alt="" loading="lazy" />
+            <div><p class="item__linha"><strong>Bolsa de microfibra</strong><span>Incluso</span></p><p class="item__desc">Guarda os cabos e serve de pano para limpar as conchas.</p></div>
+          </li>
+          <li class="item" data-entrada>
+            <img src="/img/item-almofadas.webp" width="128" height="128" alt="" loading="lazy" />
+            <div><p class="item__linha"><strong>Almofadas extras</strong><span>R$ 149</span></p><p class="item__desc">Vendidas à parte. Encaixam por ímã, sem ferramenta.</p></div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 6. NÚMEROS: a bateria sobre a foto, e as especificações -->
+      <section class="numeros" id="numeros" aria-labelledby="numeros-titulo">
+        <div class="numeros__foto">
+          <img src="/img/uso-trem.webp" width="1600" height="900" alt="Pessoa de olhos fechados na janela de um trem ao entardecer, usando o fone" loading="lazy" />
+          <h2 class="numeros__titulo" id="numeros-titulo">Bateria para a viagem toda</h2>
+          <p class="numeros__figura" data-entrada>40 h</p>
+          <p class="numeros__frase" data-entrada>Do embarque ao desembarque, ida e volta, com o cancelamento ligado.</p>
+        </div>
+        <div class="numeros__apoio">
+          <p data-entrada><span class="numeros__valor">42 dB</span> de redução de ruído ativa</p>
+          <p data-entrada><span class="numeros__valor">268 g</span> com as almofadas e o arco</p>
+        </div>
+        <dl class="numeros__ficha" aria-label="Especificações técnicas">
+          <div data-entrada><dt>Conexão</dt><dd>Bluetooth 5.4 com dois aparelhos ao mesmo tempo</dd></div>
+          <div data-entrada><dt>Codecs</dt><dd>AAC, SBC e LDAC</dd></div>
+          <div data-entrada><dt>Drivers</dt><dd>Dinâmicos de 40 mm, bobina de cobre</dd></div>
+          <div data-entrada><dt>Cancelamento</dt><dd>Ativo, com 8 microfones e modo ambiente</dd></div>
+          <div data-entrada><dt>Bateria</dt><dd>40 h com cancelamento, 55 h sem</dd></div>
+          <div data-entrada><dt>Carga rápida</dt><dd>10 minutos rendem 5 horas</dd></div>
+          <div data-entrada><dt>Materiais</dt><dd>Alumínio escovado, couro vegano e têxtil trançado</dd></div>
+          <div data-entrada><dt>Cores</dt><dd>Grafite, Areia e Prata</dd></div>
+        </dl>
+      </section>
+
+      <!-- 7. RESERVA: o recibo que se monta conforme as escolhas (loja demonstrativa) -->
+      <section class="reserva" id="reserva" aria-labelledby="reserva-titulo">
+        <form class="reserva__form" id="form-reserva" data-entrada>
+          <h2 id="reserva-titulo">Monte o seu</h2>
+          <p class="reserva__texto">Escolha o acabamento e os extras e veja o recibo mudar. Esta é uma loja demonstrativa: nada é cobrado.</p>
+
+          <fieldset class="opcoes">
+            <legend>Acabamento</legend>
+            <div class="opcoes__cores">
+              <label class="cor"><input type="radio" name="cor" value="Grafite" checked /><img src="/img/arc-grafite-mini.webp" width="320" height="180" alt="" /><span>Grafite</span></label>
+              <label class="cor"><input type="radio" name="cor" value="Areia" /><img src="/img/arc-areia-mini.webp" width="320" height="180" alt="" /><span>Areia</span></label>
+              <label class="cor"><input type="radio" name="cor" value="Prata" /><img src="/img/arc-prata-mini.webp" width="320" height="180" alt="" /><span>Prata</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="opcoes">
+            <legend>Extras</legend>
+            <label class="extra"><input type="checkbox" name="extra" value="Almofadas extras" data-preco="149" /><span>Almofadas extras</span><span>R$ 149</span></label>
+            <label class="extra"><input type="checkbox" name="extra" value="Garantia de 3 anos" data-preco="249" /><span>Garantia de 3 anos</span><span>R$ 249</span></label>
+            <label class="extra"><input type="checkbox" name="extra" value="Gravação no anel de cobre" data-preco="89" /><span>Gravação no anel de cobre</span><span>R$ 89</span></label>
+          </fieldset>
+
+          <button class="botao" type="submit">Reservar o meu</button>
+        </form>
+
+        <div class="recibo" aria-live="polite" aria-label="Recibo da reserva">
+          <p class="recibo__nome">SONORA Arc</p>
+          <ul class="recibo__linhas" role="list" data-recibo-linhas>
+            <li><span data-recibo-cor>Arc · Grafite</span><span>R$ 2.499,00</span></li>
+            <li><span>Frete</span><span>Grátis</span></li>
+          </ul>
+          <p class="recibo__total"><span>Total</span><strong data-recibo-total>R$ 2.499,00</strong></p>
+          <p class="recibo__nota">Entrega prevista para novembro de 2026.</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- 8. RODAPÉ: o nome sobre a última foto -->
+    <footer class="rodape">
+      <img class="rodape__foto" src="/img/arc-rodape.webp" width="1600" height="900" alt="" loading="lazy" />
+      <div class="rodape__topo">
+        <nav aria-label="Rodapé">
+          <a href="#por-dentro">Por dentro</a>
+          <a href="#detalhes">Detalhes</a>
+          <a href="#caixa">Na caixa</a>
+          <a href="#reserva">Reservar</a>
+        </nav>
+        <p class="rodape__contato">Workshop de IA · WRW<br /><a href="https://github.com/Movits/sonora">Código no GitHub</a></p>
+      </div>
+      <p class="rodape__marca" aria-hidden="true">SONORA</p>
+      <p class="rodape__legal">SONORA é uma marca fictícia criada para fins didáticos. Nenhum produto é vendido. Imagens geradas com IA. © 2026</p>
+    </footer>
+
+    <dialog class="modal" id="modal-reserva" aria-labelledby="modal-titulo">
+      <h2 id="modal-titulo">Reserva demonstrativa</h2>
+      <p>Você montou:</p>
+      <ul class="modal__lista" role="list" data-modal-lista></ul>
+      <p class="modal__total">Total: <strong data-modal-total></strong></p>
+      <p>Esta loja não existe. O site foi construído com inteligência artificial no Workshop de IA da WRW para mostrar o que dá para fazer.</p>
+      <form method="dialog"><button class="botao" type="submit">Fechar</button></form>
+    </dialog>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

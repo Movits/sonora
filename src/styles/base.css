@@ -1,0 +1,171 @@
+/* BASE: regras que valem para a página toda (reset, texto, links, foco). */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: var(--step-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+img,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p,
+dl,
+dd,
+ul,
+figure {
+  margin: 0;
+}
+
+ul[role='list'] {
+  list-style: none;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  transition: color var(--dur-fast) ease;
+}
+
+a,
+button,
+label,
+input {
+  -webkit-tap-highlight-color: transparent; /* sem o flash azul do toque; o :active dá o retorno */
+  touch-action: manipulation; /* toque responde na hora, sem esperar o "duplo toque" */
+}
+
+/* controles não selecionam o próprio texto num toque longo (o conteúdo continua selecionável) */
+.botao,
+.nav__acao,
+.cor,
+.extra {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.pular {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.pular:focus {
+  left: var(--margin);
+  top: var(--margin);
+  width: auto;
+  height: auto;
+  clip-path: none;
+  padding: 0.75rem 1rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  z-index: 100;
+}
+
+/* Botão: plano, uma cor só, cantos retos */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding: 0 1.75rem;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: 500 var(--step-body) / 1 var(--font-text);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) ease,
+    transform var(--dur-fast) var(--ease-out);
+}
+.botao:hover {
+  background: var(--accent-press);
+}
+.botao:active {
+  transform: scale(0.97);
+}
+
+/* Entrada das partes de cada seção (o JS adiciona .entrou quando a seção aparece).
+   Sem JS, nada fica escondido: a classe .js só existe se o script rodar. */
+.js [data-entrada] {
+  opacity: 0.25; /* começa esmaecido, nunca invisível: se algo falhar, o texto continua lá */
+  transform: translateY(24px);
+  transition:
+    opacity 700ms var(--ease-out),
+    transform 700ms var(--ease-out);
+  transition-delay: var(--atraso, 0ms);
+}
+.js [data-entrada].entrou {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-entrada] {
+    transform: none;
+    transition: opacity 300ms linear;
+  }
+  /* menos movimento: sem zoom/rotação de hover e sem "afundar" o botão; cor e opacidade continuam */
+  .tile__campo img,
+  .item img,
+  .cor img,
+  .botao,
+  .nav__acao {
+    transform: none !important;
+  }
+  * {
+    scroll-behavior: auto !important;
+  }
+}
