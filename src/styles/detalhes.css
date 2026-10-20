@@ -1,0 +1,93 @@
+/* DETALHES: título à esquerda, close-ups em blocos de cor à direita. */
+.detalhes {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: clamp(1rem, 2vw, 2rem);
+  padding: var(--gap-section) var(--margin) 0;
+}
+
+.detalhes__intro {
+  grid-column: 1 / 4;
+  align-self: start;
+  display: grid;
+  gap: 1.5rem;
+}
+.detalhes__intro h2 {
+  font-size: var(--step-head);
+}
+.detalhes__intro p {
+  max-width: 30ch;
+}
+
+.detalhes__grade {
+  grid-column: 4 / 13;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.tile figure {
+  display: grid;
+  gap: 0.9rem;
+}
+.tile__campo {
+  aspect-ratio: 4 / 5;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.tile--larga {
+  grid-column: span 2;
+}
+.tile--larga .tile__campo {
+  aspect-ratio: 8 / 5;
+}
+.tile--a .tile__campo {
+  background: var(--field-a);
+}
+.tile--b .tile__campo {
+  background: var(--field-b);
+}
+.tile--c .tile__campo {
+  background: var(--field-c);
+}
+/* A foto tem fundo preto; "lighten" faz o preto sumir no campo de cor */
+.tile__campo img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  mix-blend-mode: lighten;
+  transition: transform 600ms var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .tile:hover .tile__campo img {
+    transform: scale(1.04);
+  }
+}
+.tile figcaption {
+  display: grid;
+  gap: 0.2rem;
+}
+.tile figcaption strong {
+  font-weight: 500;
+}
+.tile figcaption span {
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .detalhes {
+    grid-template-columns: 1fr;
+    row-gap: 2.5rem;
+  }
+  .detalhes__intro,
+  .detalhes__grade {
+    grid-column: 1 / -1;
+  }
+  .detalhes__grade {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .tile--larga {
+    order: -1;
+  }
+}

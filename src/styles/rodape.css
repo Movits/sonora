@@ -1,0 +1,67 @@
+/* RODAPÉ: a última foto do produto (outro ângulo), escurecida, com o nome de ponta a ponta. */
+.rodape {
+  position: relative;
+  height: 100svh;
+  min-height: 520px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto auto;
+  padding: var(--margin);
+  padding-bottom: calc(var(--margin) + env(safe-area-inset-bottom, 0px));
+}
+.rodape__foto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.62);
+  z-index: -1;
+}
+.rodape__topo {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.rodape__topo nav {
+  display: grid;
+  gap: 0.35rem;
+}
+.rodape__topo a {
+  text-decoration: none;
+}
+.rodape__topo a:hover {
+  text-decoration: underline;
+}
+.rodape__contato {
+  text-align: right;
+}
+.rodape__marca {
+  grid-row: 3;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 14.5vw;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.rodape__legal {
+  grid-row: 4;
+  font-size: var(--step-small);
+  color: var(--ink);
+  max-width: 70ch;
+}
+
+@media (max-width: 760px) {
+  .rodape {
+    height: 88svh;
+  }
+  .rodape__topo {
+    flex-direction: column;
+  }
+  .rodape__contato {
+    text-align: left;
+  }
+}

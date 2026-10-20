@@ -1,0 +1,236 @@
+/* RESERVA: escolhas à esquerda, recibo de papel à direita (com o pé recortado em zigue-zague). */
+.reserva {
+  margin-top: var(--gap-section);
+  background: var(--surface);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: clamp(1rem, 2vw, 2rem);
+  padding: 0 var(--margin) clamp(5rem, 9vw, 8rem);
+}
+
+.reserva__form {
+  grid-column: 1 / 7;
+  padding-top: 6rem;
+  display: grid;
+  gap: 2rem;
+  align-content: start;
+}
+.reserva__form h2 {
+  font-size: var(--step-head);
+}
+.reserva__texto {
+  max-width: 44ch;
+}
+
+.opcoes {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.opcoes legend {
+  padding: 0;
+  margin-bottom: 0.75rem;
+  color: var(--muted);
+}
+.opcoes__cores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.cor {
+  display: grid;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.cor input,
+.extra input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.cor img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--bg);
+  outline: 2px solid transparent;
+  outline-offset: 0;
+  transition:
+    outline-color var(--dur-fast) ease,
+    transform var(--dur-med) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .cor:hover img {
+    transform: scale(1.02);
+  }
+}
+.cor input:checked ~ img {
+  outline-color: var(--accent);
+}
+.cor input:focus-visible ~ img {
+  outline-color: var(--ink);
+}
+.cor input:checked ~ span {
+  color: var(--accent);
+}
+
+.extra {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.25rem 1fr auto;
+  gap: 0.9rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  background: var(--bg);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) ease;
+}
+.extra::before {
+  content: '';
+  width: 1.25rem;
+  height: 1.25rem;
+  background: var(--surface);
+  transition: background-color var(--dur-fast) ease;
+}
+.extra:hover {
+  background: #070707;
+}
+.extra:has(input:checked)::before {
+  background: var(--accent);
+}
+.extra:has(input:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.extra span:last-child {
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+.reserva .botao {
+  justify-self: start;
+}
+
+/* O recibo */
+.recibo {
+  grid-column: 8 / 12;
+  align-self: start;
+  background: var(--paper);
+  color: var(--paper-ink);
+  padding: 7rem 1.75rem 3.5rem;
+  /* pé recortado em zigue-zague */
+  clip-path: polygon(
+    0 0, 100% 0, 100% calc(100% - 14px),
+    95% 100%, 90% calc(100% - 14px), 85% 100%, 80% calc(100% - 14px), 75% 100%, 70% calc(100% - 14px),
+    65% 100%, 60% calc(100% - 14px), 55% 100%, 50% calc(100% - 14px), 45% 100%, 40% calc(100% - 14px),
+    35% 100%, 30% calc(100% - 14px), 25% 100%, 20% calc(100% - 14px), 15% 100%, 10% calc(100% - 14px),
+    5% 100%, 0 calc(100% - 14px)
+  );
+}
+.recibo__nome {
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 1.75rem;
+}
+.recibo__linhas {
+  display: grid;
+  gap: 0.9rem;
+}
+.recibo__linhas li,
+.recibo__total {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+.recibo__total {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 4px solid var(--paper-ink);
+  align-items: baseline;
+}
+.recibo__total strong {
+  display: inline-block; /* para o pulso (transform) funcionar */
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  letter-spacing: -0.03em;
+}
+.recibo__nota {
+  margin-top: 1.25rem;
+  font-size: var(--step-small);
+}
+
+/* Janela da reserva demonstrativa (a única coisa que flutua: pode ter sombra) */
+.modal {
+  max-width: min(32rem, calc(100vw - 2 * var(--margin)));
+  border: 0;
+  padding: 2rem;
+  background: var(--paper);
+  color: var(--paper-ink);
+  box-shadow: 0 30px 80px rgb(0 0 0 / 0.5); /* taste-skill-ignore: janela flutuante */
+}
+.modal::backdrop {
+  background: rgb(2 2 2 / 0.75);
+}
+/* entrada da janela: surge de 96% com opacidade (nunca de scale 0) */
+.modal[open] {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 220ms var(--ease-out),
+    transform 220ms var(--ease-out);
+}
+@starting-style {
+  .modal[open] {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+.modal[open]::backdrop {
+  opacity: 1;
+  transition: opacity 220ms ease;
+}
+@starting-style {
+  .modal[open]::backdrop {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .modal[open] {
+    transform: none;
+  }
+}
+.modal h2 {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  margin-bottom: 1rem;
+}
+.modal p,
+.modal ul {
+  margin-bottom: 1rem;
+}
+.modal__lista {
+  display: grid;
+  gap: 0.35rem;
+}
+.modal .botao {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 960px) {
+  .reserva {
+    grid-template-columns: 1fr;
+    row-gap: 3rem;
+  }
+  .reserva__form,
+  .recibo {
+    grid-column: 1 / -1;
+  }
+  .recibo {
+    width: 86%;
+    justify-self: center;
+    padding-top: 2rem;
+  }
+}

@@ -1,0 +1,108 @@
+/* NÚMEROS: um número enorme sobre a borda da foto, como título de filme. Depois, a ficha técnica. */
+.numeros {
+  margin-top: var(--gap-section);
+}
+.numeros__foto {
+  position: relative;
+  height: 88svh;
+  overflow: hidden;
+}
+.numeros__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* sombra neutra só nos 35% de baixo, para o número e a frase terem leitura */
+.numeros__foto::after {
+  content: '';
+  position: absolute;
+  inset: 65% 0 0 0;
+  background: linear-gradient(to top, rgb(2 2 2 / 0.8), rgb(2 2 2 / 0)); /* taste-skill-ignore: scrim sob texto na foto */
+}
+.numeros__titulo {
+  position: absolute;
+  top: var(--margin);
+  left: var(--margin);
+  z-index: 1;
+  font-size: var(--step-body);
+}
+.numeros__figura {
+  position: absolute;
+  left: var(--margin);
+  bottom: 0.2rem;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--step-giant);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+}
+.numeros__frase {
+  position: absolute;
+  right: var(--margin);
+  bottom: var(--margin);
+  z-index: 1;
+  max-width: 26ch;
+  text-align: right;
+}
+
+.numeros__apoio {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 2.5rem var(--margin) 0;
+}
+.numeros__apoio p {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  color: var(--muted);
+}
+.numeros__valor {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--step-head);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.numeros__ficha {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem 4rem;
+  padding: clamp(4rem, 8vw, 7.5rem) var(--margin) 0;
+}
+.numeros__ficha div {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: 1rem;
+}
+.numeros__ficha dt {
+  color: var(--muted);
+}
+.numeros__ficha dd {
+  font-weight: 500;
+}
+
+@media (max-width: 760px) {
+  .numeros__foto {
+    height: 80svh;
+  }
+  .numeros__foto img {
+    object-position: 70% center;
+  }
+  .numeros__frase {
+    left: var(--margin);
+    right: var(--margin);
+    bottom: calc(var(--margin) + 6.5rem);
+    text-align: left;
+  }
+  .numeros__apoio,
+  .numeros__ficha {
+    grid-template-columns: 1fr;
+  }
+  .numeros__ficha div {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}

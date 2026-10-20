@@ -1,7 +1,15 @@
-// PONTO DE ENTRADA (v0.1): só fontes, tokens e base. As seções ganham estilo na v0.2.
+// PONTO DE ENTRADA (v0.2): todas as seções com aparência (CSS), ainda sem JavaScript.
 import '@fontsource/unbounded/800.css'
 import '@fontsource/onest/400.css'
 import '@fontsource/onest/500.css'
 
 import './styles/tokens.css'
 import './styles/base.css'
+import './styles/hero.css'
+import './styles/cena.css'
+import './styles/detalhes.css'
+import './styles/ruido.css'
+import './styles/caixa.css'
+import './styles/numeros.css'
+import './styles/reserva.css'
+import './styles/rodape.css'

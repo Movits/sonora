@@ -1,0 +1,149 @@
+/*
+  CENA DE SCROLL ("Por dentro do Arc")
+  A seção é bem alta (o comprimento do scroll). Dentro dela, o "palco" fica grudado na tela
+  (position: sticky) enquanto o JS troca os quadros do canvas conforme a rolagem.
+*/
+.cena {
+  position: relative;
+  height: 500svh; /* quanto maior, mais devagar a animação */
+}
+
+.cena__palco {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.cena__canvas,
+.cena__estatico {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Com o JS rodando e quadros carregados, a imagem estática dá lugar ao canvas */
+.cena__estatico {
+  opacity: 1;
+  transition: opacity var(--dur-med) ease;
+}
+.cena.tem-canvas .cena__estatico {
+  opacity: 0;
+}
+
+.cena__carregando {
+  position: absolute;
+  right: var(--margin);
+  bottom: var(--margin);
+  z-index: 3;
+  color: var(--muted);
+  font-size: var(--step-small);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Capítulos: título no canto de cima, frase no canto de baixo */
+.js .capitulo {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 250ms ease,
+    visibility 0s linear 250ms;
+}
+.js .capitulo.is-ativo {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 400ms ease 200ms;
+}
+.capitulo__titulo,
+.capitulo__texto,
+.capitulo__link {
+  z-index: 2;
+}
+.capitulo__titulo {
+  position: absolute;
+  top: calc(var(--margin) + 4.5rem);
+  left: var(--margin);
+  max-width: 11ch;
+  font-size: clamp(2rem, 3vw, 2.75rem);
+}
+.capitulo__texto {
+  position: absolute;
+  left: var(--margin);
+  bottom: var(--margin);
+  max-width: 32ch;
+}
+.capitulo__link {
+  position: absolute;
+  right: var(--margin);
+  bottom: var(--margin);
+}
+
+@media (max-width: 760px) {
+  .capitulo__titulo {
+    top: calc(var(--margin) + 1rem);
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+  .capitulo__texto {
+    right: var(--margin);
+    bottom: calc(var(--margin) + 2.5rem);
+  }
+}
+
+/* Sem animação (prefers-reduced-motion ou JavaScript desligado): a cena vira uma composição parada */
+.cena.sem-movimento,
+html:not(.js) .cena {
+  height: auto;
+}
+.cena.sem-movimento .cena__palco,
+html:not(.js) .cena .cena__palco {
+  position: relative;
+  height: auto;
+  display: grid;
+  gap: 2rem;
+  padding: var(--margin) var(--margin) 0;
+}
+.cena.sem-movimento .cena__canvas,
+html:not(.js) .cena .cena__canvas {
+  display: none;
+}
+.cena.sem-movimento .cena__estatico,
+html:not(.js) .cena .cena__estatico {
+  position: relative;
+  height: auto;
+  opacity: 1;
+}
+.cena.sem-movimento .cena__capitulos,
+html:not(.js) .cena .cena__capitulos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 2rem 3rem;
+}
+.cena.sem-movimento .capitulo,
+html:not(.js) .cena .capitulo {
+  visibility: visible;
+}
+.cena.sem-movimento .capitulo,
+html:not(.js) .cena .capitulo,
+.cena.sem-movimento .capitulo__titulo,
+html:not(.js) .cena .capitulo__titulo,
+.cena.sem-movimento .capitulo__texto,
+html:not(.js) .cena .capitulo__texto,
+.cena.sem-movimento .capitulo__link,
+html:not(.js) .cena .capitulo__link {
+  position: static;
+  opacity: 1;
+  padding: 0;
+}
+.cena.sem-movimento .capitulo,
+html:not(.js) .cena .capitulo {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+.cena.sem-movimento .capitulo__titulo,
+html:not(.js) .cena .capitulo__titulo {
+  font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+}

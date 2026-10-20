@@ -1,0 +1,68 @@
+/* NA CAIXA: lista em duas colunas, com uma foto pequena no lugar do marcador. */
+.caixa {
+  padding: var(--gap-section) var(--margin) 0;
+}
+.caixa__cabeca {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2.5rem;
+}
+.caixa__cabeca h2 {
+  font-size: var(--step-head);
+}
+.caixa__conta {
+  color: var(--muted);
+}
+
+.caixa__lista {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 4rem;
+  row-gap: 2.25rem;
+}
+.item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+.item img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  background: #2a2724;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .item:hover img {
+    transform: rotate(-6deg) scale(1.06);
+  }
+}
+.item__linha {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.item__linha span {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.item__desc {
+  margin-top: 0.35rem;
+  max-width: 38ch;
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .caixa__lista {
+    grid-template-columns: 1fr;
+  }
+  .item {
+    grid-template-columns: 52px 1fr;
+  }
+  .item img {
+    width: 52px;
+    height: 52px;
+  }
+}
