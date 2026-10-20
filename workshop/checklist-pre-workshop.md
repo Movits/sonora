@@ -53,7 +53,7 @@ Os planos B e C de cada problema estão em [plano-de-contingencia.md](plano-de-c
 - [ ] Quadro "Trabalho | SONORA" com as views **Quadro** e **Entregue**, e o cartão **"PR ao vivo na aula"** (é ele que o P9 arrasta para Em andamento e o P11 atualiza).
 - [ ] Quadro "Trabalho | SONORA" com as propriedades: Item, Status, Responsável, Prioridade, Prazo, Concluído em, Comprovação, Próxima ação e Observações.
 - [ ] Status com as opções: Não iniciado, Em andamento, Feito (a validar), Concluído e Bloqueado.
-- [ ] 4 ou 5 cartões ligados às PRs do SONORA, com a URL da PR na Comprovação.
+- [ ] 7 cartões. Os 6 já feitos têm a Comprovação preenchida (PR, run, tag, relatório ou deck); os da skill e dos materiais apontam para as PRs #1 e #2. O cartão "PR ao vivo na aula" fica em Não iniciado, sem Comprovação, até o P11.
 - [ ] Pelo menos 1 cartão em "Feito (a validar)", para a demo de validação.
 - [ ] Teste no Claude: "leia o quadro Trabalho | SONORA e liste os cartões". Ele encontra a página demo e nada do MMM aparece na resposta.
 
@@ -179,7 +179,7 @@ A configuração pessoal (`~/.claude/settings.json`) tem coisas que aparecem na 
 **Fluxo de trabalho (PR ao vivo, P10)**
 
 - [ ] No GitHub, a branch `fix/achados-review-landing` existe com os 3 commits (hero empilhado no tablet; quadros da cena só baixam quando ela entra na tela, 1ª carga de 4,4 MB para 437 KB; miniaturas com lazy e `og:image` completo) e **sem PR aberta**: a PR nasce ao vivo no P10. Conferir em Branches e em Pull requests.
-- [ ] Número da PR ao vivo: `gh pr list --state all` mostra a #1 (skill) e a #2 (materiais do workshop), as duas mescladas. A ao vivo vai ser a **#3**. Anotar na cola o número que vier depois do último.
+- [ ] Número da PR ao vivo: `gh pr list --state all` mostra a #1 (skill), a #2 (materiais do workshop) e a #3 (ajustes da verificação final), todas mescladas. A ao vivo vai ser a **#4**. Anotar na cola o número que vier depois do último.
 - [ ] **PR de reserva:** a PR #1 (skill `/review-landing`), já mesclada com CI verde, para mostrar com o histórico se a ao vivo falhar.
 - [ ] Cartão **"PR ao vivo na aula"** no quadro demo, pronto para receber o link da PR.
 
