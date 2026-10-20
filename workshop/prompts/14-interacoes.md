@@ -2,7 +2,7 @@
 
 > Colocar na página as interações que o visitante usa com as mãos (botões, menu, acordeão, formulário, estados de hover e foco), com resposta clara, uso pelo teclado e bom comportamento no celular.
 >
-> Ao vivo no workshop: sim (slide P7, junto com a etapa 13). O Roberto pede uma ou duas interações no Projeto B; quem tem notebook escolhe uma da própria lista.
+> Ao vivo no workshop: não (material de apoio / para casa). Faça no seu projeto depois da landing page (etapa 10), uma interação da sua lista por vez.
 
 ## Configuração recomendada
 
@@ -50,6 +50,9 @@ RESTRIÇÕES
   Se o projeto já usa GSAP, ele pode ser usado em micro-animações.
 - Use <button> para ações e <a> para navegação. Nada de <div> clicável.
 - Não sequestre o scroll: nada de travar a rolagem ou mudar a velocidade dela.
+- Se a interação precisar de conteúdo que ainda não existe (ex.: o roteiro de um
+  destino), escreva-o marcado como "de exemplo", confira se bate com o resto da
+  página (durações, números, nomes) e me mostre antes de seguir.
 - Uma interação por vez: faça, me explique como testar e espere meu OK antes da próxima.
 
 FERRAMENTAS PERMITIDAS
@@ -67,6 +70,10 @@ REQUISITOS TÉCNICOS
 - Movimento: transições curtas (150 a 300 ms) em transform e opacity. Dentro de
   @media (prefers-reduced-motion: reduce), a mudança acontece sem animação.
 - Acordeão: prefira <details> e <summary> se atenderem ao visual.
+- Se o projeto usa ScrollTrigger e a interação muda a altura da página (painel que
+  abre, acordeão, <details>), chame ScrollTrigger.refresh() depois de abrir e de
+  fechar (no <details>, no evento toggle). Sem isso, o pin e o scrub das seções
+  que vêm depois ficam desalinhados.
 - Formulário (se houver): rótulo visível em cada campo, validação nativa (required,
   type="email"), mensagem de erro em texto. Site estático não tem servidor: o envio vai
   para um link (WhatsApp, e-mail) ou para um serviço de formulário que eu vou escolher.
@@ -135,3 +142,11 @@ Para ver o que mudou no código: `git diff --stat` (lista de arquivos) e `git di
 - **O menu abre, mas não fecha com Esc, ou o foco fica escondido atrás dele** → peça um ouvinte de Esc e que o foco volte ao botão que abriu o menu.
 - **O clique não faz nada no elemento novo** → abra o Console. Em geral o script rodou antes de o elemento existir, ou o seletor está errado. Cole o erro para o Claude (etapa 16).
 - **Funciona no mouse e é impossível no teclado** → alguém tirou o contorno de foco (`outline: none`). Peça para restaurar com `:focus-visible`.
+- **Depois de abrir um painel, a animação de scroll começa ou termina no lugar errado** → a página ficou mais alta e o ScrollTrigger guardou as medidas antigas. Peça um `ScrollTrigger.refresh()` ao abrir e ao fechar.
+- **O texto novo contradiz o resto da página** ("uma semana de trilha" no cartão, 3 dias no roteiro) → peça para conferir números e durações entre o cartão e o conteúdo que abre. A revisão da etapa 15 também pega isso.
+
+## Notas do ensaio (19/10/2026)
+
+- Tema agência de viagens: 2,3 min para três interações (roteiro que abre no cartão, perguntas em `<details>` e botão do WhatsApp que cita o destino). Funcionaram com Enter, Espaço e clique em 390 e 1440 px, sem erros. O "espere meu OK" foi simulado.
+- Abrir o roteiro deixou a página mais alta e desalinhou o pin do mapa. Foi preciso um `ScrollTrigger.refresh()` no clique.
+- Os roteiros de Portugal e do Japão não existiam e foram escritos como exemplo. Um deles contradisse o cartão ("uma semana de trilha" contra 3 dias), e a revisão da etapa 15 pegou.

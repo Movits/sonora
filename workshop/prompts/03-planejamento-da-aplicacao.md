@@ -2,7 +2,7 @@
 
 > Pedir ao Claude um plano completo antes de qualquer linha de código, revisar e só então aprovar. No modo Plan ele lê, pensa e propõe, mas não edita nada até você dizer "pode fazer".
 >
-> Ao vivo no workshop: não (material para casa). Se houver tempo, o modo Plan pode aparecer rapidamente no slide P2, junto com a stack e a estrutura. Faça o plano completo no seu projeto antes de construir.
+> Ao vivo no workshop: sim (slide P2, cerca de 4 min). O Roberto planeja o Projeto B no modo Plan, com Opus 5.5 e effort high, e só salva o `docs/plano.md` depois de aprovar. Para os alunos é opcional: rodar a versão curta sobre o próprio brief e só ler o plano; aprovar fica para casa.
 
 ## Configuração recomendada
 

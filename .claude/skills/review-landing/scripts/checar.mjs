@@ -91,13 +91,19 @@ async function conferirSite(url) {
 
 // ---------------------------------------------------------------------------
 // 2. Funções que rodam DENTRO da página (no navegador).
-//    O Playwright copia só o texto de cada função para o navegador; por isso cada uma
-//    define o próprio "descrever" em vez de usar uma função de fora.
+//    O Playwright copia só o texto de cada função para o navegador, então uma função de fora
+//    não existe lá. Por isso "descrever" é definido uma vez em window.__descrever (definirDescrever,
+//    chamado logo depois de abrir a página) e as outras funções usam esse.
 // ---------------------------------------------------------------------------
+
+// Nome curto de um elemento para o relatório: tag#id.classe1.classe2
+function definirDescrever() {
+  window.__descrever = (el) => el.tagName.toLowerCase() + (el.id ? '#' + el.id : '') + [...el.classList].slice(0, 2).map((c) => '.' + c).join('')
+}
 
 // Logo depois de carregar: imagens, títulos e nomes de campos e botões
 function medirTopo() {
-  const descrever = (el) => el.tagName.toLowerCase() + (el.id ? '#' + el.id : '') + [...el.classList].slice(0, 2).map((c) => '.' + c).join('')
+  const descrever = window.__descrever
   const imagens = [...document.images].map((img) => {
     const r = img.getBoundingClientRect()
     return {
@@ -126,7 +132,7 @@ function medirTopo() {
 // ou empurrados para fora de uma caixa que corta o excesso (overflow: hidden).
 // soPrimeiraTela = true olha só o que aparece sem rolar; false olha a página inteira.
 function textosInvisiveis(soPrimeiraTela) {
-  const descrever = (el) => el.tagName.toLowerCase() + (el.id ? '#' + el.id : '') + [...el.classList].slice(0, 2).map((c) => '.' + c).join('')
+  const descrever = window.__descrever
   const achados = []
   const vistos = new Set()
   const andador = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT)
@@ -141,17 +147,27 @@ function textosInvisiveis(soPrimeiraTela) {
     if (soPrimeiraTela && (r.bottom <= 0 || r.top >= innerHeight || r.right <= 0 || r.left >= innerWidth)) continue
     let opacidade = 1
     let motivo = ''
+    // Um elemento absolute só é recortado pelo overflow do ancestral posicionado mais próximo
+    // (o "bloco de contenção") e dos de cima dele; um fixed escapa de todos.
+    let escapa = null // null | 'absolute' | 'fixed'
     for (let a = el; a; a = a.parentElement) {
       const cs = getComputedStyle(a)
       opacidade *= Number(cs.opacity)
-      const cortaX = /hidden|clip/.test(cs.overflowX)
-      const cortaY = /hidden|clip/.test(cs.overflowY)
-      if (a !== el && (cortaX || cortaY)) {
-        const c = a.getBoundingClientRect()
-        const foraX = cortaX && (r.right <= c.left || r.left >= c.right)
-        const foraY = cortaY && (r.bottom <= c.top || r.top >= c.bottom)
-        if (foraX || foraY) motivo = `fora da área visível de ${descrever(a)} (overflow)`
+      if (a !== el && escapa !== 'fixed') {
+        const posicionado = cs.position !== 'static'
+        const recorta = escapa !== 'absolute' || posicionado
+        const cortaX = recorta && /hidden|clip/.test(cs.overflowX)
+        const cortaY = recorta && /hidden|clip/.test(cs.overflowY)
+        if (cortaX || cortaY) {
+          const c = a.getBoundingClientRect()
+          const foraX = cortaX && (r.right <= c.left || r.left >= c.right)
+          const foraY = cortaY && (r.bottom <= c.top || r.top >= c.bottom)
+          if (foraX || foraY) motivo = `fora da área visível de ${descrever(a)} (overflow)`
+        }
+        if (escapa === 'absolute' && posicionado) escapa = null // daqui para cima o recorte volta a valer
       }
+      if (cs.position === 'fixed') escapa = 'fixed'
+      else if (cs.position === 'absolute' && escapa === null) escapa = 'absolute'
     }
     if (getComputedStyle(el).visibility !== 'visible') motivo = 'visibility: hidden'
     else if (opacidade < 0.1) motivo = `opacidade ${opacidade.toFixed(2)}`
@@ -162,10 +178,12 @@ function textosInvisiveis(soPrimeiraTela) {
 
 // Depois de rolar a página inteira: imagens que falharam e quem passa da largura da tela
 function medirDepoisDeRolar(sobraMaxima) {
-  const descrever = (el) => el.tagName.toLowerCase() + (el.id ? '#' + el.id : '') + [...el.classList].slice(0, 2).map((c) => '.' + c).join('')
+  const descrever = window.__descrever
   const src = (img) => (img.currentSrc || img.getAttribute('src') || '').replace(location.origin, '').slice(0, 80)
   const imagens = [...document.images]
-  const quebradas = imagens.filter((i) => i.complete && i.naturalWidth === 0 && src(i)).map(src)
+  // SVG sem width/height próprios pode ter naturalWidth 0 mesmo carregado: não conta como quebrado
+  const ehSvg = (i) => /\.svg(\?|#|$)/i.test(src(i)) || src(i).startsWith('data:image/svg')
+  const quebradas = imagens.filter((i) => i.complete && i.naturalWidth === 0 && src(i) && !ehSvg(i)).map(src)
   const naoCarregadas = imagens.filter((i) => !i.complete).map(src)
   const culpados = []
   if (sobraMaxima > 0) {
@@ -200,7 +218,7 @@ function guardarEstilosSemFoco() {
 }
 
 function lerFocoAtual() {
-  const descrever = (el) => el.tagName.toLowerCase() + (el.id ? '#' + el.id : '') + [...el.classList].slice(0, 2).map((c) => '.' + c).join('')
+  const descrever = window.__descrever
   const el = document.activeElement
   if (!el || el === document.body) return null
   window.__jaFocados ||= new WeakSet()
@@ -332,6 +350,7 @@ async function revisarTela(navegador, tela) {
   try {
     // Primeira tela, como o visitante vê ao chegar
     await pagina.goto(URL_ALVO, { waitUntil: 'load', timeout: 30_000 })
+    await pagina.evaluate(definirDescrever)
     await pagina.waitForTimeout(1500) // tempo para as animações de entrada terminarem
     await capturar(`${tela.nome}-1.jpg`)
     const topo = await pagina.evaluate(medirTopo)
@@ -410,6 +429,7 @@ async function revisarVariacao(navegador, { nome, tela, opcoes, soPrimeiraTela }
   const pagina = await contexto.newPage()
   try {
     await pagina.goto(URL_ALVO, { waitUntil: 'load', timeout: 30_000 })
+    await pagina.evaluate(definirDescrever)
     await pagina.waitForTimeout(1000)
     await pagina.screenshot({ path: join(PASTA, `${nome}.jpg`), type: 'jpeg', quality: 70 })
     return { captura: `${nome}.jpg`, ...(await pagina.evaluate(textosInvisiveis, soPrimeiraTela)) }

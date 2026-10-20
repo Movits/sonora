@@ -2,7 +2,7 @@
 
 > Deixar as pastas do projeto organizadas antes de construir e criar o CLAUDE.md: o "manual da casa" que o Claude lê no começo de toda sessão (comandos, estrutura e regras do projeto).
 >
-> Ao vivo no workshop: sim (slide P2, junto com a etapa 04). O Roberto organiza as pastas e roda o `/init` no Projeto B; para os alunos é opcional.
+> Ao vivo no workshop: sim (slide P3, cerca de 3 min). O Roberto abre a pasta base pronta do Projeto B (Vite, GSAP, Git e testes já instalados), explica a árvore e roda o `/init` para gerar o CLAUDE.md. Sem a pasta base, os comandos de criação (`npm create vite`, `npm install`, `npm install gsap` e `git init -b main`) são o plano B. Para os alunos é opcional.
 
 ## Configuração recomendada
 
@@ -37,6 +37,8 @@ Projeto do site de [NOME_DA_MARCA], criado com
 "npm create vite@latest <pasta> -- --template vanilla", com gsap já instalado.
 Stack: [STACK].
 Leia package.json, index.html, a pasta src/ e docs/plano.md (se existir).
+Se o brief e os requisitos ficaram fora desta pasta (ex.: ../docs), proponha
+movê-los para docs/ e espere meu OK.
 Seções previstas: [FUNCIONALIDADES].
 
 OBJETIVO
@@ -56,6 +58,8 @@ RESTRIÇÕES
 FERRAMENTAS PERMITIDAS
 - Ler e editar arquivos desta pasta; criar pastas.
 - Rodar npm run dev e npm run build.
+- Só no fim e com meu OK: git init -b main (só se ainda não houver git),
+  git add <arquivo> e git commit.
 
 REQUISITOS TÉCNICOS
 - Árvore:
@@ -70,8 +74,17 @@ REQUISITOS TÉCNICOS
   docs/                     brief, requisitos, plano
 - vite.config.js com base "/<nome-do-repositório>/" para o GitHub Pages.
   Pergunte o nome do repositório se não souber.
+- No mesmo vite.config.js, appType: "mpa". No padrão ("spa"), o Vite responde
+  200 com o index.html quando um arquivo não existe, e a imagem quebrada não
+  aparece como 404 na aba Network nem nos testes.
 - .gitignore com node_modules, dist, .env e _originais/
   (pasta das imagens e vídeos originais, pesados demais para o git).
+- .gitattributes com "* text=auto eol=lf" e as imagens, vídeos e fontes como
+  binary (*.webp binary, *.png binary...). Sem ele, o Git do Windows mostra
+  dezenas de avisos "LF will be replaced by CRLF" a cada git add.
+- Se a pasta ainda não for um repositório git: depois do build passar, proponha
+  git init -b main e um primeiro commit "chore: cria o projeto". Assim cada etapa
+  seguinte pode terminar com um commit pequeno (etapa 20).
 - Arquivos de public/: no HTML e no CSS, caminho absoluto ("/img/foto.webp"),
   que o Vite ajusta ao base no build. No JavaScript, sempre com
   import.meta.env.BASE_URL (ali o Vite não ajusta nada).
@@ -94,7 +107,7 @@ COMO VALIDAR
 
 ### Passo intermediário: rode o `/init`
 
-Digite `/init` na caixa do Claude (Desktop ou CLI). Ele lê o projeto e cria o `CLAUDE.md` na raiz. Se já existir um, confira com `/diff` o que ele mudou antes de seguir.
+Digite `/init` na caixa do Claude (Desktop ou CLI). Ele lê o projeto e cria o `CLAUDE.md` na raiz. Se já existir um, confira com `/diff` o que ele mudou antes de seguir. Se o `/init` não estiver disponível (por exemplo, quando o Claude roda dentro de outro agente), peça para ele escrever o `CLAUDE.md` direto no formato do Passo B.
 
 ### Passo B: enxugar o CLAUDE.md
 
@@ -120,7 +133,7 @@ Mostre o diff antes de salvar.
 ## Versão curta (para o slide)
 
 ```text
-(Plan) Organize o projeto: index.html com uma <section id> por seção; src/main.js; src/sections/<secao>.js com init(); src/styles/tokens.css; public/img, frames, fonts; docs/. vite.config.js com base do GitHub Pages. Nada novo no package.json. Rode npm run build. Depois: /init e enxugue o CLAUDE.md (até 60 linhas: comandos, estrutura, regras).
+(Plan) A pasta base já tem git (main), vite.config.js (base /meu-site/, appType "mpa"), tokens.css, base.css, public/ e docs/: não recrie nada. Crie só uma <section id> por seção no index.html e um src/sections/<secao>.js com init() para cada uma, chamados no src/main.js. Nada novo no package.json. Rode npm run build. Depois: /init e enxugue o CLAUDE.md (até 60 linhas: comandos, estrutura, regras). Sem a pasta base, use o prompt completo.
 ```
 
 ## Resultado esperado e validação
@@ -152,6 +165,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   base: "/meu-site/", // troque pelo nome do seu repositório
+  appType: "mpa", // arquivo que não existe responde 404, como no GitHub Pages
 });
 ```
 
@@ -217,3 +231,9 @@ Para editar depois, use `/memory` ou peça ao Claude. Dentro do CLAUDE.md, `@cam
 - **Imagens funcionam no computador e somem depois de publicar** → caminho escrito à mão no JavaScript (`"/img/foto.webp"`), que ignora o `base`, ou diferença entre maiúscula e minúscula no nome. No JavaScript, use `import.meta.env.BASE_URL`; em todo lugar, nomes em minúsculas.
 - **O Claude apagou um arquivo que você queria** → no Passo A ele precisa listar antes de apagar. Se já apagou, `/rewind` volta o código (os checkpoints não desfazem o que foi feito por comando no terminal; no app desktop, conferir se o `/rewind` aparece), e o git é a rede de segurança definitiva.
 - **As regras do CLAUDE.md são ignoradas** → confira se o arquivo está na raiz da pasta aberta no Claude e se a regra está escrita como ordem clara ("Não adicionar dependências sem perguntar"), não como sugestão.
+
+## Notas do ensaio (19/10/2026)
+
+- Tema agência de viagens: 1,8 min. Árvore, `base: '/andara-viagens/'`, `.gitignore` e um CLAUDE.md de 36 linhas saíram certos, com build e console limpos. O brief e os requisitos estavam em `../docs` e foram movidos para `docs/`.
+- O ensaio rodou dentro de um subagente, onde o `/init` não funciona: o CLAUDE.md foi escrito direto no formato do Passo B. O `appType: "mpa"`, o `.gitattributes` e o `git init` foram trazidos para cá por causa do que apareceu nas etapas 17, 19 e 20.
+- O Playwright 1.64.1 desta máquina procura um Chromium próprio (chromium-1248) que não foi baixado: script sem `channel: 'chrome'` falha com "Executable doesn't exist".

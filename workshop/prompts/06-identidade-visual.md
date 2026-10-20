@@ -2,17 +2,17 @@
 
 > Definir como a marca "se veste": cores, fontes, espaços, estilo de imagem e um logotipo simples. Tudo vira variáveis CSS (design tokens) que o resto do site usa, para que mudar uma cor seja mudar uma linha.
 >
-> Ao vivo no workshop: sim (slide P3). O Roberto cria a identidade do Projeto B com a skill frontend-design. Quem tem notebook pode só preencher [ESTILO_VISUAL] e [PALETA_DE_CORES] e levar direto para a landing page (etapa 10); a versão completa fica para casa.
+> Ao vivo no workshop: sim (slide P4, cerca de 7 min). O Roberto cria a identidade do Projeto B com a skill frontend-design. Quem tem notebook pode só preencher [ESTILO_VISUAL] e [PALETA_DE_CORES] e levar direto para a landing page (etapa 10); a versão completa fica para casa.
 
 ## Configuração recomendada
 
 | Ferramenta (onde abrir) | Modelo | Effort | Modo | Skill | Conector |
 |---|---|---|---|---|---|
-| Claude Desktop › aba Code, na pasta do projeto (ou Claude Code CLI) | Opus 5.5 | high na proposta; medium nos ajustes | Plan → Accept edits | frontend-design (anthropics/skills, Apache 2.0) | nenhum (Google Drive opcional, se já existir manual de marca) |
+| Claude Desktop › aba Code, na pasta do projeto (ou Claude Code CLI) | Opus 5.5 na proposta (Plan) → Sonnet 5.5 nos arquivos | high na proposta; medium nos ajustes | Plan → Accept edits | frontend-design (anthropics/skills, Apache 2.0) | nenhum (Google Drive opcional, se já existir manual de marca) |
 
 Por quê:
 
-- **Opus 5.5:** identidade é decisão de design com muitas variáveis (contraste, legibilidade, personalidade). O modelo mais forte erra menos no "gosto".
+- **Opus 5.5 para propor as duas direções; depois da escolha, Sonnet 5.5 cria os arquivos (regra da aula: Sonnet constrói):** identidade é decisão de design com muitas variáveis (contraste, legibilidade, personalidade), e o modelo mais forte erra menos no "gosto". Depois da escolha, troque para o Sonnet 5.5: criar os tokens é construção.
 - **High na proposta, medium nos ajustes:** pensar as duas direções pede mais raciocínio; trocar um tom de cor, não.
 - **Plan → Accept edits:** você escolhe a direção antes de qualquer arquivo ser criado. Depois, o Claude cria os arquivos sem pedir a cada um.
 - **frontend-design:** skill oficial da Anthropic que orienta escolhas visuais menos genéricas. Para instalar, copie a pasta da skill do repositório `github.com/anthropics/skills` para `.claude/skills/frontend-design/` do projeto (conferir o passo a passo no README antes da aula). Confira com `/skills` se ela apareceu.
@@ -50,15 +50,19 @@ RESTRIÇÕES
 - Fontes dentro do projeto (.woff2 em public/fonts, ou um pacote @fontsource
   instalado pelo npm depois da minha aprovação), nada de link para CDN.
 - Contraste mínimo (WCAG AA): 4,5:1 para texto normal; 3:1 para texto grande
-  e para bordas de botão. Calcule e mostre a razão de cada par texto/fundo.
+  e para bordas de botão. Calcule e mostre a razão de cada par texto/fundo,
+  incluindo o texto do botão principal sobre a cor de destaque (branco sobre
+  laranja ou amarelo costuma reprovar).
 - Evite os clichês de "site feito por IA": degradê roxo, vidro fosco em tudo,
-  emoji como ícone, sombra exagerada.
+  emoji como ícone, sombra exagerada. Evite também o visual de sempre do segmento
+  (ex.: turismo = areia + serifada + laranja): diga qual é e como cada direção foge dele.
 - Logotipo só tipográfico (o nome escrito com a fonte da marca), feito em HTML/CSS.
 
 FERRAMENTAS PERMITIDAS
 - Ler arquivos do projeto; ativar a skill frontend-design se estiver instalada.
 - Depois da escolha: criar e editar src/styles/tokens.css, docs/identidade.md
-  e estilo.html.
+  e estilo.html (e o JavaScript mínimo que ele precisar para carregar estilos
+  e fontes, ex.: src/estilo.js).
 - Rodar npm run dev e npm run build.
 
 REQUISITOS TÉCNICOS
@@ -80,6 +84,8 @@ Depois que eu escolher:
 - docs/identidade.md com as decisões e as razões de contraste.
 - estilo.html: página de conferência (só para o npm run dev) mostrando
   cores, títulos, parágrafo, botão, link e cartão usando os tokens.
+  Com <link rel="icon"> (o mesmo do index.html): sem ele, o navegador pede
+  /favicon.ico e mostra um 404 no console.
 
 RESULTADO ESPERADO
 Duas direções para eu escolher; depois, os três arquivos criados e o endereço
@@ -140,6 +146,14 @@ Como conferir:
 ## Problemas comuns
 
 - **Ficou com "cara de IA" (degradê roxo, vidro, ícones de emoji)** → mostre referências concretas e repita a lista do que é proibido. Peça "mais contido, menos efeitos".
-- **Contraste reprovado** → peça para ajustar só os tokens (clarear o texto ou escurecer o fundo) e recalcular. Não aceite "fica bom no meu monitor".
+- **Contraste reprovado** → peça para ajustar só os tokens (clarear o texto ou escurecer o fundo) e recalcular. Não aceite "fica bom no meu monitor". No botão de cor quente, o texto escuro costuma passar onde o branco reprova.
+- **Ficou com a cara de todo site do segmento** → peça para trocar uma peça só (em geral a fonte dos títulos) e manter o resto. Mudar tudo de uma vez perde o que estava bom.
+- **Erro 404 de `favicon.ico` no console** → a página nova não tem `<link rel="icon">`. Não é bug do site: peça para pôr o mesmo ícone do `index.html`.
 - **O Claude colou um link do Google Fonts no HTML** → peça para baixar os `.woff2` (com sua licença), colocar em `public/fonts` e usar `@font-face`, ou para instalar o pacote `@fontsource` da fonte pelo npm. Link externo quebra sem internet.
 - **A paleta lembra demais uma marca famosa** → peça outra cor de destaque. Em marca fictícia, parecer cópia confunde e pode dar problema.
+
+## Notas do ensaio (19/10/2026)
+
+- Tema agência de viagens, com a skill frontend-design: 2,9 min. Saíram duas direções, e a escolhida juntou a paleta da A com a tipografia da B. Fontes OFL pelo npm (@fontsource-variable) e 11 pares de contraste, todos AA.
+- No primeiro cálculo, o botão reprovou: azul sobre laranja deu 4,47:1 e branco sobre laranja, 3,03:1. Passou com #10283e sobre #f47a42 (5,53:1). O `estilo.html` novo gerou um 404 de `favicon.ico` até ganhar o `<link rel="icon">`.
+- Areia + serifada + laranja é o visual padrão de turismo, e o brief empurra para ele. Trocar só a fonte dos títulos por uma grotesca bastou para fugir disso.

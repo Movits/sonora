@@ -2,7 +2,7 @@
 
 > Publicar o site na internet de graça, com endereço público, e fazer cada merge na `main` atualizar o site sozinho (GitHub Pages via GitHub Actions). Para quem não usa Git, há a alternativa de arrastar a pasta para o Netlify Drop.
 >
-> Ao vivo no workshop: sim (slide P12). O Roberto mostra o deploy do SONORA em https://movits.github.io/sonora/ e o do Projeto B saindo depois do merge.
+> Ao vivo no workshop: sim (slide P12, cerca de 8 min). O Roberto mostra o deploy do SONORA em https://movits.github.io/sonora/ e o do Projeto B saindo depois do merge.
 
 ## Configuração recomendada
 

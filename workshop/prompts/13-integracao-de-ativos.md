@@ -2,7 +2,7 @@
 
 > Levar imagens, quadros, vídeos e fontes para dentro do site do jeito certo: no formato e no tamanho certos, na pasta certa, com texto alternativo e sem quebrar depois de publicar. É a diferença entre "funciona no meu computador" e "funciona para todo mundo".
 >
-> Ao vivo no workshop: sim (slide P7, junto com a etapa 14). O Roberto coloca 2 ou 3 imagens prontas no Projeto B; para os alunos é opcional.
+> Ao vivo no workshop: não como prática própria (material de apoio / para casa). No P6 (landing page), o kit de imagens do tema já vai para `public/img`; formatos, pesos, quadros e fontes ficam para casa.
 
 ## Configuração recomendada
 
@@ -41,7 +41,9 @@ CONTEXTO
 Site de [NOME_DA_MARCA]. Stack: [STACK].
 Leia CLAUDE.md, docs/plano.md (lista de ativos), docs/imagens.md e docs/video.md,
 se existirem.
-Os originais aprovados estão em _originais/ (imagens e vídeos).
+Os originais aprovados estão em _originais/ (imagens e vídeos). Se não estiverem,
+pergunte onde estão e copie para _originais/ (sem mover nem alterar a origem)
+antes de começar.
 Animação que usa ativos: [ANIMAÇÃO_DESEJADA].
 
 OBJETIVO
@@ -71,8 +73,12 @@ FERRAMENTAS PERMITIDAS
 REQUISITOS TÉCNICOS
 - Imagens: WebP. Hero com duas larguras (1920 e 960 px) usando srcset e sizes.
   Outras imagens na maior largura em que aparecem (no máximo 2x para telas nítidas).
-- Toda <img> com width e height (evita a página "pular" ao carregar)
-  e alt descritivo (alt="" se for decorativa).
+- Se a proporção de uso (ex.: cartão 4:5) for diferente da foto, recorte com crop,
+  não só com scale. Mostre na tabela o deslocamento de cada recorte e confira a
+  imagem gerada, para não cortar o assunto principal (pessoa, prédio, produto).
+- Toda <img> com width e height (evita a página "pular" ao carregar), iguais às
+  medidas reais do arquivo gerado (confira com ffprobe: a foto nem sempre é 16:9
+  exato), e alt descritivo (alt="" se for decorativa).
 - Hero: sem loading="lazy" e com fetchpriority="high".
   As demais: loading="lazy" e decoding="async".
 - Sequência de quadros: conferir que a numeração não tem buracos e que o código
@@ -91,6 +97,8 @@ o código atualizado, docs/ativos.md e um resumo dos 10 maiores arquivos do buil
 CRITÉRIOS DE ACEITAÇÃO
 - [CRITÉRIOS_DE_ACEITAÇÃO]
 - Nenhum 404 na aba Network, nem no npm run dev nem no npm run preview.
+  Se o vite.config.js não tiver appType: "mpa", o arquivo que falta aparece como
+  200 com content-type text/html: me avise e confira também o content-type.
 - Nenhum arquivo de dist/ acima de 25 MiB (limite de alguns serviços de
   hospedagem) e nada perto de 50 MB (o GitHub alerta acima disso).
 - Toda imagem tem alt (ou alt="" justificado).
@@ -116,6 +124,13 @@ Comandos que o Claude deve propor (você aprova cada um):
 # Converter um PNG grande em WebP de 1920 px (e uma versão de 960 px para o celular)
 ffmpeg -i _originais/img/hero.png -vf "scale=1920:-2" -c:v libwebp -quality 80 public/img/hero-1920.webp
 ffmpeg -i _originais/img/hero.png -vf "scale=960:-2" -c:v libwebp -quality 80 public/img/hero-960.webp
+
+# Foto 16:9 num cartão 4:5: recorta a largura (ih*4/5) e escolhe de onde cortar.
+# 0.3 = 30% do que sobra fica à esquerda; ajuste olhando a foto (0 = borda esquerda, 1 = direita).
+ffmpeg -i _originais/img/destino.png -vf "crop=ih*4/5:ih:(iw-ow)*0.3:0,scale=800:-2" -c:v libwebp -quality 80 public/img/destino-800.webp
+
+# Medidas reais do arquivo gerado (para o width e o height do HTML)
+ffprobe -v error -show_entries stream=width,height -of csv=p=0 public/img/hero-1920.webp
 ```
 
 Como a imagem principal fica no HTML:
@@ -136,7 +151,7 @@ Como conferir:
 
 | O que fazer | O que esperar |
 |---|---|
-| F12 › **Network** › filtro **Img** › recarregar | todas as linhas com Status 200; nenhum 404 |
+| F12 › **Network** › filtro **Img** › recarregar | todas as linhas com Status 200; nenhum 404. Se uma imagem não aparece mas está com 200, clique na linha › Headers: `content-type: text/html` quer dizer arquivo que não existe (Vite sem `appType: "mpa"`) |
 | F12 › **Network** › coluna **Size** | hero com algumas centenas de KB, não vários MB |
 | `npm run build` e listar os maiores arquivos (abaixo) | nada perto dos limites; a pasta de quadros como esperado |
 | `npm run preview` e abrir o endereço | tudo igual ao `npm run dev`, com o subcaminho |
@@ -167,6 +182,14 @@ Get-ChildItem dist -Recurse -File | Sort-Object Length -Descending | Select-Obje
 ## Problemas comuns
 
 - **Imagem aparece no computador e some depois de publicar** → caminho montado no JavaScript sem `import.meta.env.BASE_URL`, ou maiúscula no nome (`Hero.webp` × `hero.webp`). Veja o 404 na aba Network e corrija o caminho ou o nome.
+- **A imagem não aparece, mas a Network não mostra 404** → no modo padrão, o Vite devolve o `index.html` com status 200 no lugar do arquivo que falta. Clique na linha da imagem › Headers (`content-type: text/html` numa imagem = arquivo inexistente) ou ponha `appType: "mpa"` no `vite.config.js` (etapa 05).
+- **O cartão cortou a cabeça da pessoa ou metade do prédio** → o recorte foi feito só com `scale` ou com o corte no centro. Peça um `crop` com deslocamento escolhido olhando a foto.
 - **A página "pula" enquanto carrega** → falta `width` e `height` nas imagens (ou `aspect-ratio` no CSS). Peça para adicionar em todas.
 - **`git push` recusado ou muito lento por causa de arquivo grande** → um original foi parar fora de `_originais/` ou o `.gitignore` não pegou. Tire o arquivo do commit antes de enviar e peça ajuda ao Claude para conferir o `.gitignore`.
 - **A sequência de quadros não bate (animação acaba antes ou fica parada)** → o total de quadros no código é diferente do número de arquivos na pasta. Conte os arquivos e alinhe o número no código.
+
+## Notas do ensaio (19/10/2026)
+
+- Tema agência de viagens: 3,1 min, com 7 WebP feitos com ffmpeg (o maior, o hero de 1920 px, com 368 KB), `docs/ativos.md` e nenhum 404 no dev nem no preview. Os originais não estavam em `_originais/` e foram copiados do kit.
+- Os cartões pedem 4:5 e as fotos são 16:9. Foi preciso usar `crop` com um deslocamento escolhido para cada foto, para não cortar a pessoa nem o templo. O hero saiu com 1920×1086, porque o original (2688×1520) não é 16:9 exato.
+- Sem `appType: "mpa"`, o Vite responde 200 (text/html) para imagem que não existe, e o "nenhum 404" não prova nada (achado da etapa 17).

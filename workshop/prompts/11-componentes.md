@@ -2,7 +2,7 @@
 
 > Transformar as partes que se repetem (botão, cartão, menu, perguntas frequentes) em componentes: peças de Lego com um formato fixo, que você encaixa em vários lugares e altera num lugar só.
 >
-> Ao vivo no workshop: não. Faça em casa ou se sobrar tempo depois da landing page.
+> Ao vivo no workshop: não (material de apoio / para casa). Faça no seu projeto depois da landing page.
 
 ## Configuração recomendada
 

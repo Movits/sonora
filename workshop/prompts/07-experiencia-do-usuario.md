@@ -2,7 +2,7 @@
 
 > Desenhar o caminho do visitante, do primeiro segundo até o clique no botão principal, antes de pensar em efeitos. UX (experiência do usuário) é como uma boa loja física: a pessoa entra, entende onde está, acha o que quer e sabe onde é o caixa.
 >
-> Ao vivo no workshop: não. Faça em casa, antes de construir a landing page, ou use como revisão depois dela.
+> Ao vivo no workshop: não (material de apoio / para casa). Faça antes de construir a landing page, ou use como revisão depois dela.
 
 ## Configuração recomendada
 

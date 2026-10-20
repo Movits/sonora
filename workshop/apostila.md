@@ -18,6 +18,7 @@
   - "Conferir na sua versão" quer dizer que aquilo pode mudar entre versões do Claude Code.
   - Preços e limites têm data (19/10/2026). Eles mudam. Confira antes de contratar.
 - **Termos em inglês:** a área usa muitos. Aqui eles aparecem em inglês, com a explicação em português ao lado.
+- **Prompts prontos:** [prompts/README.md](prompts/README.md). **Termos:** [glossario.md](glossario.md).
 
 ### O que instalar para refazer em casa
 
@@ -133,31 +134,50 @@ Comandos básicos de navegação (funcionam no PowerShell, no Git Bash e no Term
 
 ### A árvore real do SONORA
 
-Esta é a estrutura do repositório do Projeto A. A versão mais atual está no GitHub. Pode haver também um ou dois arquivos de configuração na raiz (por exemplo, `vite.config.js` e `playwright.config.js`).
+Esta é a estrutura do repositório do Projeto A (conferida em 19/10, depois da PR #1). A versão mais atual está no GitHub.
 
 ```text
 sonora/
 ├── .claude/
+│   ├── settings.json           configuração do Claude Code no projeto: modelo, effort, modo e permissões
+│   ├── launch.json             servidores de pré-visualização do app (dev e preview)
 │   └── skills/
 │       └── review-landing/     skill do projeto (capítulo 11)
-│           └── SKILL.md
+│           ├── SKILL.md        a receita da revisão
+│           ├── README.md       explicação da skill para pessoas
+│           └── scripts/
+│               └── checar.mjs  abre o site no Chrome e mede (console, imagens, peso, foco...)
 ├── .github/
-│   └── workflows/              automações do GitHub Actions: testes (CI) e deploy no Pages
+│   ├── workflows/              automações do GitHub Actions: ci.yml (testes) e pages.yml (deploy no Pages)
+│   └── pull_request_template.md  modelo da descrição de toda PR
+├── midia/
+│   └── explosao.mp4            o vídeo de onde saíram os quadros do exploded view
 ├── node_modules/               GERADO pelo npm install (não vai para o Git)
 ├── public/                     arquivos servidos como estão
-│   ├── frames/                 cerca de 120 quadros .webp do exploded view (versões desktop e mobile)
+│   ├── frames/                 quadros .webp do exploded view: 121 em desktop/ e 60 em mobile/
 │   └── img/                    imagens do site
+├── scripts/
+│   ├── extrair-quadros.mjs     extrai os quadros do vídeo com o ffmpeg (npm run frames)
+│   └── capturas.mjs            tira capturas de tela do site em três larguras
 ├── src/                        o código que você escreve
 │   ├── lib/                    funções de apoio
 │   ├── sections/               um arquivo .js por seção da página
 │   ├── styles/                 os arquivos .css
 │   └── main.js                 ponto de partida do JavaScript
 ├── tests/                      testes automáticos com Playwright
+│   ├── site.spec.js            o site abre sem erros, cena, imagens, reserva, celular, movimento reduzido
+│   └── checar.spec.js          a skill /review-landing roda até o fim contra o site
 ├── workshop/                   esta apostila e os prompts da aula
+├── .env.example                modelo do .env, sem valores
+├── .gitignore                  o que o Git ignora
+├── .gitattributes              regras de fim de linha e de arquivos binários
 ├── index.html                  a página (estrutura e textos)
 ├── package.json                lista de dependências e de comandos
 ├── package-lock.json           GERADO: versões exatas instaladas (vai para o Git)
+├── playwright.config.js        configuração dos testes
+├── vite.config.js              configuração do Vite (base: '/sonora/')
 ├── CLAUDE.md                   instruções para o Claude Code
+├── LICENSE                     licença MIT
 └── README.md                   explicação do projeto para pessoas
 ```
 
@@ -352,7 +372,7 @@ O SONORA é um site estático e não precisa de segredos. Se um dia precisar, o 
 {
   "name": "sonora",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "SONORA — site demonstrativo de uma marca fictícia de headphones premium (Workshop de IA WRW).",
   "scripts": {
@@ -370,7 +390,8 @@ O SONORA é um site estático e não precisa de segredos. Se um dia precisar, o 
   "devDependencies": {
     "@playwright/test": "^1.64.1",
     "vite": "^8.3.4"
-  }
+  },
+  "license": "MIT"
 }
 ```
 
@@ -400,7 +421,7 @@ No SONORA, os endereços terminam em `/sonora/` (`http://localhost:5173/sonora/`
 
 ### Mão na massa: criar o Projeto B
 
-Na aula, o Roberto faz isto na tela principal. Quem tiver notebook pode acompanhar e adaptar para a própria ideia. Cada passo leva de 5 a 10 minutos.
+Na aula, para não esperar a instalação, o Roberto parte de uma pasta base pronta, com a mesma estrutura: Vite, GSAP, testes e Git já instalados, sem nenhum conteúdo. Em casa, ou no seu notebook durante a aula, você cria o projeto do zero com os passos abaixo e adapta para a sua ideia. Cada passo leva de 5 a 10 minutos.
 
 **Passo 1 (5 min): criar o projeto.**
 
@@ -409,10 +430,11 @@ npm create vite@latest meu-site -- --template vanilla
 cd meu-site
 npm install
 npm install gsap
+git init -b main
 npm run dev
 ```
 
-Se o assistente do Vite fizer alguma pergunta, aceite o padrão. Abra o endereço que aparecer no terminal (normalmente <http://localhost:5173>).
+Se o assistente do Vite fizer alguma pergunta, aceite o padrão. O `git init -b main` cria o repositório já com a branch `main`: sem o `-b main`, muitos computadores criam a branch `master`, e o deploy no GitHub Pages espera a `main`. Abra o endereço que aparecer no terminal (normalmente <http://localhost:5173>).
 
 O modelo `vanilla` cria mais ou menos estes arquivos (os nomes podem variar com a versão do Vite):
 
@@ -1041,7 +1063,7 @@ Use `/compact` quando estiver **no meio** de uma tarefa longa e quiser continuar
 
 ### O quadro do Notion do workshop
 
-Na demo, o Roberto usa uma página privada, "Workshop IA · SONORA", com o quadro "Trabalho | SONORA".
+Na demo, o Roberto usa uma página privada, "Workshop IA · SONORA (demo)", com o quadro "Trabalho | SONORA".
 
 | Campo | O que guarda |
 |---|---|
@@ -1265,7 +1287,7 @@ O que pode quebrar. O que ficou de fora.
 
 ### O fluxo de trabalho da equipe
 
-O mesmo fluxo de um projeto real da equipe (WRW/MMM), aplicado ao SONORA:
+O mesmo fluxo de trabalho da equipe WRW, aplicado ao SONORA:
 
 ```text
 1.  Ideia ou pedido
@@ -1284,7 +1306,7 @@ Algumas etapas são manuais (ideia, merge, validação), outras assistidas pela 
 
 ### Exercício prático: do cartão ao deploy, em 13 passos
 
-Na aula, o Roberto faz isto na tela com o SONORA. Em casa, refaça com o seu Projeto B, num repositório seu. Se o projeto ainda não está no GitHub, crie o repositório com `gh repo create meu-site --public --source=. --push` (depois de `git init` e do primeiro commit).
+Na aula, o Roberto faz isto na tela com o SONORA. Em casa, refaça com o seu Projeto B, num repositório seu. Se o projeto ainda não está no GitHub, crie o repositório com `gh repo create meu-site --public --source=. --push` (depois de `git init -b main` e do primeiro commit).
 
 | Passo | O que fazer | Comando ou ação |
 |---|---|---|
