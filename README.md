@@ -6,6 +6,7 @@ dá para alcançar com um bom processo.
 
 - Site no ar: **https://movits.github.io/sonora/**
 - Materiais do workshop (prompts, apostila, glossário, guias): [`workshop/`](workshop/)
+- Oficina de Skills (23/10/2026): guia, kit de 3 skills e prompts em [`workshop/skills/`](workshop/skills/)
 
 > Nenhum produto é vendido. O botão "Reservar o meu" abre uma janela explicando que a loja é demonstrativa.
 

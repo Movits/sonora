@@ -1,6 +1,6 @@
 ---
 name: review-landing
-description: Revisão só de leitura de uma landing page ou site estático (HTML, CSS, JavaScript, Vite, GSAP). Roda o build, abre o site num Chrome de verdade em 1440, 768 e 390 px, mede erros de console, imagens, títulos, rolagem lateral, peso, foco, reduced-motion e "sem JavaScript", olha as capturas e devolve uma tabela com nota de 0 a 10 por área (visual, responsividade, acessibilidade, performance, animações, código), as 3 prioridades e o que não deu para verificar. Use sempre que chamarem /review-landing ou pedirem para revisar, auditar ou conferir a landing, o site ou a página ("revisa a landing", "revisa o site", "o site tá bom?", "dá uma olhada no site antes da PR", "checa o celular e a acessibilidade da página"), mesmo sem a palavra "revisão". Não altera o código: propõe correções e oferece aplicá-las depois.
+description: 'Revisão só de leitura de uma landing page ou site estático (HTML, CSS, JavaScript, Vite, GSAP). Roda o build, abre o site num Chrome de verdade em 1440, 768 e 390 px, mede erros de console, imagens, títulos, rolagem lateral, peso, foco, reduced-motion e "sem JavaScript", olha as capturas e devolve uma tabela com nota de 0 a 10 por área (visual, responsividade, acessibilidade, performance, animações, código), as 3 prioridades e o que não deu para verificar. Use sempre que chamarem /review-landing ou pedirem para revisar, auditar ou conferir a landing, o site ou a página ("revisa a landing", "revisa o site", "o site tá bom?", "dá uma olhada no site antes da PR", "checa o celular e a acessibilidade da página"), mesmo sem a palavra "revisão". Não altera o código: propõe correções e oferece aplicá-las depois.'
 ---
 
 # Revisar a landing
@@ -12,6 +12,11 @@ relatório curto, com nota e evidência por área.
 A única coisa que a revisão cria é a pasta `review-landing/` (capturas e `resultado.json`).
 Por quê: revisar e corrigir são etapas separadas. A pessoa lê a lista, escolhe o que faz sentido e só então
 você aplica. Assim ninguém perde trabalho por uma "melhoria" que não pediu.
+
+O build, o preview e o `checar.mjs` fazem parte da revisão, mesmo em modo de planejamento: eles só gravam
+`dist/` e `review-landing/`, que o git ignora, e não mudam o código. Se o modo da sessão não deixar
+rodá-los, diga isso na primeira linha e peça para trocar para Manual antes de seguir. Não troque o
+script por medições improvisadas.
 
 - Se quem chamou passou uma URL (`/review-landing http://localhost:5173/`), use essa URL.
 - Se o pedido trouxer um formato de relatório próprio, siga o pedido; o formato daqui é o padrão.
