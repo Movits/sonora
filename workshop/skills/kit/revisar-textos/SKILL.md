@@ -35,6 +35,8 @@ Por quê da ordem: erro é fato e sempre entra; tom e tamanho são escolha e pod
 
 **4. Limites.** No máximo 12 itens, erros primeiro. Não mude nome da marca, preço, data nem dado técnico: se
 parecer errado, pergunte. Sugestão sempre com o texto inteiro pronto, não "melhore esta frase".
+Em "Texto atual", copie o trecho exato do arquivo, inteiro e sem "…": é ele que vai ser trocado. Não use posição na
+tela ("ao lado", "abaixo") na sugestão: no celular a ordem muda. Não diga que um texto repete outro sem citar os dois.
 
 ## Formato da resposta
 
@@ -51,4 +53,4 @@ Quais itens eu aplico? (ex.: "1, 2 e 5")
 ```
 
 Pare aí. Quando a pessoa aprovar, aplique só os itens escolhidos, um por vez, e rode `npm run build` no fim
-para conferir que nada quebrou. Diga em uma linha onde ver cada mudança no navegador.
+(o comando sozinho, sem pipe nem variável, para o pedido de licença ficar legível) para conferir que nada quebrou. Diga em uma linha onde ver cada mudança no navegador.

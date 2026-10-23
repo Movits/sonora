@@ -34,14 +34,18 @@ Por quê: com a base errada, o site abre sem CSS, sem imagens e sem animação.
 ATENÇÃO, com a sugestão (WebP, largura máxima em que aparece). Total acima de 5 MB: ATENÇÃO.
 Por quê: cada MB é tempo de espera no 4G.
 
-**6. Caminhos.** Procure `src="/` e `href="/` em `index.html` e `src/`. Caminho que começa com `/` ignora a base
-e dá 404 no Pages: FALHA. Procure também links `href="#..."` e confira se o `id` existe no `index.html`.
+**6. Caminhos.** Depois do build, procure em `dist/index.html` e em `dist/assets/` caminhos que começam com `/` sem a
+base (ex.: `src="/img/` quando a base é `/meu-site/`): FALHA, porque ignoram a base e dão 404 no Pages. No
+`index.html` e nos `.css` de `src/`, caminho começando com `/` (`/img/`, `/fonts/`) é normal: o Vite acrescenta a base
+no build. Já um texto dentro de `.js` em `src/` (ex.: `'/img/foto.webp'`) o Vite não mexe: FALHA (use
+`import.meta.env.BASE_URL`). Procure também links `href="#..."` e confira se o `id` existe no `index.html`.
 
 **7. Segredos.** Procure `api_key`, `apikey`, `secret`, `token`, `password` e `sk-` em `src/`, `index.html` e
 `dist/`. Confira se `.env` está no `.gitignore`. **Não abra o `.env`.** Achou chave de verdade: FALHA.
 Por quê: tudo o que vai para o navegador é público, e chave publicada é chave vazada.
 
-**8. Console.** Se der para subir o preview (`npm run preview`, em segundo plano) e houver navegador
+**8. Console.** Se um teste do item 3 já abre o site no navegador e confere o console, ele é a prova (cite o nome
+do teste). Senão, se der para subir o preview (`npm run preview`, em segundo plano) e houver navegador
 disponível, abra o site e anote erros de console. Se não der, escreva "não verificado" (não é FALHA).
 Desligue o preview no fim.
 

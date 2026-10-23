@@ -18,7 +18,7 @@ Por quê:
 
 ## O teste em 3 tentativas
 
-1. **Sem barra:** escreva uma das 3 frases da `description`, do jeito que você falaria. A skill acordou sozinha? O Claude costuma dizer que está usando a skill.
+1. **Sem barra:** escreva uma das 3 frases da `description`, do jeito que você falaria. A skill acordou sozinha? O Claude costuma dizer que está usando a skill. Se ela mostrar um rascunho e perguntar se pode aplicar, responda "pode aplicar": é a skill seguindo a regra de não editar sem o seu OK. As mudanças no site que esse teste fizer não entram no commit da skill; depois, decida se quer mantê-las.
 2. **Com barra:** `/[NOME_DA_SKILL]`. Funciona do começo ao fim?
 3. **Se a 1 falhou:** peça o ajuste da `description` (prompt abaixo, primeira linha) e repita numa sessão nova.
 
@@ -26,8 +26,8 @@ Por quê:
 
 | Variável | Exemplo |
 |---|---|
-| [NOME_DA_SKILL] | nova-foto |
-| [UMA_FRASE_SUA] | põe essa foto no site |
+| [NOME_DA_SKILL] | perguntas-frequentes |
+| [UMA_FRASE_SUA] | quero uma parte de dúvidas comuns no site |
 
 ## Prompt (copiar e colar)
 
@@ -57,8 +57,8 @@ faça o push e me dê o link da pasta no GitHub.
 
 O que deve aparecer:
 
-1. Uma mudança só na linha `description:`.
-2. Pedidos de licença para `git add`, `git commit` e `git push` (aprove um por um, lendo).
+1. Uma mudança só na linha `description:` (se você começou em "1. Confira", o arquivo não muda).
+2. Pedido de licença para os comandos git. Às vezes vem um cartão só, com tudo encadeado (`git add ... && git commit ... && git push`): leia a linha inteira antes de aprovar e confira se o `git add` cita só `.claude/skills/<nome>`.
 3. O link `https://github.com/<você>/<repositório>/tree/main/.claude/skills/<nome>`.
 
 Como validar:
@@ -70,7 +70,7 @@ Como validar:
 ## Para levar a skill para outros lugares
 
 - **Todos os seus projetos:** copie a pasta para `C:\Users\<você>\.claude\skills\` (skill pessoal).
-- **O app Claude (chat):** compacte a pasta da skill num .zip e envie em Configurações › Capacidades › Skills (conferir o nome do menu na sua versão).
+- **O app Claude (chat):** compacte a pasta da skill num .zip e envie em Personalizar › Skills (em inglês, Customize › Skills; o nome do menu pode variar com a versão). Lá, campos que só o Claude Code entende (como disable-model-invocation) dão erro no envio; name e description funcionam.
 - **A equipe toda:** do jeito que você fez agora, dentro do projeto, no Git.
 
 ## Problemas comuns

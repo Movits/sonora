@@ -14,8 +14,9 @@ Por quê: divulgar é escrever. Publicar e mexer no site são decisões da pesso
 
 ## Passo a passo
 
-**1. Ler o que o site diz.** Leia `CLAUDE.md`, `docs/brief.md` (se existir), `index.html` e os arquivos de
-`src/sections/`. Anote: nome da marca, o que é, para quem, a ação principal (o botão) e as regras de tom
+**1. Ler o que o site diz.** Leia `CLAUDE.md`, `docs/brief.md` (se existir), `index.html` e cada arquivo de
+`src/sections/`, com a ferramenta de leitura de arquivos (não junte vários comandos num Bash só: cada comando
+composto vira um pedido de licença). Anote: nome da marca, o que é, para quem, a ação principal (o botão) e as regras de tom
 (palavras proibidas, "você" ou "vocês", formal ou leve).
 Por quê: post que promete o que a página não tem frustra quem clica e queima a marca.
 
@@ -53,6 +54,9 @@ Afirmação sem origem: tire do texto ou marque `[a confirmar]`.
 data no título (não apague as anteriores).
 
 ## Formato da resposta
+
+Mostre na conversa o mesmo conteúdo que salvou, com os três textos inteiros (não resuma em tópicos): a pessoa
+vai querer ler e copiar dali.
 
 ```markdown
 ## Divulgação: <marca> (<data>)
