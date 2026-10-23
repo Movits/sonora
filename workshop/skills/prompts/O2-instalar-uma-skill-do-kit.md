@@ -14,7 +14,7 @@
 Por quê:
 
 - **Manual:** o Claude pede licença antes de cada comando e de cada arquivo. Você vê o `curl` que baixa a skill e o arquivo que ele grava, e aprova um por um.
-- **A pasta `.claude/` é protegida:** gravar nela sempre pede licença, mesmo em Accept edits, porque uma skill muda o que o Claude faz. É o cartão do passo 3: leia o caminho e permita.
+- **A pasta `.claude/` é protegida:** no ensaio, gravar nela foi bloqueado mesmo em Accept edits, porque uma skill muda o que o Claude faz. No app, deve aparecer um pedido de licença no passo 3: leia o caminho e permita.
 - **Sonnet 5.5, medium:** baixar e copiar um arquivo é tarefa simples.
 - **curl, não WebFetch:** a ferramenta de ler páginas da web resume o texto. Uma skill precisa chegar idêntica.
 
@@ -67,7 +67,7 @@ O que deve aparecer:
 
 1. Um pedido de licença para o `curl` (aprove) e o texto da skill na tela.
 2. O resumo em 3 linhas. Confira com o que você leu: ele bate?
-3. Depois do seu OK, um pedido de licença para criar a pasta e o arquivo `.claude/skills/<nome>/SKILL.md` (pode vir como um comando `mkdir` e `cp`). Permita: gravar dentro de `.claude/` sempre pede licença.
+3. Depois do seu OK, um pedido de licença para criar a pasta e o arquivo `.claude/skills/<nome>/SKILL.md` (pode vir como um comando `mkdir` e `cp`). Permita: gravar dentro de `.claude/` é protegido e pede o seu OK.
 
 Como validar:
 

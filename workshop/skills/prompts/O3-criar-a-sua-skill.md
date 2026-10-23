@@ -14,7 +14,7 @@
 Por quê:
 
 - **Sonnet 5.5, medium:** escrever um arquivo de texto curto e bem estruturado é tarefa do dia a dia.
-- **Accept edits:** ele edita o projeto sem pedir licença, **menos dentro de `.claude/`**: para criar o `SKILL.md` ali, o app mostra um cartão pedindo licença, mesmo no Accept edits. É uma proteção (uma skill muda o que o Claude faz). Leia o caminho e aprove.
+- **Accept edits:** ele edita o projeto sem pedir licença, **menos dentro de `.claude/`**: para criar o `SKILL.md` ali, deve aparecer um pedido de licença, mesmo no Accept edits (no ensaio, pelo terminal, a gravação foi bloqueada até o OK). É uma proteção (uma skill muda o que o Claude faz). Leia o caminho e aprove.
 - **skill-creator:** é a skill oficial da Anthropic que ajuda a criar e testar skills. Se ela não aparecer na sua lista, tudo bem: este prompt já traz o que ela pediria.
 
 ## Escolha o que vai virar skill
@@ -61,7 +61,7 @@ No fim, mostre o arquivo inteiro.
 Transforme este pedido, que eu repito, numa skill do projeto:
 "[O_QUE_VOCE_REPETE]"
 Crie .claude/skills/[NOME_DA_SKILL]/SKILL.md com:
-- description: o que faz e quando usar, com 3 frases que eu diria
+- description entre aspas simples: o que faz e quando usar, com 3 frases que eu diria
 - passos numerados, cada regra com o porquê
 - o formato da resposta e o que ela NÃO pode fazer
 Até 60 linhas, sem scripts, sem citar nomes. Mostre o arquivo no fim.
