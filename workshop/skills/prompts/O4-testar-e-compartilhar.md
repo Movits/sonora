@@ -75,6 +75,6 @@ Como validar:
 
 ## Problemas comuns
 
-- **O push foi recusado ("rejected"):** peça "faça git pull --rebase e tente o push de novo". Se aparecer conflito, pare e chame o Roberto.
+- **O push foi recusado ("rejected"):** peça "faça git pull --rebase --autostash e tente o push de novo". Se aparecer conflito, pare e chame o Roberto.
 - **A skill acorda em pedidos que não têm nada a ver:** a description está larga demais. Peça para ela dizer também quando **não** usar.
 - **A skill nunca acorda sozinha, só com a barra:** a description não tem as palavras que você usa. Coloque as suas frases nela.

@@ -43,8 +43,8 @@ problemas comuns.
 
 **Dois avisos que vieram do ensaio de 23/10:**
 
-- **Gravar dentro de `.claude/` sempre pede licença**, mesmo em Accept edits: é uma proteção, porque uma skill muda o
-  que o Claude faz. Leia o caminho no cartão e permita.
+- **Gravar dentro de `.claude/` é protegido:** no ensaio (pelo terminal), foi bloqueado mesmo em Accept edits, porque uma
+  skill muda o que o Claude faz. No app, isso deve aparecer como um pedido de licença: leia o caminho e permita.
 - **A `/review-landing` leva de 5 a 10 minutos** com Opus · high. Use o modo **Manual** e aprove o build, o preview e o
   script: no modo Plan, o Claude pode pular esses comandos e entregar o relatório sem as capturas.
 
